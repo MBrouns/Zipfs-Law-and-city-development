@@ -31,7 +31,7 @@ Identifying causal mechanisms for city formation is important for policy issues.
 In summary, two research questions that seem to be suitable for agent-based modeling are particularly interesting to policy makers. First, what would happen (and why) if the institutional barriers between countries would disappear? This could be the consequence of a further unification of Europe. Will Paris or London be the winner? And what will happen to Amsterdam? Second, what are the driving mechanisms behind deviations from a strict Zipfian distribution. In what respect are these deviations an advantage or disadvantage?
 
 ## References
-Gaujal, B, L. Gulyas, Y. Mansury and E. Thierry, 2014, Validating an agent-based model of the Zipf's Law: a discrete Markov-chain approach. Journal of Economic Dynamics & Control 41 38–49.
-Mansury, Y., and L. Gulyas, 2007, The emergence of Zipf’s Law in a system of cities: an agent-based simulation approach. Journal of Economic Dynamics & Control 31 2438–2460.
-Ostriker, A, 2014, Stochastic growth models for city sizes. Internal CPB Memo.
-1 Interestingly, this distribution applies to several other fields as well, for instance languages. In fact research on this distribution started in that field.
+- Gaujal, B, L. Gulyas, Y. Mansury and E. Thierry, 2014, Validating an agent-based model of the Zipf's Law: a discrete Markov-chain approach. Journal of Economic Dynamics & Control 41 38–49.
+- Mansury, Y., and L. Gulyas, 2007, The emergence of Zipf’s Law in a system of cities: an agent-based simulation approach. Journal of Economic Dynamics & Control 31 2438–2460.
+- Ostriker, A, 2014, Stochastic growth models for city sizes. Internal CPB Memo.
+- 1 Interestingly, this distribution applies to several other fields as well, for instance languages. In fact research on this distribution started in that field.
