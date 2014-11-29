@@ -6,14 +6,14 @@
 	- Location
 	- Family -> Set of households
 - Calculates:
-	- Resistance to move
+	- Resistance to move, based on:
 		- Time spent living in current city
 		- Distance to family members
 		- Closeness to current location
 		- Household size
 		- Age
 			- over 68 resistance increases
-	- willingness to move
+	- Willingness to move, based on:
 		- List of attractiveness per city based on:
 			- Job offers
 			- Intrinsic attractiveness of city
@@ -25,10 +25,10 @@
 				- Between 30 and 55 -> Long distance
 				- Between 55 - 68 -> Long distance
 - Does:
-	- Move
+	- Move, based on:
 		- If household has not moved for past x years
 		- Household moves to city with highest attractiveness if it is higher than resistance
-	- progress in life stage
+	- Progress in life stage, defined as:
 		- If member with age between 16-22:
 			- remove member from household and spawn new household
 		- If household size is 1 and age of member is 20-25:
@@ -38,6 +38,7 @@
 		- If age > 75
 			- x% chance of dying, remove member from household
 			- if household size == 0, delete household
+		- A household's life stage is based on the age of the eldest person in that household
 
 
 
@@ -51,24 +52,24 @@
 ## Job offers implemented through city agents
 
 There are a number of job categories:
-- Fixed percentage required
+- Fixed percentage required jobs, such as:
 	- Agricultural
 	- Service
-- Growth inducing:
+- Growth inducing jobs, such as:
 	- Manufacturing
 	- ICT
 	- Finance
 	- Engineering
 
-Job offers are designed for fixed percentage categories to increase the attractiveness of cities where the percentage in that categorie is lower than the desired percentage and to decrease the attractiveness of cities where it is higher.
+Job offers are designed for fixed percentage categories to increase the attractiveness of cities where the percentage in that category is lower than the desired percentage and to decrease the attractiveness of cities where it is higher.
 
 The job offers for growth inducing categories are designed to increase the attractiveness of a city for people with that job category the more people of that category live in that city.
 
 
-## Assumed:
+## Assumed
 Moving because of need for bigger house is most often within city limits -> Out of scope of this project
 
-## Narrative:
+# Narrative
 Assume that a tick is a year in real time.
 
 For each city:
