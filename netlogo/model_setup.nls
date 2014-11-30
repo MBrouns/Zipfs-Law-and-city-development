@@ -1,0 +1,136 @@
+to setup
+  ;;random-seed 42
+  clear-all
+  reset-ticks
+  import-pcolors "/resources/nederland.png"
+  
+  setup-patches
+  setup-households
+end
+
+
+to setup-patches
+  ;; first set the cityIdentifier to 0 for all patches in The Netherlands
+  ask patches with [pcolor != 98.1][
+    set cityIdentifier -1
+  ]
+  ask patches with [pcolor = 98.1][
+    set cityIdentifier 0
+  ]
+  
+  
+  ;; Then randomly create a number of cities with a unique identifier
+  let cityIterator 1
+  Ask n-of noOfCities patches with [pcolor = 98.1][
+    
+    ;; Add a pen to the household plot for each city
+    set-current-plot "Households"
+    create-temporary-plot-pen word "city" cityIterator
+    set-plot-pen-color cityIterator * 10 + 5
+    
+    
+    ask patches in-radius 10
+      [ set cityIdentifier cityIterator
+        set pcolor cityIdentifier * 10 + 5  ;; Generate unique random color for each city
+      ] 
+    set cityIterator cityIterator + 1  
+  ]  
+end
+
+;; Generate households and put them on the map
+to setup-households
+  let noOfHouseholdsInCity round (0.4 * noOfHouseholds)
+  let noOfHouseholdsOutCity round (0.6 * noOfHouseholds)
+  
+  ;; First, randomly distribute households over The Netherlands outside of cities
+  create-turtles noOfHouseholdsOutCity [
+    move-to one-of patches with [cityIdentifier = 0]
+    initialise-household
+    set peopleList sort-by [table:get ?1 "age" > table:get ?2 "age"] peopleList
+  ]
+  ;; then, randomly distribute households over The Netherlands inside of cities
+  create-turtles noOfHouseholdsInCity [
+    move-to one-of patches with [cityIdentifier > 0]
+    initialise-household
+    set peopleList sort-by [table:get ?1 "age" > table:get ?2 "age"] peopleList
+  ]
+  
+end
+
+
+
+;; Initialise households to their default settings
+to initialise-household
+  ;; Generate members
+  ;; Possible type of households:
+  ;; single-member household
+  ;;    Age 16 - 23          15%
+  ;; two-member household
+  ;;     Age 23-30           15%
+  ;;     Age 55+             35%
+  ;; household with children
+  ;;     Age 30 - 55         35% 
+  let householdChance  random 100
+  
+  ifelse householdChance < 15 [ 
+    ;; Generate single-member household
+    let member generate-member 16 23 "random" 
+    
+    set peopleList (list member)
+  ] 
+  [ ifelse householdChance < 30 [ 
+    ;; Generate two-member household Age 23-30
+    let member1 generate-member 23 30 "male"
+    let member2 generate-member 23 30 "female"
+    set peopleList (list member1 member2 )
+  ] 
+  [ ifelse householdChance < 65 [ 
+    ;; Generate two-member household Age 55+
+    let member1 generate-member 55 80 "male"
+    let member2 generate-member 55 80 "female"
+    set peopleList (list member1 member2)
+    
+  ] 
+  [ ;; Generate household with children
+    let noOfChildren random 4
+    let childrenIterator 0
+    let childrenList (list)
+    while[childrenIterator < noOfChildren][
+      let member generate-member 0 16 "random"
+      set childrenList lput member childrenList
+      set childrenIterator childrenIterator + 1
+    ]
+    let member1 generate-member 30 55 "male" 
+    let member2 generate-member 30 55 "female"
+    set peopleList lput member1 childrenList
+    set peopleList lput member2 peopleList
+    
+  ]]] 
+  
+end
+
+
+;; Generate a random person in a agerange between ageMin and ageMax
+;; if $sex = "random", a random sex is chosen. Else it is as defined
+;; input: 
+;; $ageMin : Int
+;; $ageMax : Int
+;; $sex : {"random", "male", "female"}
+to-report generate-member [$ageMin $ageMax $sex]
+  let member table:make
+  let ageDiff $ageMax - $ageMin
+  table:put member "age" random ageDiff + $ageMin
+  ifelse $sex = "random" [
+    ifelse random 2 = 0 [
+      table:put member "sex" "female"
+    ][
+    table:put member "sex" "male"
+    ]
+  ][
+  table:put member "sex" $sex
+  ]
+  
+  table:put member "job" random 8
+  report member
+end
+

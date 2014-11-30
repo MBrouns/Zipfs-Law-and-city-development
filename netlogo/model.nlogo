@@ -6,141 +6,14 @@ turtles-own [
 ]
 
 extensions [table]
+__includes["model_setup.nls"]
 
-to setup
-  ;;random-seed 42
-  clear-all
-  reset-ticks
-  import-pcolors "/resources/nederland.png"
-  
-  setup-patches
-  setup-households
-end
-
-to setup-patches
-  ;; first set the cityIdentifier to 0 for all patches in The Netherlands
-  ask patches with [pcolor != 98.1][
-    set cityIdentifier -1
-  ]
-  ask patches with [pcolor = 98.1][
-    set cityIdentifier 0
-  ]
-  
-  
-  ;; Then randomly create a number of cities with a unique identifier
-  let cityIterator 1
-  Ask n-of noOfCities patches with [pcolor = 98.1][
-    
-    set-current-plot "Households"
-    create-temporary-plot-pen word "city" cityIterator
-    set-plot-pen-color cityIterator * 10 + 5
-    
-    
-    ask patches in-radius 10
-      [ set cityIdentifier cityIterator
-        set pcolor cityIdentifier * 10 + 5  ;; Generate unique random color for each city
-      ] 
-    set cityIterator cityIterator + 1  
-  ]  
-end
-
-;; Generate households and put them on the map
-to setup-households
-  let noOfHouseholdsInCity round 0.4 * noOfHouseholds
-  let noOfHouseholdsOutCity round 0.6 * noOfHouseholds
-  
-  ;; First, randomly distribute households over The Netherlands outside of cities
-  create-turtles noOfHouseholdsOutCity [
-    move-to one-of patches with [cityIdentifier = 0]
-    initialise-household
-  ]
-  ;; then, randomly distribute households over The Netherlands inside of cities
-  create-turtles noOfHouseholdsInCity [
-    move-to one-of patches with [cityIdentifier > 0]
-    initialise-household
-  ]
-  
-end
-
-
-
-;; Initialise households to their default settings
-to initialise-household
-  ;; Generate members
-  ;; Possible type of households:
-  ;; single-member household
-  ;;    Age 16 - 23          15%
-  ;; two-member household
-  ;;     Age 23-30           15%
-  ;;     Age 55+             35%
-  ;; household with children
-  ;;     Age 30 - 55         35% 
-  let householdChance  random 100
-  
-  ifelse householdChance < 15 [ 
-    ;; Generate single-member household
-    let member generate-member 16 23 "random" 
-    
-    set peopleList (list member)
-  ] 
-  [ ifelse householdChance < 30 [ 
-    ;; Generate two-member household Age 23-30
-    let member1 generate-member 23 30 "male"
-    let member2 generate-member 23 30 "female"
-    set peopleList (list member1 member2 )
-  ] 
-  [ ifelse householdChance < 65 [ 
-    ;; Generate two-member household Age 55+
-    let member1 generate-member 55 80 "male"
-    let member2 generate-member 55 80 "female"
-    set peopleList (list member1 member2)
-    
-  ] 
-  [ ;; Generate household with children
-    let noOfChildren random 4
-    let childrenIterator 0
-    let childrenList (list)
-    while[childrenIterator < noOfChildren][
-      let member generate-member 0 16 "random"
-      set childrenList lput member childrenList
-      set childrenIterator childrenIterator + 1
-    ]
-    let member1 generate-member 30 55 "male" 
-    let member2 generate-member 30 55 "female"
-    set peopleList lput member1 childrenList
-    set peopleList lput member2 peopleList
-    
-  ]]] 
-  
-end
-
-
-;; Generate a random person in a agerange between ageMin and ageMax
-;; if $sex = "random", a random sex is chosen. Else it is as defined
-;; input: 
-;; $ageMin : Int
-;; $ageMax : Int
-;; $sex : {"random", "male", "female"}
-to-report generate-member [$ageMin $ageMax $sex]
-  let member table:make
-  let ageDiff $ageMax - $ageMin
-  table:put member "age" random ageDiff + $ageMin
-  ifelse $sex = "random" [
-    ifelse random 2 = 0 [
-      table:put member "sex" "female"
-    ][
-    table:put member "sex" "male"
-    ]
-  ][
-  table:put member "sex" $sex
-  ]
-  
-  table:put member "job" random 8
-  report member
-end
 
 to go
+  
   tick
+  if ticks >= 200 [ stop ] 
+  ;; Update the household plot with new values for each city pen
   let cityIterator 1
   while[cityIterator <= noOfCities] [
     set-current-plot-pen (word "city" cityIterator)
@@ -148,30 +21,77 @@ to go
     set cityIterator cityIterator + 1
   ]
   
-  ask turtle 0[
-    print peopleList
-    ;; table:put tableExample1 "turtle" "cute"
-    ;;table:put tableExample1 "bunny" "cutest"
-    ;;table:put tableExample2 "turtle" "meh"
-    ;;table:put tableExample2 "bunny" "mehest"
-    ;;print tableExample1
-    ;; print tableExample2
+  
+  
+  ask turtles [
     
-    ;; set peopleList list tableExample1 tableExample2
-    ;;print peopleList
-    ;;foreach peopleList[
-    ;;   print (word "loop" ?)
-    ;;   table:put ? "turtle" "bah"
-    ;; ]
-    ;; print peopleList
+    progress-lifestage
+    
   ]
+  
+  ;;ask turtle 1 [
+  ;;  print peopleList
+  ;;]
+end
+
+
+to progress-lifestage
+  
+  ;; First, increase the age of every person in the system
+  
+  foreach peopleList [
+    table:put ? "age" (table:get ? "age" + 1)
+    
+    
+    ;; Then, check if people in the household die
+    ;; A random value is drawn from a normal distribution with u = 80 and s  = 6
+    ;; which is then bounded between 60 and 100
+    let randomDeathAge random-normal 80 6
+    set randomDeathAge max list (randomDeathAge) (60)
+    set randomDeathAge min list (randomDeathAge) (100)
+    if table:get ? "age" > randomDeathAge [  
+      set peopleList remove ? peopleList
+    ]
+    
+    
+  ]
+  ;; If there are no people left in household, remove turtle
+  if empty? peopleList [ die  ]
+  
+  
+  ;; Make babies
+  ;; Every two member household where both are aged < 40 have a chance to make babies
+  ;; On average, households are in reproductive age for 14 years ->
+  ;; On average, we need about 2 children per household
+  ;; Therefore, average chance of baby per year is 1 in 7
+  ;; first, check if two oldest members are < 40
+  ;; ASSUMED: List of people is always sorted by age DESC
+  ;; TODO: Refactor this so that a sort won't be needed since it's super expensive
+  
+  if length peopleList >= 2 [
+    if table:get item 0 peopleList "age" < 40 AND table:get item 1 peopleList "age" < 40 [
+      if random 7 = 0 [
+        let child generate-member 0 0 "random" 
+        set peopleList lput child peopleList
+      ]
+    ]    
+  ]
+  
+  ;; 
+  
+  
+end
+
+to check-death
+  
+  
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
 768
 10
-1478
-741
+1779
+1042
 500
 500
 0.4
@@ -228,7 +148,7 @@ INPUTBOX
 191
 142
 noOfHouseholds
-10000
+1000
 1
 0
 Number
@@ -259,6 +179,9 @@ true
 true
 "" ""
 PENS
+"Total households" 1.0 0 -7500403 true "" "plot count turtles"
+"Households in city" 1.0 0 -14730904 true "" "plot count turtles with [ cityIdentifier > 0 ]"
+"Households out city" 1.0 0 -7858858 true "" "plot count turtles with [ cityIdentifier = 0 ]"
 
 BUTTON
 22
@@ -267,7 +190,7 @@ BUTTON
 295
 NIL
 Go
-NIL
+T
 1
 T
 OBSERVER
