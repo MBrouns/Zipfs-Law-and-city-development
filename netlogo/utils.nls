@@ -1,0 +1,8 @@
+;; Generate a rounded and bounded random number based upon a supplied random number generator
+to-report bounded-random-number [$randomFunction $min $max $round] 
+  let randomNumber $randomFunction
+  set randomNumber max list (randomNumber) ($min)
+  set randomNumber min list (randomNumber) ($max)
+  if $round = "true"[set randomNumber round randomNumber]
+  report randomNumber  
+end

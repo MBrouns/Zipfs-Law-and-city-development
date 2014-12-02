@@ -72,19 +72,19 @@ to initialise-household
   ;;     Age 30 - 55         35% 
   let householdChance  random 100
   
-  ifelse householdChance < 15 [ 
+  ifelse householdChance < 20 [ 
     ;; Generate single-member household
     let member generate-member 16 23 "random" 
     
     set peopleList (list member)
   ] 
-  [ ifelse householdChance < 30 [ 
+  [ ifelse householdChance < 27 [ 
     ;; Generate two-member household Age 23-30
     let member1 generate-member 23 30 "male"
     let member2 generate-member 23 30 "female"
     set peopleList (list member1 member2 )
   ] 
-  [ ifelse householdChance < 65 [ 
+  [ ifelse householdChance < 60 [ 
     ;; Generate two-member household Age 55+
     let member1 generate-member 55 80 "male"
     let member2 generate-member 55 80 "female"
