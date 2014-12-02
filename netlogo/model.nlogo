@@ -64,7 +64,7 @@ to progress-lifestage
   ;; Therefore, average chance of baby per year is 1 in 7
   ;; first, check if two oldest members are < 40
   ;; ASSUMED: List of people is always sorted by age DESC
-  if length peopleList >= 2 [
+  if length peopleList >= 2 AND length peopleList <= 5 [
     if table:get item 0 peopleList "age" < 42 AND table:get item 1 peopleList "age" < 42 [
       let overPopulationModifier 6 * ((noOfHouseholds / count turtles) - 1)
       if random-float 7.0 <= 1 + overPopulationModifier [

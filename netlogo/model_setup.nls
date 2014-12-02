@@ -119,7 +119,7 @@ end
 to-report generate-member [$ageMin $ageMax $sex]
   let member table:make
   let ageDiff $ageMax - $ageMin
-  table:put member "age" random ageDiff + $ageMin
+  table:put member "age" (random ageDiff) + $ageMin
   ifelse $sex = "random" [
     ifelse random 2 = 0 [
       table:put member "sex" "female"
