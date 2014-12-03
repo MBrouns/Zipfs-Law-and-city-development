@@ -5,12 +5,14 @@ turtles-own [
   peopleList
 ]
 
-extensions [table]
+extensions [table profiler]
 __includes["model_setup.nls" "utils.nls"]
 
 
 to go
-  
+  profiler:start         ;; start profiling
+
+
   tick
   if ticks >= 500 [ stop ] 
   ;; Update the household plot with new values for each city pen
@@ -32,8 +34,15 @@ to go
   ;;ask turtle 1 [
   ;;  print peopleList
   ;;]
+
 end
 
+to print-profiler
+  
+  profiler:stop          ;; stop profiling
+  print profiler:report  ;; view the results
+  profiler:reset  
+end
 
 to progress-lifestage
   
@@ -66,7 +75,7 @@ to progress-lifestage
   ;; ASSUMED: List of people is always sorted by age DESC
   if length peopleList >= 2 AND length peopleList <= 5 [
     if table:get item 0 peopleList "age" < 42 AND table:get item 1 peopleList "age" < 42 [
-      let overPopulationModifier 6 * ((noOfHouseholds / count turtles) - 1)
+      let overPopulationModifier 2 * ((noOfHouseholds / count turtles) - 1)
       if random-float 7.0 <= 1 + overPopulationModifier [
         let child generate-member 0 1 "random" 
         set peopleList lput child peopleList
