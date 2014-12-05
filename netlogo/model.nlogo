@@ -6,7 +6,7 @@ turtles-own [
 ]
 
 extensions [table profiler]
-__includes["model_setup.nls" "utils.nls"]
+__includes["model_setup.nls" "utils.nls" "progress_lifestage.nls"]
 
 
 to go
@@ -14,7 +14,7 @@ to go
 
 
   tick
-  if ticks >= 500 [ stop ] 
+  if ticks >= 100 [ stop ] 
   ;; Update the household plot with new values for each city pen
   let cityIterator 1
   while[cityIterator <= noOfCities] [
@@ -31,9 +31,6 @@ to go
     
   ]
   
-  ;;ask turtle 1 [
-  ;;  print peopleList
-  ;;]
 
 end
 
@@ -42,94 +39,6 @@ to print-profiler
   profiler:stop          ;; stop profiling
   print profiler:report  ;; view the results
   profiler:reset  
-end
-
-to progress-lifestage
-  
-  ;; First, increase the age of every person in the system
-  
-  foreach peopleList [
-    table:put ? "age" (table:get ? "age" + 1)
-    
-    
-    ;; Then, check if people in the household die
-    ;; A random value is drawn from a normal distribution with u = 80 and s  = 6
-    ;; which is then bounded between 60 and 100
-    let randomDeathAge bounded-random-number (random-normal 80 6) 60 100 "true"
-    if table:get ? "age" > randomDeathAge [  
-      set peopleList remove ? peopleList
-    ]
-    
-    
-  ]
-  ;; If there are no people left in household, remove turtle
-  if empty? peopleList [ die  ]
-  
-  
-  ;; Make babies
-  ;; Every two member household where both are aged < 40 have a chance to make babies
-  ;; On average, households are in reproductive age for 14 years ->
-  ;; On average, we need about 2 children per household
-  ;; Therefore, average chance of baby per year is 1 in 7
-  ;; first, check if two oldest members are < 40
-  ;; ASSUMED: List of people is always sorted by age DESC
-  if length peopleList >= 2 AND length peopleList <= 5 [
-    if table:get item 0 peopleList "age" < 42 AND table:get item 1 peopleList "age" < 42 [
-      let overPopulationModifier 2 * ((noOfHouseholds / count turtles) - 1)
-      if random-float 7.0 <= 1 + overPopulationModifier [
-        let child generate-member 0 1 "random" 
-        set peopleList lput child peopleList
-      ]
-    ]    
-  ]
-  
-  ;; Let children move out of house when they are aged
-  if length peopleList > 2 [
-    ;; Loop over a list of all children in the household between 16 and 23
-    foreach filter [table:get ? "age" >= 16 AND  table:get ? "age" <= 23] peopleList [
-      ;; First create a randomly distributed but bounded random number between 16 and 23 to determine when a child moves out.
-      let randomMovingAge bounded-random-number (random-normal 19.5 2) 16 23 "true"
-      
-      ;; If the age of the child is the randomly drawn age or 23, move him out.
-      if table:get ? "age" = randomMovingAge OR table:get ? "age" = 23  [
-        ;; Remove the child from the current household and create a new turtle containing the single child.
-        hatch 1[
-          set peopleList (list ?)
-        ]      
-        set peopleList remove ? peopleList     
-      ]
-    ]
-  ] 
-  
-  ;; Let households merge 
-  if length peopleList = 1 [
-    if table:get item 0 peopleList "age" < 50 [
-    ;; First create a randomly distributed but bounded random number between 16 and 23 to determine when a child moves out.
-    let randomMergingAge bounded-random-number (random-normal 26.5 2) 23 30 "true"
-    
-    ;; If the age of the person is the randomly drawn age or 30, let him merge with another random household of the other sex within x patches. 
-    if table:get item 0 peopleList "age" = randomMergingAge OR table:get item 0 peopleList "age" > 30 AND table:get item 0 peopleList "age" < 50[
-      let targetSex ""
-      let targetPerson ""
-      let targetLocation pcolor
-      ifelse table:get item 0 peopleList "sex" = "male" [ set targetSex "female" ][ set targetSex "male"]
-      if one-of turtles with [pcolor = targetLocation AND length peopleList = 1 AND table:get item 0 peopleList "sex" = targetSex AND table:get item 0 peopleList "age" < 50] != nobody[
-        Ask one-of turtles with [pcolor = targetLocation AND length peopleList = 1 AND table:get item 0 peopleList "sex" = targetSex AND table:get item 0 peopleList "age" < 50][
-          set targetPerson item 0 peopleList
-          die
-        ]
-        set peopleList lput targetPerson peopleList
-      ]
-      
-    ]    
-  ]
-    ]
-   
-end
-
-to check-death
-  
-  
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
@@ -265,6 +174,23 @@ PENS
 "Two-member young" 1.0 0 -7500403 true "" "plot count turtles with [length peopleList = 2 AND table:get item 0 peopleList \"age\" < 50]"
 "With children" 1.0 0 -2674135 true "" "plot count turtles with [length peopleList > 2]"
 " old" 1.0 0 -955883 true "" "plot count turtles with [length peopleList <= 2 AND table:get item 0 peopleList \"age\" > 50]"
+
+BUTTON
+57
+335
+158
+368
+NIL
+print-profiler
+NIL
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+1
 
 @#$#@#$#@
 ## WHAT IS IT?
