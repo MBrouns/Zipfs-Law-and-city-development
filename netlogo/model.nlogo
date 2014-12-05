@@ -5,11 +5,19 @@ turtles-own [
   peopleList
 ]
 
+globals [ 
+  ageAcc
+  sexAcc
+  jobAcc
+]
+
 extensions [table profiler]
 __includes["model_setup.nls" "utils.nls" "progress_lifestage.nls"]
 
 
 to go
+  
+  init-globals
   profiler:start         ;; start profiling
 
 
@@ -30,9 +38,17 @@ to go
     progress-lifestage
     
   ]
+
   
 
 end
+
+to init-globals
+  set ageAcc 0
+  set sexAcc 1
+  set jobAcc 2
+end
+
 
 to print-profiler
   
@@ -170,10 +186,10 @@ true
 true
 "" ""
 PENS
-"Single-member child" 1.0 0 -16777216 true "" "plot count turtles with [length peopleList = 1 AND table:get item 0 peopleList \"age\" < 50]"
-"Two-member young" 1.0 0 -7500403 true "" "plot count turtles with [length peopleList = 2 AND table:get item 0 peopleList \"age\" < 50]"
+"Single-member child" 1.0 0 -16777216 true "" "plot count turtles with [length peopleList = 1 AND item ageAcc (item 0 peopleList) < 50]"
+"Two-member young" 1.0 0 -7500403 true "" "plot count turtles with [length peopleList = 2 AND item ageAcc (item 0 peopleList) < 50]"
 "With children" 1.0 0 -2674135 true "" "plot count turtles with [length peopleList > 2]"
-" old" 1.0 0 -955883 true "" "plot count turtles with [length peopleList <= 2 AND table:get item 0 peopleList \"age\" > 50]"
+" old" 1.0 0 -955883 true "" "plot count turtles with [length peopleList <= 2 AND item ageAcc (item 0 peopleList) > 50]"
 
 BUTTON
 57

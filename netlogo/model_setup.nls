@@ -46,13 +46,13 @@ to setup-households
   create-turtles noOfHouseholdsOutCity [
     move-to one-of patches with [cityIdentifier = 0]
     initialise-household
-    set peopleList sort-by [table:get ?1 "age" > table:get ?2 "age"] peopleList
+    set peopleList sort-by [item ageAcc ?1 > item ageAcc ?2] peopleList
   ]
   ;; then, randomly distribute households over The Netherlands inside of cities
   create-turtles noOfHouseholdsInCity [
     move-to one-of patches with [cityIdentifier > 0]
     initialise-household
-    set peopleList sort-by [table:get ?1 "age" > table:get ?2 "age"] peopleList
+    set peopleList sort-by [item ageAcc ?1 > item ageAcc ?2] peopleList
   ]
   
 end
@@ -117,20 +117,18 @@ end
 ;; $ageMax : Int
 ;; $sex : {"random", "male", "female"}
 to-report generate-member [$ageMin $ageMax $sex]
-  let member table:make
   let ageDiff $ageMax - $ageMin
-  table:put member "age" (random ageDiff) + $ageMin
-  ifelse $sex = "random" [
+  let age (random ageDiff) + $ageMin
+  let sex $sex
+  if $sex = "random" [
     ifelse random 2 = 0 [
-      table:put member "sex" "female"
+      set sex "female"
     ][
-    table:put member "sex" "male"
+      set sex "male"
     ]
-  ][
-  table:put member "sex" $sex
   ]
-  
-  table:put member "job" random 8
+  let job random 8
+  let member (list age sex job)
   report member
 end
 

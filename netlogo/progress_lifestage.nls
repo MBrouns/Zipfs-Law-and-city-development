@@ -3,15 +3,13 @@ to progress-lifestage
   
   ;; First, increase the age of every person in the system
   
-  foreach peopleList [
-    table:put ? "age" (table:get ? "age" + 1)
-  ]
-  
-  
-  
-  
-  
-  
+ ;; foreach peopleList [
+ ;;   
+  ;;  set ? replace-item ageAcc ? (1)
+;;  ]
+
+  set peopleList map [replace-item ageAcc ? ((item ageAcc ?) + 1)] peopleList
+
   check-death
   
   reproduce
@@ -30,7 +28,7 @@ to check-death
     ;; A random value is drawn from a normal distribution with u = 80 and s  = 6
     ;; which is then bounded between 60 and 100
     let randomDeathAge bounded-random-number (random-normal 80 6) 60 100 "true"
-    if table:get ? "age" > randomDeathAge [  
+    if item ageAcc ? > randomDeathAge [  
       set peopleList remove ? peopleList
     ]
     
@@ -48,7 +46,7 @@ to reproduce
   ;; first, check if two oldest members are < 40
   ;; ASSUMED: List of people is always sorted by age DESC
   if length peopleList >= 2 AND length peopleList <= 5 [
-    if table:get item 0 peopleList "age" < 42 AND table:get item 1 peopleList "age" < 42 [
+    if item ageAcc (item 0 peopleList) < 42 AND item ageAcc (item 1 peopleList) < 42 [
       let overPopulationModifier 2 * ((noOfHouseholds / count turtles) - 1)
       if random-float 7.0 <= 1 + overPopulationModifier [
         let child generate-member 0 1 "random" 
@@ -63,12 +61,12 @@ to move-out-children
   ;; Let children move out of house when they are aged
   if length peopleList > 2 [
     ;; Loop over a list of all children in the household between 16 and 23
-    foreach filter [table:get ? "age" >= 16 AND  table:get ? "age" <= 23] peopleList [
+    foreach filter [item ageAcc ? >= 16 AND item ageAcc ? <= 23] peopleList [
       ;; First create a randomly distributed but bounded random number between 16 and 23 to determine when a child moves out.
       let randomMovingAge bounded-random-number (random-normal 19.5 2) 16 23 "true"
       
       ;; If the age of the child is the randomly drawn age or 23, move him out.
-      if table:get ? "age" = randomMovingAge OR table:get ? "age" = 23  [
+      if item ageAcc ? = randomMovingAge OR item ageAcc ? = 23  [
         ;; Remove the child from the current household and create a new turtle containing the single child.
         hatch 1[
           set peopleList (list ?)
@@ -84,7 +82,7 @@ end
 to merge-household
   ;; Let households merge 
   if length peopleList = 1 [
-    let personAge table:get item 0 peopleList "age"
+    let personAge item ageAcc (item 0 peopleList) 
     if personAge < 50 [
       ;; First create a randomly distributed but bounded random number between 16 and 23 to determine when a child moves out.
       let randomMergingAge bounded-random-number (random-normal 26.5 2) 23 30 "true"
@@ -94,8 +92,8 @@ to merge-household
         let targetSex ""
         let targetPerson ""
         let targetLocation pcolor
-        ifelse table:get item 0 peopleList "sex" = "male" [ set targetSex "female" ][ set targetSex "male"]
-        let target one-of turtles with [pcolor = targetLocation AND length peopleList = 1 AND table:get item 0 peopleList "sex" = targetSex AND table:get item 0 peopleList "age" < 50]
+        ifelse item sexAcc (item 0 peopleList) = "male" [ set targetSex "female" ][ set targetSex "male"]
+        let target one-of turtles with [pcolor = targetLocation AND length peopleList = 1 AND item sexAcc (item 0 peopleList)  = targetSex AND item ageAcc (item 0 peopleList) < 50]
         if target != nobody[          
           Ask target[
             set targetPerson item 0 peopleList
