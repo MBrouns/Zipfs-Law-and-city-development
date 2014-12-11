@@ -1,7 +1,84 @@
 
+to determine-city-attractiveness-from-jobs
+  set jobAttractivenessList []
+  
+  
+  let cityIterator 1
+  set jobAttractivenessList []
+  while[cityIterator <= noOfCities] [
+    let jobIterator 1
+    let jobAttractivenessForCity []
+    while [jobIterator <= 7][
+      set jobAttractivenessForCity lput precision (determine-city-attractiveness cityIterator jobIterator) 2 jobAttractivenessForCity 
+      set jobIterator jobIterator + 1
+    ]
+    set jobAttractivenessList lput jobAttractivenessForCity jobAttractivenessList    
+    set cityIterator cityIterator + 1
+  ]
+  
+  
+end
 
 
-
+to-report determine-city-attractiveness [$cityIdentifier $jobIdentifier]
+  ifelse $jobIdentifier = 1[
+    ;; Job in primary sector
+    let householdsInCity count turtles-on patches with [cityIdentifier = $cityIdentifier]
+    let fractionHouseholdsInCity householdsInCity / noOfHouseholds
+    ifelse fractionHouseholdsInCity < 0.4 / noOfCities[
+      report 1 - 6.25 * fractionHouseholdsInCity      
+    ][
+    report 0.54 - 0.54 * fractionHouseholdsInCity
+    ]
+    
+  ][ifelse $jobIdentifier = 2[
+    ;; Job in manufacturing
+    let householdsInCity count turtles-on patches with [cityIdentifier = $cityIdentifier]
+    let fractionHouseholdsInCity householdsInCity / noOfHouseholds
+    ifelse fractionHouseholdsInCity < 0.4 / noOfCities[
+      report 1 - 6.25 * fractionHouseholdsInCity      
+    ][
+    report 0.54 - 0.54 * fractionHouseholdsInCity
+    ]
+    
+  ][ifelse $jobIdentifier = 3[
+    ;; Job in services
+    let householdsInCity turtles-on patches with [cityIdentifier = $cityIdentifier]
+    let peopleInService 0
+    ask householdsInCity[
+      let peopleIterator 0
+      while [peopleIterator < length peopleList][
+        if item jobAcc item peopleIterator peopleList = 3[
+          set peopleInService peopleInService + 1
+        ]
+        set peopleIterator peopleIterator + 1
+      ]      
+    ] 
+    let fractionPeopleInService peopleInService / count householdsInCity
+    
+    ifelse fractionPeopleInService < 0.32[
+      report 1 - 1.56 * fractionPeopleInService
+      
+    ][
+    report 0.73 - 0.73 * fractionPeopleInService
+    ]
+  ][ifelse $jobIdentifier = 4[
+    ;; Job in finance
+    report 0.5
+    
+  ][ifelse $jobIdentifier = 5[
+    ;; Job in IT
+    report 0.5
+  ][ifelse $jobIdentifier = 6[
+    ;; job in non-profit
+    report 0.5
+  ][ifelse $jobIdentifier = 7[
+    ;; Jobless
+    report 0.5
+    
+  ][]]]]]]]
+  
+end
 
 
 to move-to-city [$cityIdentifier]

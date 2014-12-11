@@ -3,7 +3,7 @@ to setup
   clear-all
   reset-ticks
   import-pcolors "/resources/nederland.png"
-  
+  init-globals
   setup-patches
   setup-households
 end

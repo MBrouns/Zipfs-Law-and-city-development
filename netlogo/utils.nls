@@ -6,3 +6,4 @@ to-report bounded-random-number [$randomFunction $min $max $round]
   if $round = "true"[set randomNumber round randomNumber]
   report randomNumber  
 end
+

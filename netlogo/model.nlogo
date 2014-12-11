@@ -9,6 +9,7 @@ globals [
   ageAcc
   sexAcc
   jobAcc
+  jobAttractivenessList ;; a list of list containing for each city a list with attractiveness rates for each job category
 ]
 
 extensions [table profiler]
@@ -17,7 +18,7 @@ __includes["model_setup.nls" "utils.nls" "progress_lifestage.nls" "move_cities.n
 
 to go
   
-  init-globals
+  
   profiler:start         ;; start profiling
 
 
@@ -31,10 +32,11 @@ to go
     set cityIterator cityIterator + 1
   ]
   
+  determine-city-attractiveness-from-jobs
   
   
   ask turtles [
-    move-to-city random 6
+
     progress-lifestage
     
   ]
@@ -47,6 +49,19 @@ to init-globals
   set ageAcc 0
   set sexAcc 1
   set jobAcc 2
+  let cityIterator 1
+  set jobAttractivenessList []
+  while[cityIterator <= noOfCities] [
+    let jobIterator 1
+    let jobAttractivenessForCity []
+    while [jobIterator <= 7][
+      set jobAttractivenessForCity lput 1 jobAttractivenessForCity 
+      set jobIterator jobIterator + 1
+    ]
+    set jobAttractivenessList lput jobAttractivenessForCity jobAttractivenessList    
+    set cityIterator cityIterator + 1
+  ]
+  
 end
 
 
@@ -118,7 +133,7 @@ INPUTBOX
 191
 142
 noOfHouseholds
-10
+10000
 1
 0
 Number
@@ -171,10 +186,10 @@ NIL
 1
 
 PLOT
-19
-408
-743
-791
+26
+475
+750
+858
 Households per category
 NIL
 NIL
@@ -207,6 +222,17 @@ NIL
 NIL
 NIL
 1
+
+MONITOR
+24
+415
+1493
+460
+NIL
+jobAttractivenessList
+17
+1
+11
 
 @#$#@#$#@
 ## WHAT IS IT?
