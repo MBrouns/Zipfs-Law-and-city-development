@@ -52,7 +52,7 @@ to setup-households
   create-turtles noOfHouseholdsInCity [
     move-to one-of patches with [cityIdentifier > 0]
     initialise-household
-    set peopleList sort-by [item ageAcc ?1 > item ageAcc ?2] peopleList
+    set peopleList sort-by [item ageAcc ?1 > item ageAcc ?2 ] peopleList
   ]
   
 end

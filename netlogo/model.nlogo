@@ -12,7 +12,7 @@ globals [
 ]
 
 extensions [table profiler]
-__includes["model_setup.nls" "utils.nls" "progress_lifestage.nls"]
+__includes["model_setup.nls" "utils.nls" "progress_lifestage.nls" "move_cities.nls"]
 
 
 to go
@@ -22,7 +22,7 @@ to go
 
 
   tick
-  if ticks >= 100 [ stop ] 
+  if ticks >= 500 [ stop ] 
   ;; Update the household plot with new values for each city pen
   let cityIterator 1
   while[cityIterator <= noOfCities] [
@@ -34,7 +34,7 @@ to go
   
   
   ask turtles [
-    
+    move-to-city random 6
     progress-lifestage
     
   ]
@@ -118,7 +118,7 @@ INPUTBOX
 191
 142
 noOfHouseholds
-10000
+10
 1
 0
 Number

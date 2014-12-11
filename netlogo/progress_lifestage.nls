@@ -2,12 +2,6 @@
 to progress-lifestage
   
   ;; First, increase the age of every person in the system
-  
- ;; foreach peopleList [
- ;;   
-  ;;  set ? replace-item ageAcc ? (1)
-;;  ]
-
   set peopleList map [replace-item ageAcc ? ((item ageAcc ?) + 1)] peopleList
 
   check-death
@@ -31,12 +25,10 @@ to check-death
     if item ageAcc ? > randomDeathAge [  
       set peopleList remove ? peopleList
     ]
-    
-    
+
   ]
-  
-  
 end
+
 to reproduce
   ;; Make babies
   ;; Every two member household where both are aged < 40 have a chance to make babies

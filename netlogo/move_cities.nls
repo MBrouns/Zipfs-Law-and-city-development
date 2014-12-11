@@ -1,0 +1,9 @@
+
+
+
+
+
+
+to move-to-city [$cityIdentifier]
+  move-to one-of patches with [cityIdentifier = $cityIdentifier]  
+end

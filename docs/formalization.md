@@ -113,3 +113,25 @@ When a household becomes active it will perform the following steps:
 
 ARE WE ADDING SOMETHING WITH DISTANCE FROM JOBS?
 		
+
+## Job categories (source http://statline.cbs.nl/Statweb/publication/?DM=SLNL&PA=71738ned&D1=1-26,32-34&D2=a&D3=a&D4=0&D5=l&VW=T)
+
+Manufacturing 	- Mostly interested in less dense cities
+Service 		- Fixed percentage job
+
+- Primary sector - Farming, raw material mining etc. (2% of people)
+- Secundary sector - Manufacturing (16%)
+- Tertiary sector 	- commercial (40%)
+	- Services		32%
+	- Financial     4%
+	- IT			4%
+- Quartary sector 	- non-profit (34%)
+- Jobless  		(8%)
+
+primary sector will be attracted to non-city patches
+secundary sector will be attracted to areas with low population density
+services will attempt to spread evenly according to population
+financial will be attracted to areas with higher % financial workers
+IT will be attracted to areas with higher % IT workers
+Quartary sector will attempt to spread evenly according to population
+Jobless do not care
