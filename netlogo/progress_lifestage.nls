@@ -3,20 +3,45 @@ to progress-lifestage
   
   ;; First, increase the age of every person in the system
   set peopleList map [replace-item ageAcc ? ((item ageAcc ?) + 1)] peopleList
-
-  check-death
   
-  reproduce
-  move-out-children
-  merge-household
+  if check-death [updateHouseholdAttributes]
+  if reproduce [updateHouseholdAttributes]
+  if move-out-children [updateHouseholdAttributes]
+  if merge-household [updateHouseholdAttributes]
+  
   ;; If there are no people left in household, remove turtle
   if empty? peopleList [ die  ]
 end
 
 
 
+to updateHouseholdAttributes
+  let peopleIterator 0
+  set NoOfpeopleInService 0
+  set NoOfpeopleInIT 0 
+  set NoOfpeopleInFinance 0
+  
+  while [peopleIterator < length peopleList][
+    if item jobAcc item peopleIterator peopleList = 5[
+      set NoOfpeopleInIT NoOfpeopleInIT + 1
+    ]
+    if item jobAcc item peopleIterator peopleList = 4[
+      set NoOfpeopleInFinance NoOfpeopleInFinance + 1
+    ]
+    if item jobAcc item peopleIterator peopleList = 3[
+      set NoOfpeopleInService NoOfpeopleInService + 1
+    ]
+    if item jobAcc item peopleIterator peopleList = 6[
+      set NoOfpeopleInNonProfit NoOfpeopleInNonProfit + 1
+    ]
+       
+    set peopleIterator peopleIterator + 1
+  ]      
+  
+end
 
-to check-death
+to-report check-death
+  let changeFlag FALSE
   foreach peopleList [
     ;; Then, check if people in the household die
     ;; A random value is drawn from a normal distribution with u = 80 and s  = 6
@@ -24,12 +49,15 @@ to check-death
     let randomDeathAge bounded-random-number (random-normal 80 6) 60 100 "true"
     if item ageAcc ? > randomDeathAge [  
       set peopleList remove ? peopleList
+      set changeFlag TRUE
     ]
-
+    
   ]
+  report changeFlag
 end
 
-to reproduce
+to-report reproduce
+  let changeFlag FALSE
   ;; Make babies
   ;; Every two member household where both are aged < 40 have a chance to make babies
   ;; On average, households are in reproductive age for 14 years ->
@@ -43,13 +71,16 @@ to reproduce
       if random-float 7.0 <= 1 + overPopulationModifier [
         let child generate-member 0 1 "random" 
         set peopleList lput child peopleList
+        set changeFlag TRUE
       ]
     ]    
   ]
+  report changeFlag
 end
 
 
-to move-out-children
+to-report move-out-children
+  let changeFlag FALSE
   ;; Let children move out of house when they are aged
   if length peopleList > 2 [
     ;; Loop over a list of all children in the household between 16 and 23
@@ -63,15 +94,18 @@ to move-out-children
         hatch 1[
           set peopleList (list ?)
         ]      
-        set peopleList remove ? peopleList     
+        set peopleList remove ? peopleList 
+        set changeFlag TRUE    
       ]
     ]
   ] 
+  report changeFlag
 end
 
 
 
-to merge-household
+to-report merge-household
+  let changeFlag FALSE
   ;; Let households merge 
   if length peopleList = 1 [
     let personAge item ageAcc (item 0 peopleList) 
@@ -90,6 +124,7 @@ to merge-household
           Ask target[
             set targetPerson item 0 peopleList
             die
+            set changeFlag TRUE
           ]
           set peopleList lput targetPerson peopleList
         ]
@@ -97,5 +132,6 @@ to merge-household
       ]    
     ]
   ]  
+  report changeFlag
   
 end

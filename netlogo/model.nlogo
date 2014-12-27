@@ -3,6 +3,10 @@ patches-own [
 ]
 turtles-own [
   peopleList
+  NoOfpeopleInService
+  NoOfpeopleInIT
+  NoOfpeopleInFinance
+  NoOfpeopleInNonProfit
 ]
 
 globals [ 
@@ -38,7 +42,7 @@ to go
   ask turtles [
 
     progress-lifestage
-    
+    move-to-city (index-max-item-list determine-city-attractiveness) + 1
   ]
 
   
@@ -224,15 +228,15 @@ NIL
 1
 
 MONITOR
-24
-415
-1493
-460
+18
+401
+751
+466
 NIL
 jobAttractivenessList
 17
 1
-11
+16
 
 @#$#@#$#@
 ## WHAT IS IT?

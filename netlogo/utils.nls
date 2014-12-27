@@ -7,3 +7,10 @@ to-report bounded-random-number [$randomFunction $min $max $round]
   report randomNumber  
 end
 
+
+;; Get the index of the item with the highest value from a list
+to-report index-max-item-list [ $list ] 
+   report position (max $list) $list 
+end 
+
+

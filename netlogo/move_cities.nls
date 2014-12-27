@@ -1,3 +1,27 @@
+to-report determine-city-attractiveness
+  let cityAttractivenessListHouseholdPerPerson []
+  let finalCityAttractivenessListHousehold [] 
+  
+  foreach peopleList[
+    let person ?
+    let job (item jobAcc person)
+    let cityAttractivenessList []
+    forEach jobAttractivenessList[
+      set cityAttractivenessList lput item (job - 1) ? cityAttractivenessList
+    ]
+    set cityAttractivenessListHouseholdPerPerson lput cityAttractivenessList cityAttractivenessListHouseholdPerPerson
+  ]      
+   
+  let cityIterator 0
+  while [cityIterator <= 4] [
+    let cityAverage mean map [item cityIterator ?] cityAttractivenessListHouseholdPerPerson
+    set finalCityAttractivenessListHousehold lput cityAverage finalCityAttractivenessListHousehold
+    set cityIterator cityIterator + 1 
+  ]
+  
+  
+  report finalCityAttractivenessListHousehold   
+end
 
 to determine-city-attractiveness-from-jobs
   set jobAttractivenessList []
@@ -9,7 +33,7 @@ to determine-city-attractiveness-from-jobs
     let jobIterator 1
     let jobAttractivenessForCity []
     while [jobIterator <= 7][
-      set jobAttractivenessForCity lput precision (determine-city-attractiveness cityIterator jobIterator) 2 jobAttractivenessForCity 
+      set jobAttractivenessForCity lput precision (determine-city-attractiveness-per-job cityIterator jobIterator) 2 jobAttractivenessForCity 
       set jobIterator jobIterator + 1
     ]
     set jobAttractivenessList lput jobAttractivenessForCity jobAttractivenessList    
@@ -20,7 +44,7 @@ to determine-city-attractiveness-from-jobs
 end
 
 
-to-report determine-city-attractiveness [$cityIdentifier $jobIdentifier]
+to-report determine-city-attractiveness-per-job [$cityIdentifier $jobIdentifier]
   ifelse $jobIdentifier = 1[
     ;; Job in primary sector
     let householdsInCity count turtles-on patches with [cityIdentifier = $cityIdentifier]
@@ -43,19 +67,13 @@ to-report determine-city-attractiveness [$cityIdentifier $jobIdentifier]
     
   ][ifelse $jobIdentifier = 3[
     ;; Job in services
-    let householdsInCity turtles-on patches with [cityIdentifier = $cityIdentifier]
     let peopleInService 0
-    ask householdsInCity[
-      let peopleIterator 0
-      while [peopleIterator < length peopleList][
-        if item jobAcc item peopleIterator peopleList = 3[
-          set peopleInService peopleInService + 1
-        ]
-        set peopleIterator peopleIterator + 1
-      ]      
+    let peopleInCity 0
+    ask turtles-on patches with [cityIdentifier = $cityIdentifier][
+      set peopleInCity peopleInCity + length peopleList
+      set peopleInService peopleInService + NoOfpeopleInService
     ] 
-    let fractionPeopleInService peopleInService / count householdsInCity
-    
+    let fractionPeopleInService peopleInService / peopleInCity
     ifelse fractionPeopleInService < 0.32[
       report 1 - 1.56 * fractionPeopleInService
       
@@ -64,16 +82,57 @@ to-report determine-city-attractiveness [$cityIdentifier $jobIdentifier]
     ]
   ][ifelse $jobIdentifier = 4[
     ;; Job in finance
-    report 0.5
+    let householdsInCity turtles-on patches with [cityIdentifier = $cityIdentifier]
+    let peopleInFinance 0
+    let peopleInCity 0
+    ask householdsInCity[
+      set peopleInCity peopleInCity + length peopleList
+      set peopleInFinance peopleInFinance + NoOfpeopleInFinance
+    ] 
+    let fractionPeopleInFinance peopleInFinance / peopleInCity
+    
+    ifelse fractionPeopleInFinance < 0.04[
+      report 0.5
+      
+    ][
+    report 12.5 * fractionPeopleInFinance
+    ]
     
   ][ifelse $jobIdentifier = 5[
     ;; Job in IT
-    report 0.5
+    let peopleInIT 0
+    let peopleInCity 0
+    ask turtles-on patches with [cityIdentifier = $cityIdentifier][
+      set peopleInCity peopleInCity + length peopleList
+      set peopleInIT peopleInIT + NoOfpeopleInIT
+    ] 
+    let fractionPeopleInIT peopleInIT / peopleInCity
+    ifelse fractionPeopleInIT < 0.04[
+      report 0.5
+      
+    ][
+    report 12.5 * fractionPeopleInIT
+    ]
+    
+    
   ][ifelse $jobIdentifier = 6[
     ;; job in non-profit
-    report 0.5
+    let peopleInNonProfit 0
+    let peopleInCity 0
+    ask turtles-on patches with [cityIdentifier = $cityIdentifier][
+      set peopleInCity peopleInCity + length peopleList
+      set peopleInNonProfit peopleInNonProfit + NoOfpeopleInNonProfit
+    ] 
+    let fractionPeopleInNonProfit peopleInNonProfit / peopleInCity
+    
+    ifelse fractionPeopleInNonProfit < 0.34[
+      report 1 - 1.47 * fractionPeopleInNonProfit
+      
+    ][
+    report 0.76 - 0.76 * fractionPeopleInNonProfit
+    ]
   ][ifelse $jobIdentifier = 7[
-    ;; Jobless
+    ;; Jobless0
     report 0.5
     
   ][]]]]]]]

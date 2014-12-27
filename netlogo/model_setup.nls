@@ -47,12 +47,14 @@ to setup-households
     move-to one-of patches with [cityIdentifier = 0]
     initialise-household
     set peopleList sort-by [item ageAcc ?1 > item ageAcc ?2] peopleList
+    updateHouseholdAttributes
   ]
   ;; then, randomly distribute households over The Netherlands inside of cities
   create-turtles noOfHouseholdsInCity [
     move-to one-of patches with [cityIdentifier > 0]
     initialise-household
     set peopleList sort-by [item ageAcc ?1 > item ageAcc ?2 ] peopleList
+    updateHouseholdAttributes
   ]
   
 end
@@ -124,11 +126,32 @@ to-report generate-member [$ageMin $ageMax $sex]
     ifelse random 2 = 0 [
       set sex "female"
     ][
-      set sex "male"
-    ]
+    set sex "male"
+    ]   
   ]
-  let job random 8
+  
+  let job 0
+  let randomJob random 100
+  ifelse randomJob <= 2 [
+    set job 1
+  ][ifelse randomJob <= 18 [
+    set job 2
+  ][ifelse randomJob <= 50 [
+    set job 3
+  ][ifelse randomJob <= 54 [
+    set job 4
+  ][ifelse randomJob <= 58 [
+    set job 5
+  ][ifelse randomJob <= 92 [
+    set job 6
+  ][
+  set job 7
+  ]]]]]]
+  
+  
+  
   let member (list age sex job)
   report member
 end
-
+  
+  
