@@ -135,3 +135,18 @@ financial will be attracted to areas with higher % financial workers
 IT will be attracted to areas with higher % IT workers
 Quartary sector will attempt to spread evenly according to population
 Jobless do not care
+
+## Resistance to moving
+Determined by amount of time spent since last move:
+
+starts at 1 for 0 years
+Dips to 0.25 for 7 years
+Slowly increases again to 1 for 50 years
+
+Determined by age:
+
+
+Determined by children:
+
+
+

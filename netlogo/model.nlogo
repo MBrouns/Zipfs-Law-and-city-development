@@ -140,7 +140,7 @@ INPUTBOX
 120
 80
 noOfCities
-5
+15
 1
 0
 Number
@@ -151,7 +151,7 @@ INPUTBOX
 119
 146
 noOfHouseholds
-16000
+5
 1
 0
 Number
@@ -169,7 +169,7 @@ NIL
 PLOT
 232
 21
-658
+628
 411
 Households
 Time
@@ -315,8 +315,8 @@ SLIDER
 maxDistBetweenCities
 maxDistBetweenCities
 0
-1000
-520
+500
+430
 10
 1
 NIL
@@ -330,8 +330,8 @@ SLIDER
 minDistBetweenCities
 minDistBetweenCities
 0
-2000
-100
+500
+50
 10
 1
 NIL

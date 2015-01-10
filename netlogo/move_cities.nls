@@ -1,11 +1,13 @@
 to-report determine-resistence-to-move
-  ;;ifelse random 10 = 1 [report 0][report 1]
-  ifelse timeSinceMoving < 10 [
-    report (1 - (0.05 * timeSinceMoving))
+ 
+  let childrenResistence (length peopleList - 2) * 0.05
+  let tippingPoint 10 + ((item ageAcc item 0 peopleList - 18) * 0.16)
+  ifelse timeSinceMoving <= tippingPoint [
+    report (1 - ((0.5 / tippingPoint) * timeSinceMoving)) + childrenResistence
   ][ifelse timeSinceMoving < 20 [
-    report (0.5 + (0.012 * timeSinceMoving))
+    report (0.5 + ((0.25 / (20 - tippingPoint)) * (timeSinceMoving - tippingPoint))) + childrenResistence
     ][
-    report 0.75
+    report 0.75 + childrenResistence
     ]
   ]
   
