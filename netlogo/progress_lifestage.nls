@@ -4,6 +4,9 @@ to progress-lifestage
   ;; First, increase the age of every person in the system
   set peopleList map [replace-item ageAcc ? ((item ageAcc ?) + 1)] peopleList
   
+  ;; Also, increase number of years since moving
+  set timeSinceMoving timeSinceMoving + 1
+  
   if check-death [updateHouseholdAttributes]
   if reproduce [updateHouseholdAttributes]
   if move-out-children [updateHouseholdAttributes]
@@ -20,18 +23,19 @@ to updateHouseholdAttributes
   set NoOfpeopleInService 0
   set NoOfpeopleInIT 0 
   set NoOfpeopleInFinance 0
+  set NoOfpeopleInNonProfit 0
   
   while [peopleIterator < length peopleList][
-    if item jobAcc item peopleIterator peopleList = 5[
+    if item jobAcc item peopleIterator peopleList = 5 AND item ageAcc item peopleIterator peopleList > 18[
       set NoOfpeopleInIT NoOfpeopleInIT + 1
     ]
-    if item jobAcc item peopleIterator peopleList = 4[
+    if item jobAcc item peopleIterator peopleList = 4 AND item ageAcc item peopleIterator peopleList > 18[
       set NoOfpeopleInFinance NoOfpeopleInFinance + 1
     ]
-    if item jobAcc item peopleIterator peopleList = 3[
+    if item jobAcc item peopleIterator peopleList = 3 AND item ageAcc item peopleIterator peopleList > 18[
       set NoOfpeopleInService NoOfpeopleInService + 1
     ]
-    if item jobAcc item peopleIterator peopleList = 6[
+    if item jobAcc item peopleIterator peopleList = 6 AND item ageAcc item peopleIterator peopleList > 18[
       set NoOfpeopleInNonProfit NoOfpeopleInNonProfit + 1
     ]
        

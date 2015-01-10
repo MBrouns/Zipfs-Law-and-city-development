@@ -1,3 +1,17 @@
+to-report determine-resistence-to-move
+  ;;ifelse random 10 = 1 [report 0][report 1]
+  ifelse timeSinceMoving < 10 [
+    report (1 - (0.05 * timeSinceMoving))
+  ][ifelse timeSinceMoving < 20 [
+    report (0.5 + (0.012 * timeSinceMoving))
+    ][
+    report 0.75
+    ]
+  ]
+  
+  
+end
+
 to-report determine-city-attractiveness
   let cityAttractivenessListHouseholdPerPerson []
   let finalCityAttractivenessListHousehold [] 
@@ -8,12 +22,13 @@ to-report determine-city-attractiveness
     let cityAttractivenessList []
     forEach jobAttractivenessList[
       set cityAttractivenessList lput item (job - 1) ? cityAttractivenessList
-    ]
+     
+    ] 
     set cityAttractivenessListHouseholdPerPerson lput cityAttractivenessList cityAttractivenessListHouseholdPerPerson
   ]      
    
   let cityIterator 0
-  while [cityIterator <= 4] [
+  while [cityIterator <= noOfCities] [
     let cityAverage mean map [item cityIterator ?] cityAttractivenessListHouseholdPerPerson
     set finalCityAttractivenessListHousehold lput cityAverage finalCityAttractivenessListHousehold
     set cityIterator cityIterator + 1 
@@ -26,9 +41,8 @@ end
 to determine-city-attractiveness-from-jobs
   set jobAttractivenessList []
   
-  
+  set jobAttractivenessList lput (list 0.55 0.55 0.5 0.5 0.5 0.5 0.5) jobAttractivenessList
   let cityIterator 1
-  set jobAttractivenessList []
   while[cityIterator <= noOfCities] [
     let jobIterator 1
     let jobAttractivenessForCity []
@@ -70,7 +84,7 @@ to-report determine-city-attractiveness-per-job [$cityIdentifier $jobIdentifier]
     let peopleInService 0
     let peopleInCity 0
     ask turtles-on patches with [cityIdentifier = $cityIdentifier][
-      set peopleInCity peopleInCity + length peopleList
+      set peopleInCity peopleInCity + length filter [item ageAcc ? > 18] peopleList
       set peopleInService peopleInService + NoOfpeopleInService
     ] 
     let fractionPeopleInService peopleInService / peopleInCity
@@ -86,7 +100,7 @@ to-report determine-city-attractiveness-per-job [$cityIdentifier $jobIdentifier]
     let peopleInFinance 0
     let peopleInCity 0
     ask householdsInCity[
-      set peopleInCity peopleInCity + length peopleList
+      set peopleInCity peopleInCity + length filter [item ageAcc ? > 18] peopleList
       set peopleInFinance peopleInFinance + NoOfpeopleInFinance
     ] 
     let fractionPeopleInFinance peopleInFinance / peopleInCity
@@ -95,7 +109,7 @@ to-report determine-city-attractiveness-per-job [$cityIdentifier $jobIdentifier]
       report 0.5
       
     ][
-    report 12.5 * fractionPeopleInFinance
+    report min (list 1 (12.5 * fractionPeopleInFinance))
     ]
     
   ][ifelse $jobIdentifier = 5[
@@ -103,7 +117,7 @@ to-report determine-city-attractiveness-per-job [$cityIdentifier $jobIdentifier]
     let peopleInIT 0
     let peopleInCity 0
     ask turtles-on patches with [cityIdentifier = $cityIdentifier][
-      set peopleInCity peopleInCity + length peopleList
+      set peopleInCity peopleInCity + length filter [item ageAcc ? > 18] peopleList
       set peopleInIT peopleInIT + NoOfpeopleInIT
     ] 
     let fractionPeopleInIT peopleInIT / peopleInCity
@@ -111,7 +125,7 @@ to-report determine-city-attractiveness-per-job [$cityIdentifier $jobIdentifier]
       report 0.5
       
     ][
-    report 12.5 * fractionPeopleInIT
+    report min (list 1 (12.5 * fractionPeopleInIT))
     ]
     
     
@@ -120,11 +134,11 @@ to-report determine-city-attractiveness-per-job [$cityIdentifier $jobIdentifier]
     let peopleInNonProfit 0
     let peopleInCity 0
     ask turtles-on patches with [cityIdentifier = $cityIdentifier][
-      set peopleInCity peopleInCity + length peopleList
+      set peopleInCity peopleInCity + length filter [item ageAcc ? > 18] peopleList
       set peopleInNonProfit peopleInNonProfit + NoOfpeopleInNonProfit
     ] 
     let fractionPeopleInNonProfit peopleInNonProfit / peopleInCity
-    
+   
     ifelse fractionPeopleInNonProfit < 0.34[
       report 1 - 1.47 * fractionPeopleInNonProfit
       

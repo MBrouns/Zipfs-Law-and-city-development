@@ -7,6 +7,7 @@ turtles-own [
   NoOfpeopleInIT
   NoOfpeopleInFinance
   NoOfpeopleInNonProfit
+  timeSinceMoving
 ]
 
 globals [ 
@@ -24,8 +25,8 @@ to go
   
   
   profiler:start         ;; start profiling
-
-
+  
+  
   tick
   if ticks >= 500 [ stop ] 
   ;; Update the household plot with new values for each city pen
@@ -35,25 +36,38 @@ to go
     plot count turtles with [pcolor = cityIterator * 10 + 5]
     set cityIterator cityIterator + 1
   ]
-  
-  determine-city-attractiveness-from-jobs
-  
-  
-  ask turtles [
-
-    progress-lifestage
-    move-to-city (index-max-item-list determine-city-attractiveness) + 1
+  if ticks >= 249[
+    determine-city-attractiveness-from-jobs
   ]
-
   
-
+  if ticks = 250 [
+    ask turtles [
+      set timeSinceMoving random 10
+    ]
+  ]
+  
+  let noOfPeopleMoving 0  
+  ask turtles [
+    progress-lifestage
+    if ticks >= 250[
+      let cityAttractivenessList determine-city-attractiveness      
+      if max cityAttractivenessList > determine-resistence-to-move[
+        move-to-city (index-max-item-list cityAttractivenessList)
+        set timeSinceMoving 0
+        set noOfPeopleMoving noOfPeopleMoving + 1
+      ]
+    ]
+    
+  ]
+  
+  print noOfPeopleMoving   
 end
-
+  
 to init-globals
   set ageAcc 0
   set sexAcc 1
   set jobAcc 2
-  let cityIterator 1
+  let cityIterator 0
   set jobAttractivenessList []
   while[cityIterator <= noOfCities] [
     let jobIterator 1
@@ -67,8 +81,8 @@ to init-globals
   ]
   
 end
-
-
+  
+  
 to print-profiler
   
   profiler:stop          ;; stop profiling
@@ -77,9 +91,9 @@ to print-profiler
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-768
+902
 10
-1779
+1913
 1042
 500
 500
@@ -104,10 +118,10 @@ years
 30.0
 
 BUTTON
-21
-223
-84
-256
+19
+243
+82
+276
 NIL
 setup
 NIL
@@ -121,10 +135,10 @@ NIL
 1
 
 INPUTBOX
-96
-16
-192
-76
+24
+20
+120
+80
 noOfCities
 5
 1
@@ -132,35 +146,35 @@ noOfCities
 Number
 
 INPUTBOX
-97
-82
-191
-142
+25
+86
+119
+146
 noOfHouseholds
-10000
+16000
 1
 0
 Number
 
 TEXTBOX
-718
-554
-746
-572
+738
+299
+766
+317
 NIL
 11
 0.0
 0
 
 PLOT
-228
-18
-746
-394
+232
+21
+658
+411
 Households
 Time
 Households
-0.0
+250.0
 10.0
 0.0
 10.0
@@ -173,10 +187,10 @@ PENS
 "Households out city" 1.0 0 -7858858 true "" "plot count turtles with [ cityIdentifier = 0 ]"
 
 BUTTON
-22
-262
-85
-295
+20
+282
+83
+315
 NIL
 Go
 T
@@ -191,9 +205,9 @@ NIL
 
 PLOT
 26
-475
-750
-858
+412
+844
+660
 Households per category
 NIL
 NIL
@@ -211,10 +225,10 @@ PENS
 " old" 1.0 0 -955883 true "" "plot count turtles with [length peopleList <= 2 AND item ageAcc (item 0 peopleList) > 50]"
 
 BUTTON
-57
-335
-158
-368
+23
+326
+124
+363
 NIL
 print-profiler
 NIL
@@ -228,15 +242,100 @@ NIL
 1
 
 MONITOR
-18
-401
-751
-466
+676
+79
+868
+124
 NIL
-jobAttractivenessList
+item 1 jobAttractivenessList
 17
 1
+11
+
+MONITOR
+676
+137
+868
+182
+NIL
+item 2 jobAttractivenessList
+17
+1
+11
+
+MONITOR
+676
+195
+866
+240
+NIL
+item 3 jobAttractivenessList
+17
+1
+11
+
+MONITOR
+676
+252
+868
+297
+NIL
+item 4 jobAttractivenessList
+17
+1
+11
+
+MONITOR
+676
+305
+868
+350
+NIL
+item 5 jobAttractivenessList
+17
+1
+11
+
+MONITOR
+674
+23
+868
+68
+NIL
+item 0 jobAttractivenessList
+17
+1
+11
+
+SLIDER
 16
+154
+188
+187
+maxDistBetweenCities
+maxDistBetweenCities
+0
+1000
+520
+10
+1
+NIL
+HORIZONTAL
+
+SLIDER
+16
+196
+190
+229
+minDistBetweenCities
+minDistBetweenCities
+0
+2000
+100
+10
+1
+NIL
+HORIZONTAL
 
 @#$#@#$#@
 ## WHAT IS IT?
