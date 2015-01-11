@@ -1,14 +1,14 @@
 to-report determine-resistence-to-move
- 
+  
   let childrenResistence (length peopleList - 2) * 0.05
   let tippingPoint 10 + ((item ageAcc item 0 peopleList - 18) * 0.16)
   ifelse timeSinceMoving <= tippingPoint [
     report (1 - ((0.5 / tippingPoint) * timeSinceMoving)) + childrenResistence
   ][ifelse timeSinceMoving < 20 [
     report (0.5 + ((0.25 / (20 - tippingPoint)) * (timeSinceMoving - tippingPoint))) + childrenResistence
-    ][
-    report 0.75 + childrenResistence
-    ]
+  ][
+  report 0.75 + childrenResistence
+  ]
   ]
   
   
@@ -20,22 +20,47 @@ to-report determine-city-attractiveness
   
   foreach peopleList[
     let person ?
-    let job (item jobAcc person)
-    let cityAttractivenessList []
-    forEach jobAttractivenessList[
-      set cityAttractivenessList lput item (job - 1) ? cityAttractivenessList
-     
-    ] 
-    set cityAttractivenessListHouseholdPerPerson lput cityAttractivenessList cityAttractivenessListHouseholdPerPerson
+    ;; Children do not get a choice in where to move
+    if item ageAcc person >= 16 [
+      let job (item jobAcc person)
+      let cityAttractivenessList []
+      forEach jobAttractivenessList[
+        set cityAttractivenessList lput item (job - 1) ? cityAttractivenessList
+        
+      ] 
+      set cityAttractivenessListHouseholdPerPerson lput cityAttractivenessList cityAttractivenessListHouseholdPerPerson
+    ]
   ]      
-   
+  
+  ;; Here we aggregate the attractiveness of the city per member of the household into a single household score. 
   let cityIterator 0
-  while [cityIterator <= noOfCities] [
+  while [cityIterator < noOfCities] [
     let cityAverage mean map [item cityIterator ?] cityAttractivenessListHouseholdPerPerson
+    
+    ;; Here we alter the attractiveness of the city based upon the distance from the current location to that city
+    ;; For cities very closeby (less than 100 patches) people will move less likely, since it is easily commuted daily
+    ;; For cities very far away (more than 250 patches) people will move less likely since it is too far (from family etc.)
+    let minMovingDistance 100
+    let maxMovingDistance 250
+    let distToCity 0
+    ifelse cityIdentifier = 0 [
+      ;;set distToCity distance one-of patches with [cityIdentifier = cityIterator + 1]
+      set distToCity 110
+    ][
+      set distToCity distance-between-cities cityIdentifier (cityIterator + 1)
+    ] 
+    if distToCity < minMovingDistance [
+      set cityAverage cityAverage - 0.1     
+    ]
+    
+    if distToCity > maxMovingDistance[
+      set cityAverage cityAverage - 0.1
+    ]
+    
+    
     set finalCityAttractivenessListHousehold lput cityAverage finalCityAttractivenessListHousehold
     set cityIterator cityIterator + 1 
   ]
-  
   
   report finalCityAttractivenessListHousehold   
 end
@@ -43,7 +68,7 @@ end
 to determine-city-attractiveness-from-jobs
   set jobAttractivenessList []
   
-  set jobAttractivenessList lput (list 0.55 0.55 0.5 0.5 0.5 0.5 0.5) jobAttractivenessList
+  set jobAttractivenessList lput (list 0.55 0.55 0.50 0.45 0.45 0.5 0.5) jobAttractivenessList
   let cityIterator 1
   while[cityIterator <= noOfCities] [
     let jobIterator 1
@@ -108,10 +133,10 @@ to-report determine-city-attractiveness-per-job [$cityIdentifier $jobIdentifier]
     let fractionPeopleInFinance peopleInFinance / peopleInCity
     
     ifelse fractionPeopleInFinance < 0.04[
-      report 0.5
+      report 0.5 + ((0.04 - fractionPeopleInFinance) * 3)
       
     ][
-    report min (list 1 (12.5 * fractionPeopleInFinance))
+    report min (list 1 (10 * fractionPeopleInFinance))
     ]
     
   ][ifelse $jobIdentifier = 5[
@@ -124,10 +149,9 @@ to-report determine-city-attractiveness-per-job [$cityIdentifier $jobIdentifier]
     ] 
     let fractionPeopleInIT peopleInIT / peopleInCity
     ifelse fractionPeopleInIT < 0.04[
-      report 0.5
-      
+      report 0.5 + ((0.04 - fractionPeopleInIT) * 3)
     ][
-    report min (list 1 (12.5 * fractionPeopleInIT))
+    report min (list 1 (10 * fractionPeopleInIT))
     ]
     
     
@@ -140,7 +164,7 @@ to-report determine-city-attractiveness-per-job [$cityIdentifier $jobIdentifier]
       set peopleInNonProfit peopleInNonProfit + NoOfpeopleInNonProfit
     ] 
     let fractionPeopleInNonProfit peopleInNonProfit / peopleInCity
-   
+    
     ifelse fractionPeopleInNonProfit < 0.34[
       report 1 - 1.47 * fractionPeopleInNonProfit
       

@@ -14,3 +14,8 @@ to-report index-max-item-list [ $list ]
 end 
 
 
+;; Get the distance between two cities with cityIdentifier 1 and 2
+to-report distance-between-cities [ $city1 $city2 ]
+  report (item ($city2 - 1) (item ($city1 - 1) cityDistanceList))
+  
+end

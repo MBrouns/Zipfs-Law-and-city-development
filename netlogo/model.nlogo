@@ -15,6 +15,7 @@ globals [
   sexAcc
   jobAcc
   jobAttractivenessList ;; a list of list containing for each city a list with attractiveness rates for each job category
+  cityDistanceList
 ]
 
 extensions [table profiler]
@@ -22,10 +23,9 @@ __includes["model_setup.nls" "utils.nls" "progress_lifestage.nls" "move_cities.n
 
 
 to go
-  
-  
-  profiler:start         ;; start profiling
-  
+  if enableProfiler[
+    profiler:start         ;; start profiling
+  ]
   
   tick
   if ticks >= 500 [ stop ] 
@@ -50,9 +50,15 @@ to go
   ask turtles [
     progress-lifestage
     if ticks >= 250[
+      let resistenceToMove determine-resistence-to-move
       let cityAttractivenessList determine-city-attractiveness      
-      if max cityAttractivenessList > determine-resistence-to-move[
-        move-to-city (index-max-item-list cityAttractivenessList)
+      if max cityAttractivenessList > resistenceToMove AND index-max-item-list cityAttractivenessList != cityIdentifier[
+        let targetCities []
+        foreach filter [ ? > resistenceToMove ] cityAttractivenessList [
+          set targetCities lput position ? cityAttractivenessList targetCities        
+        ]
+        
+        move-to-city (item random length targetCities targetCities)
         set timeSinceMoving 0
         set noOfPeopleMoving noOfPeopleMoving + 1
       ]
@@ -60,29 +66,12 @@ to go
     
   ]
   
-  print noOfPeopleMoving   
+  ;;print noOfPeopleMoving   
 end
-  
-to init-globals
-  set ageAcc 0
-  set sexAcc 1
-  set jobAcc 2
-  let cityIterator 0
-  set jobAttractivenessList []
-  while[cityIterator <= noOfCities] [
-    let jobIterator 1
-    let jobAttractivenessForCity []
-    while [jobIterator <= 7][
-      set jobAttractivenessForCity lput 1 jobAttractivenessForCity 
-      set jobIterator jobIterator + 1
-    ]
-    set jobAttractivenessList lput jobAttractivenessForCity jobAttractivenessList    
-    set cityIterator cityIterator + 1
-  ]
-  
-end
-  
-  
+
+
+
+
 to print-profiler
   
   profiler:stop          ;; stop profiling
@@ -118,10 +107,10 @@ years
 30.0
 
 BUTTON
-19
-243
-82
-276
+229
+31
+292
+64
 NIL
 setup
 NIL
@@ -140,7 +129,7 @@ INPUTBOX
 120
 80
 noOfCities
-15
+5
 1
 0
 Number
@@ -151,7 +140,7 @@ INPUTBOX
 119
 146
 noOfHouseholds
-5
+15000
 1
 0
 Number
@@ -167,10 +156,10 @@ NIL
 0
 
 PLOT
-232
-21
-628
-411
+24
+361
+876
+870
 Households
 Time
 Households
@@ -187,10 +176,10 @@ PENS
 "Households out city" 1.0 0 -7858858 true "" "plot count turtles with [ cityIdentifier = 0 ]"
 
 BUTTON
-20
-282
-83
-315
+230
+70
+293
+103
 NIL
 Go
 T
@@ -203,32 +192,11 @@ NIL
 NIL
 1
 
-PLOT
-26
-412
-844
-660
-Households per category
-NIL
-NIL
-0.0
-10.0
-0.0
-10.0
-true
-true
-"" ""
-PENS
-"Single-member child" 1.0 0 -16777216 true "" "plot count turtles with [length peopleList = 1 AND item ageAcc (item 0 peopleList) < 50]"
-"Two-member young" 1.0 0 -7500403 true "" "plot count turtles with [length peopleList = 2 AND item ageAcc (item 0 peopleList) < 50]"
-"With children" 1.0 0 -2674135 true "" "plot count turtles with [length peopleList > 2]"
-" old" 1.0 0 -955883 true "" "plot count turtles with [length peopleList <= 2 AND item ageAcc (item 0 peopleList) > 50]"
-
 BUTTON
-23
-326
-124
-363
+233
+114
+334
+151
 NIL
 print-profiler
 NIL
@@ -309,14 +277,14 @@ item 0 jobAttractivenessList
 
 SLIDER
 16
-154
+231
 188
-187
+264
 maxDistBetweenCities
 maxDistBetweenCities
 0
 500
-430
+420
 10
 1
 NIL
@@ -331,11 +299,22 @@ minDistBetweenCities
 minDistBetweenCities
 0
 500
-50
+40
 10
 1
 NIL
 HORIZONTAL
+
+SWITCH
+232
+156
+364
+189
+enableProfiler
+enableProfiler
+1
+1
+-1000
 
 @#$#@#$#@
 ## WHAT IS IT?

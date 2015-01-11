@@ -6,6 +6,7 @@ to setup
   init-globals
   setup-patches
   setup-households
+  set cityDistanceList determine-city-distances
 end
 
 
@@ -69,8 +70,8 @@ end
 
 ;; Generate households and put them on the map
 to setup-households
-  let noOfHouseholdsInCity round (0.4 * noOfHouseholds)
-  let noOfHouseholdsOutCity round (0.6 * noOfHouseholds)
+  let noOfHouseholdsInCity round (0.6 * noOfHouseholds)
+  let noOfHouseholdsOutCity round (0.4 * noOfHouseholds)
   
   ;; First, randomly distribute households over The Netherlands outside of cities
   create-turtles noOfHouseholdsOutCity [
@@ -182,5 +183,47 @@ to-report generate-member [$ageMin $ageMax $sex]
   
   let member (list age sex job)
   report member
+end
+
+to-report determine-city-distances
+  set cityDistanceList []
+  let outerCityIterator 1
+  
+  while [outerCityIterator <= noOfCities][
+    let innerCityIterator 1
+    let innerCityDistanceList []
+    while [innerCityIterator <= noOfCities][
+      
+      ask one-of patches with [cityIdentifier = outerCityIterator][
+        set innerCityDistanceList lput distance one-of patches with [cityIdentifier = innerCityIterator] innerCityDistanceList
+      ]
+      
+      set innerCityIterator innerCityIterator + 1
+    ]
+    set cityDistanceList lput innerCityDistanceList cityDistanceList
+    set outerCityIterator outerCityIterator + 1
+  ]
+  
+  report cityDistanceList
+end
+
+
+to init-globals
+  set ageAcc 0
+  set sexAcc 1
+  set jobAcc 2
+  let cityIterator 0
+  set jobAttractivenessList []
+  while[cityIterator <= noOfCities] [
+    let jobIterator 1
+    let jobAttractivenessForCity []
+    while [jobIterator <= 7][
+      set jobAttractivenessForCity lput 1 jobAttractivenessForCity 
+      set jobIterator jobIterator + 1
+    ]
+    set jobAttractivenessList lput jobAttractivenessForCity jobAttractivenessList    
+    set cityIterator cityIterator + 1
+  ]
+  
 end
 

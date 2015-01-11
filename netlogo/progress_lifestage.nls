@@ -11,6 +11,7 @@ to progress-lifestage
   if reproduce [updateHouseholdAttributes]
   if move-out-children [updateHouseholdAttributes]
   if merge-household [updateHouseholdAttributes]
+  if retire [updateHouseholdAttributes]
   
   ;; If there are no people left in household, remove turtle
   if empty? peopleList [ die  ]
@@ -42,6 +43,21 @@ to updateHouseholdAttributes
     set peopleIterator peopleIterator + 1
   ]      
   
+end
+
+to-report retire
+  let changeFlag FALSE
+  foreach peopleList [
+    if item ageAcc ? > 65 [
+      ;; This is a rather ugly hack to let people who retire move to less crowded cities. 
+      ;; Instead of altering their regular attractiveness we change their job to agriculture
+      ;; which are natrually more inclined to move to quieter cities or to out of city
+      set ? replace-item jobAcc ? 1
+      set changeFlag TRUE
+    ]
+  ]
+  
+  report changeflag
 end
 
 to-report check-death
