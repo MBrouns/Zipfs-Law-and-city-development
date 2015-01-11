@@ -129,7 +129,7 @@ INPUTBOX
 120
 80
 noOfCities
-5
+15
 1
 0
 Number
@@ -140,7 +140,7 @@ INPUTBOX
 119
 146
 noOfHouseholds
-15000
+5
 1
 0
 Number
@@ -299,7 +299,7 @@ minDistBetweenCities
 minDistBetweenCities
 0
 500
-40
+50
 10
 1
 NIL

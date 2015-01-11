@@ -40,9 +40,9 @@ to setup-patches
     ;;let patchesInMaxRange (patches in-radius maxDistBetweenCities with [pcolor = 98.1])
     ;;let patchesInMinRange (patches in-radius minDistBetweenCities with [pcolor = 98.1])
     ;subtract even-ones from red-ones
-   ;; let patchesBetweenRange patchesInMaxRange with [not member? self patchesInMinRange]
-
-
+    ;; let patchesBetweenRange patchesInMaxRange with [not member? self patchesInMinRange]
+    
+    
     ;; We want to draw new cities in a donut around this first city. Since the regular method to do this
     ;; in Netlogo (with  let patchesBetweenRange patchesInMaxRange with [not member? self patchesInMinRange])
     ;; is stupidly slow, we first draw a large red circle around first city, then change the color in the inner
@@ -50,13 +50,14 @@ to setup-patches
     Ask patches in-radius maxDistBetweenCities with [pcolor = 98.1][set pcolor 13]
     Ask patches in-radius minDistBetweenCities with [pcolor = 13][set pcolor 98.1]
     
-    Ask n-of (noOfCities - 1) patches with [pcolor = 13][
+    while [cityIterator <= noOfCities][
+      Ask one-of patches with [pcolor = 13][
       
       ;; Add a pen to the household plot for each city
       set-current-plot "Households"
       create-temporary-plot-pen word "city" cityIterator
       set-plot-pen-color cityIterator * 10 + 5
-      
+      Ask patches in-radius minDistBetweenCities with [pcolor = 13][set pcolor 98.1]
       
       ask patches in-radius 10
       [ set cityIdentifier cityIterator
@@ -64,6 +65,8 @@ to setup-patches
       ]  
       set cityIterator cityIterator + 1 
     ]  
+    ]
+    
     ask patches with [pcolor = 13][set pcolor 98.1]
   ]
 end
