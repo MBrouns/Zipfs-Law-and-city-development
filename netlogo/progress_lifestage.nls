@@ -113,6 +113,7 @@ to-report move-out-children
         ;; Remove the child from the current household and create a new turtle containing the single child.
         hatch 1[
           set peopleList (list ?)
+          set timeSinceMoving 0
         ]      
         set peopleList remove ? peopleList 
         set changeFlag TRUE    

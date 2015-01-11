@@ -32,19 +32,14 @@ to go
   tick
   if ticks >= 500 [ stop ] 
   ;; Update the household plot with new values for each city pen
-  let cityIterator 1
-  while[cityIterator <= noOfCities] [
-    set-current-plot-pen (word "city" cityIterator)
-    plot count turtles with [pcolor = cityIterator * 10 + 5]
-    set cityIterator cityIterator + 1
-  ]
+  
   
   
   if ticks = 249 [
     ask turtles [
       ;; initialize households when moving starts after warmup period
       set timeSinceMoving random 5
-      set cityIterator 1
+      let cityIterator 1
       set distanceToCities []
       while [cityIterator <= noOfCities][
         set distanceToCities lput distance one-of patches with [cityIdentifier = cityIterator] distanceToCities
@@ -53,6 +48,12 @@ to go
     ]
   ]
   if ticks >= 249[
+    set cityIterator 1
+    while[cityIterator <= noOfCities] [
+      set-current-plot-pen (word "city" cityIterator)
+      plot count turtles with [pcolor = cityIterator * 10 + 5]
+      set cityIterator cityIterator + 1
+    ]
     determine-city-attractiveness-from-jobs
   ]
   
