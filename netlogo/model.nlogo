@@ -8,6 +8,8 @@ turtles-own [
   NoOfpeopleInFinance
   NoOfpeopleInNonProfit
   timeSinceMoving
+  distanceToCities ;; a list containing the distance of their current location to each city. This is used as a cache so that when the turtles live outside of the city 
+                   ;; we don't have to call the distance function each tick since it is super slow
 ]
 
 globals [ 
@@ -36,14 +38,22 @@ to go
     plot count turtles with [pcolor = cityIterator * 10 + 5]
     set cityIterator cityIterator + 1
   ]
+  
+  
+  if ticks = 249 [
+    ask turtles [
+      ;; initialize households when moving starts after warmup period
+      set timeSinceMoving random 5
+      set cityIterator 1
+      set distanceToCities []
+      while [cityIterator <= noOfCities][
+        set distanceToCities lput distance one-of patches with [cityIdentifier = cityIterator] distanceToCities
+        set cityIterator cityIterator + 1
+      ]
+    ]
+  ]
   if ticks >= 249[
     determine-city-attractiveness-from-jobs
-  ]
-  
-  if ticks = 250 [
-    ask turtles [
-      set timeSinceMoving random 10
-    ]
   ]
   
   let noOfPeopleMoving 0  
@@ -129,7 +139,7 @@ INPUTBOX
 120
 80
 noOfCities
-15
+5
 1
 0
 Number
@@ -140,7 +150,7 @@ INPUTBOX
 119
 146
 noOfHouseholds
-5
+15000
 1
 0
 Number
