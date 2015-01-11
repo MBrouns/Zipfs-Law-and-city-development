@@ -4,11 +4,22 @@ to setup
   reset-ticks
   import-pcolors "/resources/nederland.png"
   init-globals
+  setup-plot
   setup-patches
   setup-households
   set cityDistanceList determine-city-distances
 end
 
+to setup-plot
+  set-current-plot "Households"
+    create-temporary-plot-pen "Total households"
+    set-plot-pen-color 5
+    create-temporary-plot-pen "Households in city"
+    set-plot-pen-color 125
+    create-temporary-plot-pen "Households out city"
+    set-plot-pen-color 135
+  
+end
 
 to setup-patches
   ;; first set the cityIdentifier to 0 for all patches in The Netherlands

@@ -48,7 +48,13 @@ to go
     ]
   ]
   if ticks >= 249[
-    set cityIterator 1
+    let cityIterator 1
+    set-current-plot-pen (word "Total households")
+    plot count turtles
+     set-current-plot-pen (word "Households in city")
+    plot count turtles with [ cityIdentifier > 0 ]
+    set-current-plot-pen (word "Households out city")
+    plot count turtles with [ cityIdentifier = 0 ]
     while[cityIterator <= noOfCities] [
       set-current-plot-pen (word "city" cityIterator)
       plot count turtles with [pcolor = cityIterator * 10 + 5]
@@ -182,9 +188,6 @@ true
 true
 "" ""
 PENS
-"Total households" 1.0 0 -7500403 true "" "plot count turtles"
-"Households in city" 1.0 0 -14730904 true "" "plot count turtles with [ cityIdentifier > 0 ]"
-"Households out city" 1.0 0 -7858858 true "" "plot count turtles with [ cityIdentifier = 0 ]"
 
 BUTTON
 230
