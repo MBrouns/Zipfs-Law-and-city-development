@@ -18,6 +18,7 @@ globals [
   jobAcc
   jobAttractivenessList ;; a list of list containing for each city a list with attractiveness rates for each job category
   cityDistanceList
+  noOfMovesCounter ;; A counter to count how many people have moved per tick so we can update the city attractiveness every x moves
 ]
 
 extensions [table profiler]
@@ -47,6 +48,8 @@ to go
       ]
     ]
   ]
+  
+  
   if ticks >= 249[
     let cityIterator 1
     set-current-plot-pen (word "Total households")
@@ -62,6 +65,8 @@ to go
     ]
     determine-city-attractiveness-from-jobs
   ]
+  
+  
   
   let noOfPeopleMoving 0  
   ask turtles [
@@ -83,7 +88,7 @@ to go
     
   ]
   
-  ;;print noOfPeopleMoving   
+  print noOfPeopleMoving   
 end
 
 
@@ -157,7 +162,7 @@ INPUTBOX
 119
 146
 noOfHouseholds
-15000
+100000
 1
 0
 Number
@@ -298,7 +303,7 @@ maxDistBetweenCities
 maxDistBetweenCities
 0
 500
-420
+410
 10
 1
 NIL
@@ -329,6 +334,21 @@ enableProfiler
 1
 1
 -1000
+
+SLIDER
+21
+282
+238
+315
+updateCityAttractivenessFreq
+updateCityAttractivenessFreq
+0
+100
+20
+1
+1
+NIL
+HORIZONTAL
 
 @#$#@#$#@
 ## WHAT IS IT?

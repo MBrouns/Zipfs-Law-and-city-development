@@ -137,7 +137,7 @@ to-report determine-city-attractiveness-per-job [$cityIdentifier $jobIdentifier]
       report 0.5 + ((0.04 - fractionPeopleInFinance) * 3)
       
     ][
-    report min (list 1 (10 * fractionPeopleInFinance))
+    report min (list 0.6 (10 * fractionPeopleInFinance))
     ]
     
   ][ifelse $jobIdentifier = 5[
@@ -152,7 +152,7 @@ to-report determine-city-attractiveness-per-job [$cityIdentifier $jobIdentifier]
     ifelse fractionPeopleInIT < 0.04[
       report 0.5 + ((0.04 - fractionPeopleInIT) * 3)
     ][
-    report min (list 1 (10 * fractionPeopleInIT))
+    report min (list 0.6 (10 * fractionPeopleInIT))
     ]
     
     
@@ -188,6 +188,11 @@ to move-to-city [$cityIdentifier]
   while [cityIterator <= noOfCities][
     set distanceToCities lput distance one-of patches with [cityIdentifier = cityIterator] distanceToCities
     set cityIterator cityIterator + 1
+  ]
+  set noOfMovesCounter noOfMovesCounter + 1
+  if noOfMovesCounter mod updateCityAttractivenessFreq  = 0 [
+    print "recomputing cityAttractiveness"
+    determine-city-attractiveness-from-jobs
   ]
 end
 
