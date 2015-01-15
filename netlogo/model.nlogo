@@ -19,6 +19,7 @@ globals [
   jobAttractivenessList ;; a list of list containing for each city a list with attractiveness rates for each job category
   cityDistanceList
   noOfMovesCounter ;; A counter to count how many people have moved per tick so we can update the city attractiveness every x moves
+  seed
 
 ]
 

@@ -1,5 +1,7 @@
 to setup
-  ;;random-seed 42
+  if seed != 0[
+    random-seed seed
+  ]
   clear-all
   reset-ticks
   import-pcolors "/resources/nederland.png"

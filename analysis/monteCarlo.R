@@ -1,13 +1,16 @@
 # This code is used to perform a monte carlo analysis on the zipf's law Netlogo model
 
 # Analysis setup
-noOfReplications <- 1
+noOfReplications <- 3
 seed <- 1337
 nl.path <- "C:/Program Files (x86)/NetLogo 5.1.0"
 model.path <- "E:/Documents/SkyDrive/TU Delft/Jaar 5/Zipfs-Law-and-city-development/netlogo/model.nlogo"
+model.runtime <- 100
+model.warmup <- 5
 variables <- NULL
-variables <- rbind(variables, c("variable1", 3, 5))
-variables <- rbind(variables, c("variable2", 10, 20))
+variables <- rbind(variables, c("Seed", seed, seed))
+variables <- rbind(variables, c("NumberOfYears", model.runtime, model.runtime))
+variables <- rbind(variables, c("WarmUpTime", model.warmup, model.warmup))
 
 options(java.parameters=c("-XX:MaxPermSize=512m","-Xmx4096m"))
 #Install required packages if necessary and load them
@@ -23,7 +26,7 @@ library(rJava)
 
 
 set.seed(seed)
-cl<-makeCluster(2) #change the 2 to your number of CPU cores
+cl<-makeCluster(3) #change the 2 to your number of CPU cores
 registerDoParallel(cl)
 
 # Create a Latin Hypercube sample to populate model with
@@ -58,9 +61,13 @@ results <- foreach(i=1:noOfReplications, .combine='rbind', .export=c("NLStart","
     NLLoadModel(model.path, nl.obj=nlheadless1)
     NLCommand("no-display", nl.obj=nlheadless1)
     NLCommand("setup", nl.obj=nlheadless1)
-    
 
-    NLDoCommand(10, "go", nl.obj=nlheadless1)
+    for (j in 1:ncol(lhs)) {    
+        NLCommand(paste("set", names(lhs)[j], lhs[i, j], sep = " "), nl.obj=nlheadless1)
+    }
+    
+    
+    NLDoCommand(model.runtime, "go", nl.obj=nlheadless1)
     
     city0Size <- NLReport("count turtles with [cityIdentifier = 0]", nl.obj=nlheadless1)
     city1Size <- NLReport("count turtles with [cityIdentifier = 1]", nl.obj=nlheadless1)
