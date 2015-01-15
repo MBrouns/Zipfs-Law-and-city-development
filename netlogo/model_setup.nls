@@ -84,8 +84,8 @@ end
 
 ;; Generate households and put them on the map
 to setup-households
-  let noOfHouseholdsInCity round (0.6 * noOfHouseholds)
-  let noOfHouseholdsOutCity round (0.4 * noOfHouseholds)
+  let noOfHouseholdsInCity round (PercHouseholdsInitialInCity * noOfHouseholds)
+  let noOfHouseholdsOutCity round ((1 - PercHouseholdsInitialInCity) * noOfHouseholds)
   
   ;; First, randomly distribute households over The Netherlands outside of cities
   create-turtles noOfHouseholdsOutCity [

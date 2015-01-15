@@ -1,13 +1,13 @@
-to-report determine-resistence-to-move
+to-report determine-resistance-to-move
   
-  let childrenResistence (length peopleList - 2) * 0.05
-  let tippingPoint 10 + ((item ageAcc item 0 peopleList - 18) * 0.16)
+  let childrenresistance (length peopleList - 2) * rtm_resistancePerChild
+  let tippingPoint rtm_TippingPointX + ((item ageAcc item 0 peopleList - 18) * rtm_AgeModifier)
   ifelse timeSinceMoving <= tippingPoint [
-    report (1 - ((0.5 / tippingPoint) * timeSinceMoving)) + childrenResistence
-  ][ifelse timeSinceMoving < 20 [
-    report (0.5 + ((0.25 / (20 - tippingPoint)) * (timeSinceMoving - tippingPoint))) + childrenResistence
+    report (1 - ((rtm_TippingPointY / tippingPoint) * timeSinceMoving)) + childrenresistance
+  ][ifelse timeSinceMoving < rtm_PlateauPointX [
+    report (rtm_TippingPointY + ((( rtm_PlateauPointY - rtm_TippingPointY ) / (rtm_PlateauPointX - tippingPoint)) * (timeSinceMoving - tippingPoint))) + childrenresistance
   ][
-  report 0.75 + childrenResistence
+  report rtm_PlateauPointY + childrenresistance
   ]
   ]
   
@@ -40,22 +40,22 @@ to-report determine-city-attractiveness
     ;; Here we alter the attractiveness of the city based upon the distance from the current location to that city
     ;; For cities very closeby (less than 100 patches) people will move less likely, since it is easily commuted daily
     ;; For cities very far away (more than 250 patches) people will move less likely since it is too far (from family etc.)
-    let minMovingDistance 100
-    let maxMovingDistance 250
+    let minMovingDistance MinimalMovingDistance
+    let maxMovingDistance MaximumMovingDistance
     let distToCity 0
     ifelse cityIdentifier = 0 [
       ;;set distToCity distance one-of patches with [cityIdentifier = cityIterator + 1]
       set distToCity item cityIterator distanceToCities
       ;;set distToCity 110 
     ][
-      set distToCity distance-between-cities cityIdentifier (cityIterator + 1)
+    set distToCity distance-between-cities cityIdentifier (cityIterator + 1)
     ] 
     if distToCity < minMovingDistance [
-      set cityAverage cityAverage - 0.1     
+      set cityAverage cityAverage - MinDistCityAttractiveness     
     ]
     
     if distToCity > maxMovingDistance[
-      set cityAverage cityAverage - 0.1
+      set cityAverage cityAverage - MaxDistCityAttractiveness
     ]
     
     
@@ -69,7 +69,7 @@ end
 to determine-city-attractiveness-from-jobs
   set jobAttractivenessList []
   
-  set jobAttractivenessList lput (list 0.55 0.55 0.50 0.45 0.45 0.5 0.5) jobAttractivenessList
+  set jobAttractivenessList lput (list Job1Attractiveness Job2Attractiveness Job3Attractiveness Job4Attractiveness Job5Attractiveness Job6Attractiveness Job7Attractiveness) jobAttractivenessList
   let cityIterator 1
   while[cityIterator <= noOfCities] [
     let jobIterator 1
@@ -91,20 +91,20 @@ to-report determine-city-attractiveness-per-job [$cityIdentifier $jobIdentifier]
     ;; Job in primary sector
     let householdsInCity count turtles-on patches with [cityIdentifier = $cityIdentifier]
     let fractionHouseholdsInCity householdsInCity / noOfHouseholds
-    ifelse fractionHouseholdsInCity < 0.4 / noOfCities[
-      report 1 - 6.25 * fractionHouseholdsInCity      
+    ifelse fractionHouseholdsInCity < PercHouseholdsInitialInCity / noOfCities[
+      report 1 - (job1_TippingPointY / (PercHouseholdsInitialInCity / noOfcities)) * fractionHouseholdsInCity      
     ][
-    report 0.54 - 0.54 * fractionHouseholdsInCity
+    report job1_TippingPointY - job1_TippingPointY * fractionHouseholdsInCity
     ]
     
   ][ifelse $jobIdentifier = 2[
     ;; Job in manufacturing
     let householdsInCity count turtles-on patches with [cityIdentifier = $cityIdentifier]
     let fractionHouseholdsInCity householdsInCity / noOfHouseholds
-    ifelse fractionHouseholdsInCity < 0.4 / noOfCities[
-      report 1 - 6.25 * fractionHouseholdsInCity      
+    ifelse fractionHouseholdsInCity < PercHouseholdsInitialInCity / noOfCities[
+      report 1 - (job2_TippingPointY / (PercHouseholdsInitialInCity / noOfcities)) * fractionHouseholdsInCity      
     ][
-    report 0.54 - 0.54 * fractionHouseholdsInCity
+    report job2_TippingPointY - job2_TippingPointY * fractionHouseholdsInCity
     ]
     
   ][ifelse $jobIdentifier = 3[
@@ -116,11 +116,11 @@ to-report determine-city-attractiveness-per-job [$cityIdentifier $jobIdentifier]
       set peopleInService peopleInService + NoOfpeopleInService
     ] 
     let fractionPeopleInService peopleInService / peopleInCity
-    ifelse fractionPeopleInService < 0.32[
-      report 1 - 1.56 * fractionPeopleInService
+    ifelse fractionPeopleInService < job3_TippingPointX[
+      report 1 - (( 1 - job3_TippingPointY ) / job3_TippingPointX ) * fractionPeopleInService
       
     ][
-    report 0.73 - 0.73 * fractionPeopleInService
+    report ( ((job3_TippingPointY / ( 1 - job3_TippingPointX )) * job3_TippingPointX) + job3_TippingPointY) - ( job3_TippingPointY / ( 1 - job3_TippingPointX )) * fractionPeopleInService
     ]
   ][ifelse $jobIdentifier = 4[
     ;; Job in finance
@@ -134,7 +134,7 @@ to-report determine-city-attractiveness-per-job [$cityIdentifier $jobIdentifier]
     let fractionPeopleInFinance peopleInFinance / peopleInCity
     
     ifelse fractionPeopleInFinance < 0.04[
-      report 0.5 + ((0.04 - fractionPeopleInFinance) * 3)
+      report 0.5 + ((0.04 - fractionPeopleInFinance) * job4_Modifier)
       
     ][
     report min (list 0.6 (10 * fractionPeopleInFinance))
@@ -150,7 +150,7 @@ to-report determine-city-attractiveness-per-job [$cityIdentifier $jobIdentifier]
     ] 
     let fractionPeopleInIT peopleInIT / peopleInCity
     ifelse fractionPeopleInIT < 0.04[
-      report 0.5 + ((0.04 - fractionPeopleInIT) * 3)
+      report 0.5 + ((0.04 - fractionPeopleInIT) * job5_Modifier)
     ][
     report min (list 0.6 (10 * fractionPeopleInIT))
     ]
@@ -167,14 +167,14 @@ to-report determine-city-attractiveness-per-job [$cityIdentifier $jobIdentifier]
     let fractionPeopleInNonProfit peopleInNonProfit / peopleInCity
     
     ifelse fractionPeopleInNonProfit < 0.34[
-      report 1 - 1.47 * fractionPeopleInNonProfit
+      report 1 - (( 1 - job6_TippingPointY ) / job6_TippingPointX ) * fractionPeopleInNonProfit
       
     ][
-    report 0.76 - 0.76 * fractionPeopleInNonProfit
-    ]
+    report ( ((job6_TippingPointY / ( 1 - job6_TippingPointX )) * job6_TippingPointX) + job6_TippingPointY) - ( job6_TippingPointY / ( 1 - job6_TippingPointX )) * fractionPeopleInNonProfit
+    ]   
   ][ifelse $jobIdentifier = 7[
     ;; Jobless0
-    report 0.5
+    report job7_Value
     
   ][]]]]]]]
   
