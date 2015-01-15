@@ -103,9 +103,9 @@ to print-profiler
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-929
+917
 10
-1940
+1928
 1042
 500
 500
@@ -123,8 +123,8 @@ GRAPHICS-WINDOW
 500
 -500
 500
-0
-0
+1
+1
 1
 years
 30.0
@@ -163,7 +163,7 @@ INPUTBOX
 106
 146
 noOfHouseholds
-100000
+15000
 1
 0
 Number
@@ -677,10 +677,10 @@ Primary sector Job attractiveness graph
 1
 
 SLIDER
-194
-389
-366
-422
+193
+399
+365
+432
 job2_TippingPointY
 job2_TippingPointY
 0.4
@@ -692,10 +692,10 @@ NIL
 HORIZONTAL
 
 TEXTBOX
-197
-359
-347
-387
+196
+369
+346
+397
 Manufacturing Job attractiveness graph
 11
 0.0
@@ -703,9 +703,9 @@ Manufacturing Job attractiveness graph
 
 SLIDER
 195
-447
+471
 367
-480
+504
 job3_TippingPointX
 job3_TippingPointX
 0.2
@@ -718,9 +718,9 @@ HORIZONTAL
 
 SLIDER
 195
-485
+509
 367
-518
+542
 job3_TippingPointY
 job3_TippingPointY
 0.4
@@ -733,9 +733,9 @@ HORIZONTAL
 
 TEXTBOX
 197
-430
+454
 366
-458
+482
 Service Job attractiveness graph
 11
 0.0
@@ -743,9 +743,9 @@ Service Job attractiveness graph
 
 SLIDER
 736
-430
+439
 908
-463
+472
 job7_Value
 job7_Value
 0.4
@@ -757,10 +757,10 @@ NIL
 HORIZONTAL
 
 SLIDER
-375
-322
-547
-355
+373
+398
+545
+431
 job4_Modifier
 job4_Modifier
 1
@@ -772,10 +772,10 @@ NIL
 HORIZONTAL
 
 SLIDER
-554
-322
-726
-355
+552
+399
+724
+432
 job5_Modifier
 job5_Modifier
 1
@@ -817,10 +817,10 @@ NIL
 HORIZONTAL
 
 TEXTBOX
-377
-302
-554
-330
+379
+300
+556
+328
 Finance Job attractiveness graph
 11
 0.0
@@ -848,9 +848,9 @@ Non-profit Job attractiveness graph
 
 TEXTBOX
 738
-412
+421
 888
-430
+439
 Jobless attractiveness graph
 11
 0.0
@@ -859,13 +859,13 @@ Jobless attractiveness graph
 INPUTBOX
 114
 19
-206
+209
 79
 NumberOfYears
-500
+400
 1
 0
-String
+Number
 
 INPUTBOX
 114
@@ -876,7 +876,97 @@ WarmUpTime
 249
 1
 0
-String
+Number
+
+SLIDER
+373
+321
+545
+354
+job4_TippingPointX
+job4_TippingPointX
+0.02
+0.06
+0.04
+0.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+373
+359
+545
+392
+job4_TippingPointY
+job4_TippingPointY
+0.4
+0.6
+0.5
+0.05
+1
+NIL
+HORIZONTAL
+
+SLIDER
+373
+439
+545
+472
+job4_Max
+job4_Max
+0.5
+0.8
+0.6
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+553
+321
+725
+354
+job5_TippingPointX
+job5_TippingPointX
+0.02
+0.06
+0.02
+0.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+552
+360
+724
+393
+job5_TippingPointY
+job5_TippingPointY
+0.4
+0.6
+0.45
+0.05
+1
+NIL
+HORIZONTAL
+
+SLIDER
+552
+439
+724
+472
+job5_Max
+job5_Max
+0.5
+0.8
+0.6
+0.1
+1
+NIL
+HORIZONTAL
 
 @#$#@#$#@
 ## WHAT IS IT?

@@ -134,10 +134,9 @@ to-report determine-city-attractiveness-per-job [$cityIdentifier $jobIdentifier]
     let fractionPeopleInFinance peopleInFinance / peopleInCity
     
     ifelse fractionPeopleInFinance < 0.04[
-      report 0.5 + ((0.04 - fractionPeopleInFinance) * job4_Modifier)
-      
+      report 1 - ( job4_TippingPointY / job5_TippingPointX ) * fractionPeopleInFinance
     ][
-    report min (list 0.6 (10 * fractionPeopleInFinance))
+    report min (list job4_Max (job4_Modifier * fractionPeopleInFinance))
     ]
     
   ][ifelse $jobIdentifier = 5[
@@ -149,10 +148,10 @@ to-report determine-city-attractiveness-per-job [$cityIdentifier $jobIdentifier]
       set peopleInIT peopleInIT + NoOfpeopleInIT
     ] 
     let fractionPeopleInIT peopleInIT / peopleInCity
-    ifelse fractionPeopleInIT < 0.04[
-      report 0.5 + ((0.04 - fractionPeopleInIT) * job5_Modifier)
+    ifelse fractionPeopleInIT < job5_TippingPointX [
+      report 1 - ( job5_TippingPointY / job5_TippingPointX ) * fractionPeopleInIT
     ][
-    report min (list 0.6 (10 * fractionPeopleInIT))
+    report min (list job5_Max (job5_Modifier * fractionPeopleInIT))
     ]
     
     
