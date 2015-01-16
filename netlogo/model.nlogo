@@ -20,7 +20,6 @@ globals [
   cityDistanceList
   noOfMovesCounter ;; A counter to count how many people have moved per tick so we can update the city attractiveness every x moves
   seed
-
 ]
 
 extensions [table profiler]
@@ -104,9 +103,9 @@ to print-profiler
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-929
+917
 10
-1940
+1928
 1042
 500
 500
@@ -124,8 +123,8 @@ GRAPHICS-WINDOW
 500
 -500
 500
-0
-0
+1
+1
 1
 years
 30.0
@@ -180,10 +179,10 @@ NIL
 0
 
 PLOT
-20
-610
-872
-1119
+3
+636
+855
+1145
 Households
 Time
 Households
@@ -305,7 +304,7 @@ maxDistBetweenCities
 maxDistBetweenCities
 0
 500
-410
+330
 10
 1
 NIL
@@ -320,7 +319,7 @@ minDistBetweenCities
 minDistBetweenCities
 0
 500
-50
+260
 10
 1
 NIL
@@ -333,7 +332,7 @@ SWITCH
 174
 enableProfiler
 enableProfiler
-1
+0
 1
 -1000
 
@@ -346,7 +345,7 @@ updateCityAttractivenessFreq
 updateCityAttractivenessFreq
 0
 100
-20
+100
 1
 1
 NIL
@@ -376,7 +375,7 @@ rtm_ResistancePerChild
 rtm_ResistancePerChild
 0
 0.1
-0.05
+0.02
 0.01
 1
 NIL
@@ -391,7 +390,7 @@ rtm_TippingPointX
 rtm_TippingPointX
 5
 15
-10
+7.50342124917855
 1
 1
 NIL
@@ -406,7 +405,7 @@ rtm_TippingPointY
 rtm_TippingPointY
 0.25
 0.75
-0.5
+0.292381907696836
 0.05
 1
 NIL
@@ -421,7 +420,7 @@ rtm_PlateauPointX
 rtm_PlateauPointX
 15
 25
-20
+22.5258136431997
 1
 1
 NIL
@@ -436,7 +435,7 @@ rtm_PlateauPointY
 rtm_PlateauPointY
 0.5
 1.0
-0.75
+0.538906343475295
 0.05
 1
 NIL
@@ -451,7 +450,7 @@ rtm_AgeModifier
 rtm_AgeModifier
 0
 0.3
-0.16
+0.0498634683418398
 0.01
 1
 NIL
@@ -476,7 +475,7 @@ MinimalMovingDistance
 MinimalMovingDistance
 0
 200
-100
+169.298018676539
 10
 1
 NIL
@@ -491,7 +490,7 @@ MaximumMovingDistance
 MaximumMovingDistance
 200
 400
-250
+356.658478376145
 10
 1
 NIL
@@ -516,7 +515,7 @@ MinDistCityAttractiveness
 MinDistCityAttractiveness
 0
 0.3
-0.1
+0.0863143348367885
 0.05
 1
 NIL
@@ -531,7 +530,7 @@ MaxDistCityAttractiveness
 MaxDistCityAttractiveness
 0
 0.3
-0.1
+0.170948919036891
 0.05
 1
 NIL
@@ -556,7 +555,7 @@ Job1Attractiveness
 Job1Attractiveness
 0.4
 0.6
-0.55
+0.497929239940519
 0.05
 1
 NIL
@@ -571,7 +570,7 @@ Job2Attractiveness
 Job2Attractiveness
 0.4
 0.6
-0.55
+0.437986470044901
 0.05
 1
 NIL
@@ -586,7 +585,7 @@ Job3Attractiveness
 Job3Attractiveness
 0.4
 0.6
-0.5
+0.409926472666363
 0.05
 1
 NIL
@@ -601,7 +600,7 @@ Job4Attractiveness
 Job4Attractiveness
 0.4
 0.6
-0.45
+0.409406347557281
 0.05
 1
 NIL
@@ -616,7 +615,7 @@ Job5Attractiveness
 Job5Attractiveness
 0.4
 0.6
-0.45
+0.484448070374007
 0.05
 1
 NIL
@@ -631,7 +630,7 @@ Job6Attractiveness
 Job6Attractiveness
 0.4
 0.6
-0.5
+0.597432849400987
 0.05
 1
 NIL
@@ -646,7 +645,7 @@ Job7Attractiveness
 Job7Attractiveness
 0.4
 0.6
-0.5
+0.431510922235126
 0.05
 1
 NIL
@@ -661,7 +660,7 @@ job1_TippingPointY
 job1_TippingPointY
 0.4
 0.6
-0.5
+0.6
 0.1
 1
 NIL
@@ -678,25 +677,25 @@ Primary sector Job attractiveness graph
 1
 
 SLIDER
-194
-389
-366
-422
+193
+399
+365
+432
 job2_TippingPointY
 job2_TippingPointY
 0.4
 0.6
-0.5
+0.4
 0.1
 1
 NIL
 HORIZONTAL
 
 TEXTBOX
-197
-359
-347
-387
+196
+369
+346
+397
 Manufacturing Job attractiveness graph
 11
 0.0
@@ -704,14 +703,14 @@ Manufacturing Job attractiveness graph
 
 SLIDER
 195
-447
+471
 367
-480
+504
 job3_TippingPointX
 job3_TippingPointX
 0.2
 0.4
-0.32
+0.235207910680523
 0.05
 1
 NIL
@@ -719,14 +718,14 @@ HORIZONTAL
 
 SLIDER
 195
-485
+509
 367
-518
+542
 job3_TippingPointY
 job3_TippingPointY
 0.4
 0.6
-0.5
+0.5633684608154
 0.05
 1
 NIL
@@ -734,9 +733,9 @@ HORIZONTAL
 
 TEXTBOX
 197
-430
+454
 366
-458
+482
 Service Job attractiveness graph
 11
 0.0
@@ -744,9 +743,9 @@ Service Job attractiveness graph
 
 SLIDER
 736
-430
+439
 908
-463
+472
 job7_Value
 job7_Value
 0.4
@@ -758,30 +757,30 @@ NIL
 HORIZONTAL
 
 SLIDER
-375
-322
-547
-355
+373
+398
+545
+431
 job4_Modifier
 job4_Modifier
 1
 5
-3
+9.4386958796531
 0.5
 1
 NIL
 HORIZONTAL
 
 SLIDER
-554
-322
-726
-355
+552
+399
+724
+432
 job5_Modifier
 job5_Modifier
 1
 5
-5
+10.0099306857834
 0.5
 1
 NIL
@@ -796,7 +795,7 @@ job6_TippingPointX
 job6_TippingPointX
 0.2
 0.4
-0.35
+0.213133235368878
 0.05
 1
 NIL
@@ -811,17 +810,17 @@ job6_TippingPointY
 job6_TippingPointY
 0.4
 0.6
-0.5
+0.458959396385277
 0.05
 1
 NIL
 HORIZONTAL
 
 TEXTBOX
-377
-302
-554
-330
+379
+300
+556
+328
 Finance Job attractiveness graph
 11
 0.0
@@ -849,9 +848,9 @@ Non-profit Job attractiveness graph
 
 TEXTBOX
 738
-412
+421
 888
-430
+439
 Jobless attractiveness graph
 11
 0.0
@@ -860,7 +859,7 @@ Jobless attractiveness graph
 INPUTBOX
 114
 19
-198
+209
 79
 NumberOfYears
 80
@@ -871,13 +870,103 @@ Number
 INPUTBOX
 114
 87
-200
+209
 147
 WarmUpTime
-5
+1
 1
 0
 Number
+
+SLIDER
+373
+321
+545
+354
+job4_TippingPointX
+job4_TippingPointX
+0.02
+0.06
+0.06
+0.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+373
+359
+545
+392
+job4_TippingPointY
+job4_TippingPointY
+0.4
+0.6
+0.556673856964335
+0.05
+1
+NIL
+HORIZONTAL
+
+SLIDER
+373
+439
+545
+472
+job4_Max
+job4_Max
+0.5
+0.8
+0.641884189890698
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+553
+321
+725
+354
+job5_TippingPointX
+job5_TippingPointX
+0.02
+0.06
+0.0242974934416513
+0.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+552
+360
+724
+393
+job5_TippingPointY
+job5_TippingPointY
+0.4
+0.6
+0.580208085151389
+0.05
+1
+NIL
+HORIZONTAL
+
+SLIDER
+552
+439
+724
+472
+job5_Max
+job5_Max
+0.5
+0.8
+0.8
+0.1
+1
+NIL
+HORIZONTAL
 
 @#$#@#$#@
 ## WHAT IS IT?

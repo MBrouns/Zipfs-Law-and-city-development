@@ -109,12 +109,17 @@ to-report determine-city-attractiveness-per-job [$cityIdentifier $jobIdentifier]
     
   ][ifelse $jobIdentifier = 3[
     ;; Job in services
-    let peopleInService 0
-    let peopleInCity 0
-    ask turtles-on patches with [cityIdentifier = $cityIdentifier][
-      set peopleInCity peopleInCity + length filter [item ageAcc ? > 18] peopleList
-      set peopleInService peopleInService + NoOfpeopleInService
-    ] 
+    let householdsInCity turtles-on patches with [cityIdentifier = $cityIdentifier]
+    let peopleInService 1
+    let peopleInCity 1
+    if householdsInCity != nobody[
+      ask householdsInCity[
+        set peopleInCity peopleInCity + length filter [item ageAcc ? > 18] peopleList
+        set peopleInService peopleInService + NoOfpeopleInService
+      ] 
+    ]
+    
+    
     let fractionPeopleInService peopleInService / peopleInCity
     ifelse fractionPeopleInService < job3_TippingPointX[
       report 1 - (( 1 - job3_TippingPointY ) / job3_TippingPointX ) * fractionPeopleInService
@@ -125,12 +130,15 @@ to-report determine-city-attractiveness-per-job [$cityIdentifier $jobIdentifier]
   ][ifelse $jobIdentifier = 4[
     ;; Job in finance
     let householdsInCity turtles-on patches with [cityIdentifier = $cityIdentifier]
-    let peopleInFinance 0
-    let peopleInCity 0
-    ask householdsInCity[
-      set peopleInCity peopleInCity + length filter [item ageAcc ? > 18] peopleList
-      set peopleInFinance peopleInFinance + NoOfpeopleInFinance
-    ] 
+    let peopleInFinance 1
+    let peopleInCity 1
+    if householdsInCity != nobody [
+      ask householdsInCity[
+        set peopleInCity peopleInCity + length filter [item ageAcc ? > 18] peopleList
+        set peopleInFinance peopleInFinance + NoOfpeopleInFinance
+      ] 
+    ]
+    
     let fractionPeopleInFinance peopleInFinance / peopleInCity
     
     ifelse fractionPeopleInFinance < 0.04[
@@ -141,12 +149,17 @@ to-report determine-city-attractiveness-per-job [$cityIdentifier $jobIdentifier]
     
   ][ifelse $jobIdentifier = 5[
     ;; Job in IT
-    let peopleInIT 0
-    let peopleInCity 0
-    ask turtles-on patches with [cityIdentifier = $cityIdentifier][
-      set peopleInCity peopleInCity + length filter [item ageAcc ? > 18] peopleList
-      set peopleInIT peopleInIT + NoOfpeopleInIT
-    ] 
+    let peopleInIT 1
+    let peopleInCity 1
+    
+    let householdsInCity turtles-on patches with [cityIdentifier = $cityIdentifier]
+    if householdsInCity != nobody[  
+      ask householdsInCity[
+        set peopleInCity peopleInCity + length filter [item ageAcc ? > 18] peopleList
+        set peopleInIT peopleInIT + NoOfpeopleInIT
+      ] 
+    ]      
+    
     let fractionPeopleInIT peopleInIT / peopleInCity
     ifelse fractionPeopleInIT < job5_TippingPointX [
       report 1 - ( job5_TippingPointY / job5_TippingPointX ) * fractionPeopleInIT
@@ -157,12 +170,18 @@ to-report determine-city-attractiveness-per-job [$cityIdentifier $jobIdentifier]
     
   ][ifelse $jobIdentifier = 6[
     ;; job in non-profit
-    let peopleInNonProfit 0
-    let peopleInCity 0
-    ask turtles-on patches with [cityIdentifier = $cityIdentifier][
-      set peopleInCity peopleInCity + length filter [item ageAcc ? > 18] peopleList
-      set peopleInNonProfit peopleInNonProfit + NoOfpeopleInNonProfit
-    ] 
+    let peopleInNonProfit 1
+    let peopleInCity 1    
+    
+    let householdsInCity turtles-on patches with [cityIdentifier = $cityIdentifier]
+    if householdsInCity != nobody[  
+      ask householdsInCity[
+        set peopleInCity peopleInCity + length filter [item ageAcc ? > 18] peopleList
+        set peopleInNonProfit peopleInNonProfit + NoOfpeopleInNonProfit
+      ] 
+    ]      
+    
+    
     let fractionPeopleInNonProfit peopleInNonProfit / peopleInCity
     
     ifelse fractionPeopleInNonProfit < 0.34[
