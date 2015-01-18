@@ -1,6 +1,20 @@
-starting worker pid=110424 on localhost:11954 at 10:41:11.008
-starting worker pid=106540 on localhost:11954 at 10:41:11.266
-starting worker pid=108168 on localhost:11954 at 10:41:11.518
+starting worker pid=10176 on localhost:11602 at 20:32:32.709
+starting worker pid=9220 on localhost:11602 at 20:32:32.898
+starting worker pid=9680 on localhost:11602 at 20:32:33.088
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 1"
+[1] "starting job 2"
+[1] "starting job 3"
+[1] "starting job 4"
+[1] "starting job 5"
+starting worker pid=8440 on localhost:11150 at 20:50:17.226
+starting worker pid=8932 on localhost:11150 at 20:50:17.412
+starting worker pid=1220 on localhost:11150 at 20:50:17.611
 Loading required package: rJava
 Loading required package: rJava
 Loading required package: rJava
@@ -13,228 +27,438 @@ Loading required package: igraph
 [1] "starting job 4"
 [1] "starting job 5"
 [1] "starting job 6"
+starting worker pid=11240 on localhost:11204 at 21:35:33.263
+starting worker pid=12068 on localhost:11204 at 21:35:33.468
+starting worker pid=11472 on localhost:11204 at 21:35:33.685
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
 [1] "starting job 7"
+[1] "starting job 8" "starting job 9"
 [1] "Java-Object{org.nlogo.nvm.ArgumentTypeException: ASK expected input to be an agent or agentset but got NOBODY instead.}"
-[1] "starting job 8"
-[1] "Java-Object{org.nlogo.nvm.ArgumentTypeException: ASK expected input to be an agent or agentset but got NOBODY instead.}"
-[1] "starting job 9"
-starting worker pid=110248 on localhost:11482 at 11:28:49.544
-starting worker pid=108780 on localhost:11482 at 11:28:49.802
-starting worker pid=109512 on localhost:11482 at 11:28:50.051
+Error in unserialize(node$con) : error reading from connection
+Calls: <Anonymous> ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
+Execution halted
+starting worker pid=3932 on localhost:11285 at 21:35:57.492
+starting worker pid=11724 on localhost:11285 at 21:35:57.688
+starting worker pid=10376 on localhost:11285 at 21:35:57.885
 Loading required package: rJava
 Loading required package: rJava
 Loading required package: rJava
 Loading required package: igraph
 Loading required package: igraph
 Loading required package: igraph
-[1] "starting job 1"
-[1] "starting job 2"
-[1] "starting job 3"
-[1] "starting job 4"
-[1] "starting job 5"
-[1] "starting job 6"
 [1] "starting job 7"
-[1] "Java-Object{org.nlogo.nvm.ArgumentTypeException: ASK expected input to be an agent or agentset but got NOBODY instead.}"
 [1] "starting job 8"
-[1] "Java-Object{org.nlogo.nvm.ArgumentTypeException: ASK expected input to be an agent or agentset but got NOBODY instead.}"
 [1] "starting job 9"
-[1] "Java-Object{org.nlogo.nvm.EngineException: List is empty.}"
+[1] "Java-Object{org.nlogo.nvm.ArgumentTypeException: ASK expected input to be an agent or agentset but got NOBODY instead.}"
 [1] "starting job 10"
 [1] "starting job 11"
 [1] "starting job 12"
-[1] "Java-Object{Can't find extension: file:/E:/Documents/SkyDrive/TU Delft/Jaar 5/Zipfs-Law-and-city-development/analysis/extensions/table/table.jar at position 879 in }"
+starting worker pid=8808 on localhost:11377 at 22:21:25.239
+starting worker pid=10140 on localhost:11377 at 22:21:25.443
+starting worker pid=11336 on localhost:11377 at 22:21:25.645
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
 [1] "starting job 13"
-[1] "Java-Object{Can't find extension: file:/E:/Documents/SkyDrive/TU Delft/Jaar 5/Zipfs-Law-and-city-development/analysis/extensions/table/table.jar at position 879 in }"
 [1] "starting job 14"
-[1] "Java-Object{Can't find extension: file:/E:/Documents/SkyDrive/TU Delft/Jaar 5/Zipfs-Law-and-city-development/analysis/extensions/table/table.jar at position 879 in }"
 [1] "starting job 15"
-[1] "Java-Object{Can't find extension: file:/E:/Documents/SkyDrive/TU Delft/Jaar 5/Zipfs-Law-and-city-development/analysis/extensions/table/table.jar at position 879 in }"
 [1] "starting job 16"
-[1] "Java-Object{Can't find extension: file:/E:/Documents/SkyDrive/TU Delft/Jaar 5/Zipfs-Law-and-city-development/analysis/extensions/table/table.jar at position 879 in }"
 [1] "starting job 17"
-[1] "Java-Object{Can't find extension: file:/E:/Documents/SkyDrive/TU Delft/Jaar 5/Zipfs-Law-and-city-development/analysis/extensions/table/table.jar at position 879 in }"
 [1] "starting job 18"
-[1] "Java-Object{Can't find extension: file:/E:/Documents/SkyDrive/TU Delft/Jaar 5/Zipfs-Law-and-city-development/analysis/extensions/table/table.jar at position 879 in }"
+starting worker pid=11700 on localhost:11163 at 23:30:20.887
+starting worker pid=7436 on localhost:11163 at 23:30:21.093
+starting worker pid=10768 on localhost:11163 at 23:30:21.308
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
 [1] "starting job 19"
-[1] "Java-Object{Can't find extension: file:/E:/Documents/SkyDrive/TU Delft/Jaar 5/Zipfs-Law-and-city-development/analysis/extensions/table/table.jar at position 879 in }"
-[1] "starting job 20"
-[1] "Java-Object{Can't find extension: file:/E:/Documents/SkyDrive/TU Delft/Jaar 5/Zipfs-Law-and-city-development/analysis/extensions/table/table.jar at position 879 in }"
 [1] "starting job 21"
-[1] "Java-Object{Can't find extension: file:/E:/Documents/SkyDrive/TU Delft/Jaar 5/Zipfs-Law-and-city-development/analysis/extensions/table/table.jar at position 879 in }"
+ "starting job 20"
 [1] "starting job 22"
-[1] "Java-Object{java.lang.OutOfMemoryError: GC overhead limit exceeded}"
+[1] "Java-Object{org.nlogo.nvm.ArgumentTypeException: ASK expected input to be an agent or agentset but got NOBODY instead.}"
 [1] "starting job 23"
-[1] "Java-Object{java.lang.OutOfMemoryError: GC overhead limit exceeded}"
 [1] "starting job 24"
-[1] "Java-Object{java.lang.OutOfMemoryError: GC overhead limit exceeded}"
+[1] "Java-Object{org.nlogo.nvm.EngineException: List is empty.}"
+[1] "Java-Object{org.nlogo.nvm.EngineException: List is empty.}"
+starting worker pid=10304 on localhost:11231 at 23:55:41.292
+starting worker pid=11276 on localhost:11231 at 23:55:41.491
+starting worker pid=8660 on localhost:11231 at 23:55:41.700
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
 [1] "starting job 25"
-[1] "Java-Object{java.lang.OutOfMemoryError: GC overhead limit exceeded}"
 [1] "starting job 26"
-[1] "Java-Object{java.lang.OutOfMemoryError: GC overhead limit exceeded}"
 [1] "starting job 27"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
+[1] "Java-Object{org.nlogo.nvm.ArgumentTypeException: ASK expected input to be an agent or agentset but got NOBODY instead.}"
 [1] "starting job 28"
-[1] "Java-Object{java.lang.OutOfMemoryError: GC overhead limit exceeded}"
+[1] "Java-Object{org.nlogo.nvm.ArgumentTypeException: ASK expected input to be an agent or agentset but got NOBODY instead.}"
 [1] "starting job 29"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
+[1] "Java-Object{org.nlogo.nvm.EngineException: List is empty.}"
 [1] "starting job 30"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
+[1] "Java-Object{org.nlogo.nvm.ArgumentTypeException: ASK expected input to be an agent or agentset but got NOBODY instead.}"
+starting worker pid=8532 on localhost:11756 at 00:33:18.989
+starting worker pid=11192 on localhost:11756 at 00:33:19.180
+starting worker pid=9736 on localhost:11756 at 00:33:19.373
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
 [1] "starting job 31"
-[1] "Java-Object{java.lang.OutOfMemoryError: GC overhead limit exceeded}"
 [1] "starting job 32"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
 [1] "starting job 33"
-[1] "Java-Object{java.lang.OutOfMemoryError: GC overhead limit exceeded}"
+[1] "Java-Object{org.nlogo.nvm.ArgumentTypeException: ASK expected input to be an agent or agentset but got NOBODY instead.}"
 [1] "starting job 34"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
 [1] "starting job 35"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
+[1] "Java-Object{org.nlogo.nvm.ArgumentTypeException: ASK expected input to be an agent or agentset but got NOBODY instead.}"
 [1] "starting job 36"
-[1] "Java-Object{java.lang.OutOfMemoryError: GC overhead limit exceeded}"
-[1] "starting job 37"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
-[1] "starting job 38"
-[1] "Java-Object{java.lang.OutOfMemoryError: GC overhead limit exceeded}"
-[1] "starting job 39"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
+starting worker pid=11256 on localhost:11110 at 09:50:04.962
+starting worker pid=9244 on localhost:11110 at 09:50:05.180
+starting worker pid=15684 on localhost:11110 at 09:50:05.379
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 37" "starting job 38"
 [1] "starting job 40"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
 [1] "starting job 41"
-[1] "Java-Object{java.lang.OutOfMemoryError: GC overhead limit exceeded}"
+[1] "Java-Object{org.nlogo.nvm.ArgumentTypeException: ASK expected input to be an agent or agentset but got NOBODY instead.}"
 [1] "starting job 42"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
+[1] "Java-Object{org.nlogo.nvm.EngineException: List is empty.}"
+starting worker pid=15972 on localhost:11750 at 10:38:17.014
+starting worker pid=15520 on localhost:11750 at 10:38:17.203
+starting worker pid=8120 on localhost:11750 at 10:38:17.388
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
 [1] "starting job 43"
-[1] "Java-Object{java.lang.OutOfMemoryError: GC overhead limit exceeded}"
 [1] "starting job 44"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
 [1] "starting job 45"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
+[1] "Java-Object{org.nlogo.nvm.ArgumentTypeException: ASK expected input to be an agent or agentset but got NOBODY instead.}"
 [1] "starting job 46"
-[1] "Java-Object{java.lang.OutOfMemoryError: GC overhead limit exceeded}"
+[1] "Java-Object{org.nlogo.nvm.EngineException: List is empty.}"
 [1] "starting job 47"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
+[1] "Java-Object{org.nlogo.nvm.ArgumentTypeException: ASK expected input to be an agent or agentset but got NOBODY instead.}"
 [1] "starting job 48"
-[1] "Java-Object{java.lang.OutOfMemoryError: GC overhead limit exceeded}"
+[1] "Java-Object{org.nlogo.nvm.EngineException: List is empty.}"
+starting worker pid=7564 on localhost:11091 at 10:59:59.231
+starting worker pid=16424 on localhost:11091 at 10:59:59.417
+starting worker pid=5640 on localhost:11091 at 10:59:59.605
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
 [1] "starting job 49"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
 [1] "starting job 50"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
 [1] "starting job 51"
-[1] "Java-Object{java.lang.OutOfMemoryError: GC overhead limit exceeded}"
+[1] "Java-Object{Nothing named NA has been defined at position 55 in }"
 [1] "starting job 52"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
+[1] "Java-Object{Nothing named NA has been defined at position 55 in }"
 [1] "starting job 53"
-[1] "Java-Object{java.lang.OutOfMemoryError: GC overhead limit exceeded}"
+[1] "Java-Object{Nothing named NA has been defined at position 55 in }"
 [1] "starting job 54"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
-[1] "starting job 55"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
-[1] "starting job 56"
-[1] "Java-Object{java.lang.OutOfMemoryError: GC overhead limit exceeded}"
-[1] "starting job 57"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
-[1] "starting job 58"
-[1] "Java-Object{java.lang.OutOfMemoryError: GC overhead limit exceeded}"
-[1] "starting job 59"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
-[1] "starting job 60"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
-[1] "starting job 61"
-[1] "Java-Object{java.lang.OutOfMemoryError: GC overhead limit exceeded}"
-[1] "starting job 62"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
-[1] "starting job 63"
-[1] "Java-Object{java.lang.OutOfMemoryError: GC overhead limit exceeded}"
-[1] "starting job 64"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
-[1] "starting job 65"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
-[1] "starting job 66"
-[1] "Java-Object{java.lang.OutOfMemoryError: GC overhead limit exceeded}"
-[1] "starting job 67"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
-[1] "starting job 68"
-[1] "Java-Object{java.lang.OutOfMemoryError: GC overhead limit exceeded}"
-[1] "starting job 69"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
-[1] "starting job 70"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
-[1] "starting job 71"
-[1] "Java-Object{java.lang.OutOfMemoryError: GC overhead limit exceeded}"
-[1] "starting job 72"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
-[1] "starting job 73"
-[1] "Java-Object{java.lang.OutOfMemoryError: GC overhead limit exceeded}"
-[1] "starting job 74"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
-[1] "starting job 75"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
-[1] "starting job 76"
-[1] "Java-Object{java.lang.OutOfMemoryError: GC overhead limit exceeded}"
-[1] "starting job 77"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
-[1] "starting job 78"
-[1] "Java-Object{java.lang.OutOfMemoryError: GC overhead limit exceeded}"
-[1] "starting job 79"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
-[1] "starting job 80"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
-[1] "starting job 81"
-[1] "Java-Object{java.lang.OutOfMemoryError: GC overhead limit exceeded}"
-[1] "starting job 82"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
-[1] "starting job 83"
-[1] "Java-Object{java.lang.OutOfMemoryError: GC overhead limit exceeded}"
-[1] "starting job 84"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
-[1] "starting job 85"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
-[1] "starting job 86"
-[1] "Java-Object{java.lang.OutOfMemoryError: GC overhead limit exceeded}"
-[1] "starting job 87"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
-[1] "starting job 88"
-[1] "Java-Object{java.lang.OutOfMemoryError: GC overhead limit exceeded}"
-[1] "starting job 89"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
-[1] "starting job 90"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
-[1] "starting job 91"
-[1] "Java-Object{java.lang.OutOfMemoryError: GC overhead limit exceeded}"
-[1] "starting job 92"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
-[1] "starting job 93"
-[1] "Java-Object{java.lang.OutOfMemoryError: GC overhead limit exceeded}"
-[1] "starting job 94"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
-[1] "starting job 95"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
-[1] "starting job 96"
-[1] "Java-Object{java.lang.OutOfMemoryError: GC overhead limit exceeded}"
-[1] "starting job 97"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
-[1] "starting job 98"
-[1] "Java-Object{java.lang.OutOfMemoryError: GC overhead limit exceeded}"
-[1] "starting job 99"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
-[1] "starting job 100"
-[1] "Java-Object{java.lang.OutOfMemoryError: Java heap space}"
-Warning message:
-package 'RNetLogo' was built under R version 3.1.2 
+[1] "Java-Object{Nothing named NA has been defined at position 55 in }"
+starting worker pid=6676 on localhost:11872 at 11:18:53.689
+starting worker pid=17284 on localhost:11872 at 11:18:53.880
+starting worker pid=7932 on localhost:11872 at 11:18:54.072
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 9"
+[1] "starting job 22"
+[1] "starting job 23"
+[1] "Java-Object{org.nlogo.nvm.ArgumentTypeException: ASK expected input to be an agent or agentset but got NOBODY instead.}"
+[1] "starting job 24"
+[1] "Java-Object{org.nlogo.nvm.ArgumentTypeException: ASK expected input to be an agent or agentset but got NOBODY instead.}"
+[1] "starting job 33"
+[1] "Java-Object{org.nlogo.nvm.EngineException: List is empty.}"
+[1] "Java-Object{org.nlogo.nvm.EngineException: List is empty.}"
 Error in unserialize(node$con) : error reading from connection
 Calls: <Anonymous> ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
-In addition: Warning message:
-package 'RNetLogo' was built under R version 3.1.2 
 Execution halted
-starting worker pid=11168 on localhost:11393 at 15:03:22.788
-starting worker pid=6368 on localhost:11393 at 15:03:23.057
+starting worker pid=15840 on localhost:11657 at 11:27:49.302
+starting worker pid=196 on localhost:11657 at 11:27:49.489
+starting worker pid=17716 on localhost:11657 at 11:27:49.675
 Loading required package: rJava
 Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 9"
+[1] "starting job 22"
+[1] "starting job 23"
+[1] "Java-Object{org.nlogo.nvm.EngineException: List is empty.}"
+[1] "starting job 24"
+[1] "starting job 33"
+[1] "starting job 35"
+starting worker pid=18348 on localhost:11498 at 13:00:50.495
+starting worker pid=14408 on localhost:11498 at 13:00:50.684
+starting worker pid=17340 on localhost:11498 at 13:00:50.872
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 9"
+[1] "starting job 27"
+[1] "starting job 28"
+starting worker pid=17960 on localhost:11058 at 13:04:49.564
+starting worker pid=4956 on localhost:11058 at 13:04:49.754
+starting worker pid=17824 on localhost:11058 at 13:04:49.939
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 9"
+[1] "starting job 27"
+[1] "starting job 28"
+[1] "starting job 29"
+[1] "starting job 30"
+[1] "starting job 41"
+starting worker pid=5620 on localhost:11802 at 13:28:32.530
+starting worker pid=18412 on localhost:11802 at 13:28:32.723
+starting worker pid=16712 on localhost:11802 at 13:28:32.909
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 42"
+[1] "starting job 45"
+[1] "starting job 46"
+[1] "starting job 47"
+[1] "starting job 48"
+starting worker pid=9776 on localhost:11802 at 14:02:21.517
+starting worker pid=19060 on localhost:11802 at 14:02:21.707
+starting worker pid=17228 on localhost:11802 at 14:02:21.891
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 51"
+[1] "starting job 52"
+[1] "starting job 53"
+starting worker pid=9376 on localhost:11692 at 14:03:05.022
+starting worker pid=18476 on localhost:11692 at 14:03:05.207
+starting worker pid=11684 on localhost:11692 at 14:03:05.417
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 51"
+[1] "starting job 52"
+[1] "starting job 53"
+[1] "starting job 54"
+[1] "starting job 55"
+[1] "starting job 56"
+[1] "starting job 57"
+[1] "starting job 58"
+[1] "starting job 59"
+starting worker pid=17456 on localhost:11815 at 14:54:38.697
+starting worker pid=19068 on localhost:11815 at 14:54:38.892
+starting worker pid=18904 on localhost:11815 at 14:54:39.091
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 60"
+[1] "starting job 61"
+[1] "starting job 62"
+[1] "starting job 63"
+[1] "starting job 64"
+[1] "Java-Object{org.nlogo.nvm.EngineException: List is empty.}"
+[1] "starting job 65"
+[1] "starting job 66"
+[1] "starting job 67"
+[1] "starting job 68"
+starting worker pid=19132 on localhost:11498 at 15:48:03.481
+starting worker pid=16196 on localhost:11498 at 15:48:03.673
+starting worker pid=18984 on localhost:11498 at 15:48:03.867
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 69"
+ "starting job 70"
+[1] "starting job 71"
+[1] "Java-Object{org.nlogo.nvm.EngineException: List is empty.}"
+[1] "starting job 72"
+[1] "starting job 73"
+[1] "starting job 74"
+starting worker pid=19772 on localhost:11659 at 16:28:51.748
+starting worker pid=18516 on localhost:11659 at 16:28:51.941
+starting worker pid=19580 on localhost:11659 at 16:28:52.132
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 75"
+[1] "starting job 76"
+[1] "starting job 77"
+[1] "starting job 78"
+[1] "starting job 79"
+[1] "starting job 80"
+[1] "starting job 81"
+[1] "starting job 82"
+[1] "starting job 83"
+starting worker pid=5964 on localhost:11541 at 17:53:16.444
+starting worker pid=8392 on localhost:11541 at 17:53:16.642
+starting worker pid=1884 on localhost:11541 at 17:53:16.837
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 84" "starting job 85"
+ "starting job 86"
+[1] "starting job 87"
+[1] "starting job 88"
+[1] "starting job 89"
+[1] "starting job 90"
+[1] "starting job 91"
+[1] "starting job 92"
+starting worker pid=8864 on localhost:11972 at 19:05:25.641
+starting worker pid=8916 on localhost:11972 at 19:05:25.836
+starting worker pid=9432 on localhost:11972 at 19:05:26.032
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 93"
+[1] "starting job 94"
+[1] "starting job 95"
+[1] "starting job 96"
+[1] "starting job 97"
+[1] "starting job 98"
+[1] "starting job 99"
+[1] "starting job 100"
+starting worker pid=3892 on localhost:11810 at 09:31:05.267
+starting worker pid=8228 on localhost:11810 at 09:31:05.460
+starting worker pid=5956 on localhost:11810 at 09:31:05.648
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
 Loading required package: igraph
 Loading required package: igraph
 [1] "starting job 1"
 [1] "starting job 2"
 [1] "starting job 3"
-[1] "Java-Object{org.nlogo.nvm.ArgumentTypeException: ASK expected input to be an agent or agentset but got NOBODY instead.}"
 [1] "starting job 4"
 [1] "starting job 5"
+[1] "starting job 6"
+[1] "starting job 7"
+[1] "starting job 8"
+[1] "starting job 9"
+[1] "Java-Object{org.nlogo.nvm.ArgumentTypeException: ASK expected input to be an agent or agentset but got NOBODY instead.}"
+starting worker pid=6788 on localhost:11408 at 09:46:12.174
+starting worker pid=6464 on localhost:11408 at 09:46:12.368
+starting worker pid=3444 on localhost:11408 at 09:46:12.554
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 1"
+[1] "starting job 2"
+[1] "starting job 3"
+[1] "starting job 4"
+[1] "starting job 5"
+[1] "starting job 6"
+[1] "starting job 7"
+[1] "starting job 8"
+[1] "starting job 9"
+starting worker pid=14216 on localhost:11626 at 10:32:17.568
+starting worker pid=6292 on localhost:11626 at 10:32:17.789
+starting worker pid=6312 on localhost:11626 at 10:32:18.008
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1][1]tarting job 10"
+ "starting job 11"
+[1] "starting job 12"
+[1] "starting job 13"
+[1] "starting job 14"
+[1] "starting job 15"
+[1] "starting job 16"
+[1] "starting job 17"
+[1] "starting job 18"
+starting worker pid=14208 on localhost:11152 at 12:29:55.226
+starting worker pid=8768 on localhost:11152 at 12:29:55.417
+starting worker pid=14712 on localhost:11152 at 12:29:55.605
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 19"
+[1] "starting job 20"
+[1] "starting job 21"
+[1] "starting job 22"
+[1] "starting job 23"
+[1] "Java-Object{org.nlogo.nvm.EngineException: List is empty.}"
+[1] "starting job 24"
+[1] "starting job 25"
+[1] "starting job 26"
+[1] "starting job 27"
+starting worker pid=9040 on localhost:11615 at 13:32:14.168
+starting worker pid=6476 on localhost:11615 at 13:32:14.357
+starting worker pid=6548 on localhost:11615 at 13:32:14.545
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 28"
+[1] "starting job 29"
+[1] "starting job 30"
+[1] "starting job 31"
+[1] "starting job 32"

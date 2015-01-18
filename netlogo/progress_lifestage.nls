@@ -86,7 +86,7 @@ to-report reproduce
   ;; first, check if two oldest members are < 40
   ;; ASSUMED: List of people is always sorted by age DESC
   if length peopleList >= 2 AND length peopleList <= 5 [
-    if item ageAcc (item 0 peopleList) < 42 AND item ageAcc (item 1 peopleList) < 42 [
+    if item ageAcc (item 0 peopleList) < 42 AND item ageAcc (item 0 peopleList) > 23 AND item ageAcc (item 1 peopleList) < 42 AND item ageAcc (item 1 peopleList) > 23 [
       let overPopulationModifier 2 * ((noOfHouseholds / count turtles) - 1)
       if random-float 7.0 <= 1 + overPopulationModifier [
         let child generate-member 0 1 "random" 

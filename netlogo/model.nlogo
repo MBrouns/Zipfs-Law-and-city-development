@@ -22,14 +22,14 @@ globals [
   seed
 ]
 
-extensions [table profiler]
+;;extensions [profiler]
 __includes["model_setup.nls" "utils.nls" "progress_lifestage.nls" "move_cities.nls"]
 
 
 to go
-  if enableProfiler[
-    profiler:start         ;; start profiling
-  ]
+  ;;if enableProfiler[
+   ;; profiler:start         ;; start profiling
+  ;;]
   
   tick
   if ticks >= NumberOfYears [ stop ] 
@@ -89,7 +89,7 @@ to go
     
   ]
   
-  print noOfPeopleMoving   
+  ;;print noOfPeopleMoving   
 end
 
 
@@ -97,9 +97,9 @@ end
 
 to print-profiler
   
-  profiler:stop          ;; stop profiling
-  print profiler:report  ;; view the results
-  profiler:reset  
+  ;;profiler:stop          ;; stop profiling
+ ;; print profiler:report  ;; view the results
+ ;; profiler:reset  
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
@@ -202,7 +202,7 @@ BUTTON
 92
 NIL
 Go
-T
+NIL
 1
 T
 OBSERVER
@@ -304,7 +304,7 @@ maxDistBetweenCities
 maxDistBetweenCities
 0
 500
-330
+193.522934126109
 10
 1
 NIL
@@ -319,7 +319,7 @@ minDistBetweenCities
 minDistBetweenCities
 0
 500
-260
+183.522934126109
 10
 1
 NIL
@@ -375,7 +375,7 @@ rtm_ResistancePerChild
 rtm_ResistancePerChild
 0
 0.1
-0.02
+0.0282972635948099
 0.01
 1
 NIL
@@ -390,7 +390,7 @@ rtm_TippingPointX
 rtm_TippingPointX
 5
 15
-7.50342124917855
+5.99485124875791
 1
 1
 NIL
@@ -405,7 +405,7 @@ rtm_TippingPointY
 rtm_TippingPointY
 0.25
 0.75
-0.292381907696836
+0.505012557320297
 0.05
 1
 NIL
@@ -420,7 +420,7 @@ rtm_PlateauPointX
 rtm_PlateauPointX
 15
 25
-22.5258136431997
+20.7059025432449
 1
 1
 NIL
@@ -435,7 +435,7 @@ rtm_PlateauPointY
 rtm_PlateauPointY
 0.5
 1.0
-0.538906343475295
+0.825441396257374
 0.05
 1
 NIL
@@ -450,7 +450,7 @@ rtm_AgeModifier
 rtm_AgeModifier
 0
 0.3
-0.0498634683418398
+0.129910910319583
 0.01
 1
 NIL
@@ -475,7 +475,7 @@ MinimalMovingDistance
 MinimalMovingDistance
 0
 200
-169.298018676539
+161.95279705096
 10
 1
 NIL
@@ -490,7 +490,7 @@ MaximumMovingDistance
 MaximumMovingDistance
 200
 400
-356.658478376145
+264.153499947861
 10
 1
 NIL
@@ -515,7 +515,7 @@ MinDistCityAttractiveness
 MinDistCityAttractiveness
 0
 0.3
-0.0863143348367885
+0.187179646352306
 0.05
 1
 NIL
@@ -530,7 +530,7 @@ MaxDistCityAttractiveness
 MaxDistCityAttractiveness
 0
 0.3
-0.170948919036891
+0.295482523657847
 0.05
 1
 NIL
@@ -555,7 +555,7 @@ Job1Attractiveness
 Job1Attractiveness
 0.4
 0.6
-0.497929239940519
+0.509911720601842
 0.05
 1
 NIL
@@ -570,7 +570,7 @@ Job2Attractiveness
 Job2Attractiveness
 0.4
 0.6
-0.437986470044901
+0.439276932257228
 0.05
 1
 NIL
@@ -585,7 +585,7 @@ Job3Attractiveness
 Job3Attractiveness
 0.4
 0.6
-0.409926472666363
+0.421771879107691
 0.05
 1
 NIL
@@ -600,7 +600,7 @@ Job4Attractiveness
 Job4Attractiveness
 0.4
 0.6
-0.409406347557281
+0.528802905481309
 0.05
 1
 NIL
@@ -615,7 +615,7 @@ Job5Attractiveness
 Job5Attractiveness
 0.4
 0.6
-0.484448070374007
+0.582251986434683
 0.05
 1
 NIL
@@ -630,7 +630,7 @@ Job6Attractiveness
 Job6Attractiveness
 0.4
 0.6
-0.597432849400987
+0.469115322229452
 0.05
 1
 NIL
@@ -645,7 +645,7 @@ Job7Attractiveness
 Job7Attractiveness
 0.4
 0.6
-0.431510922235126
+0.56744665890839
 0.05
 1
 NIL
@@ -660,7 +660,7 @@ job1_TippingPointY
 job1_TippingPointY
 0.4
 0.6
-0.6
+0.553890236800537
 0.1
 1
 NIL
@@ -710,7 +710,7 @@ job3_TippingPointX
 job3_TippingPointX
 0.2
 0.4
-0.235207910680523
+0.201556757852435
 0.05
 1
 NIL
@@ -725,7 +725,7 @@ job3_TippingPointY
 job3_TippingPointY
 0.4
 0.6
-0.5633684608154
+0.444698910865001
 0.05
 1
 NIL
@@ -750,7 +750,7 @@ job7_Value
 job7_Value
 0.4
 0.6
-0.5
+0.466481892382726
 0.05
 1
 NIL
@@ -765,7 +765,7 @@ job4_Modifier
 job4_Modifier
 1
 5
-9.4386958796531
+11.008656821344
 0.5
 1
 NIL
@@ -780,7 +780,7 @@ job5_Modifier
 job5_Modifier
 1
 5
-10.0099306857834
+9.06178155934438
 0.5
 1
 NIL
@@ -795,7 +795,7 @@ job6_TippingPointX
 job6_TippingPointX
 0.2
 0.4
-0.213133235368878
+0.282391881632619
 0.05
 1
 NIL
@@ -810,7 +810,7 @@ job6_TippingPointY
 job6_TippingPointY
 0.4
 0.6
-0.458959396385277
+0.448355220047757
 0.05
 1
 NIL
@@ -873,7 +873,7 @@ INPUTBOX
 209
 147
 WarmUpTime
-1
+2
 1
 0
 Number
@@ -887,7 +887,7 @@ job4_TippingPointX
 job4_TippingPointX
 0.02
 0.06
-0.06
+0.0324578711660579
 0.01
 1
 NIL
@@ -902,7 +902,7 @@ job4_TippingPointY
 job4_TippingPointY
 0.4
 0.6
-0.556673856964335
+0.475481948671862
 0.05
 1
 NIL
@@ -917,7 +917,7 @@ job4_Max
 job4_Max
 0.5
 0.8
-0.641884189890698
+0.520908376111649
 0.1
 1
 NIL
@@ -932,7 +932,7 @@ job5_TippingPointX
 job5_TippingPointX
 0.02
 0.06
-0.0242974934416513
+0.026308701428771
 0.01
 1
 NIL
@@ -947,7 +947,7 @@ job5_TippingPointY
 job5_TippingPointY
 0.4
 0.6
-0.580208085151389
+0.553616353688762
 0.05
 1
 NIL
@@ -962,7 +962,7 @@ job5_Max
 job5_Max
 0.5
 0.8
-0.8
+0.52686424764758
 0.1
 1
 NIL

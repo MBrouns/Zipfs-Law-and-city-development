@@ -1,49 +1,78 @@
 # This code is used to perform a monte carlo analysis on the zipf's law Netlogo model
+# rf variable importance
+# 
+# only 20 most important variables shown (out of 34)
+# 
+# Overall
+# job4_Modifier              100.00
+# job5_Max                    94.80
+# MinDistCityAttractiveness   93.20
+# Job6Attractiveness          72.65
+# job7_Value                  69.87
+# job6_TippingPointX          67.61
+# rtm_TippingPointY           60.49
+# job2_TippingPointY          53.69
+# Job3Attractiveness          52.89
+# job5_TippingPointY          52.23
+# job4_TippingPointY          51.77
+# job3_TippingPointX          51.18
+# rtm_PlateauPointX           47.68
+# Job7Attractiveness          46.53
+# job4_TippingPointX          46.48
+# MinimalMovingDistance       45.00
+# MaxDistCityAttractiveness   41.12
+# rtm_PlateauPointY           39.18
+# job4_Max                    32.70
+# minDistBetweenCities        31.32
+
 
 # Analysis setup
-noOfReplications <- 50
-seed <- 20454
+noOfReplications <- 100
+runsToDo <- c(28:36)
+runName <- "EMA-narrow"
+seed <- 1338
 nl.path <- "C:/Program Files (x86)/NetLogo 5.1.0"
-model.path <- "E:/Documents/SkyDrive/TU Delft/Jaar 5/Zipfs-Law-and-city-development/netlogo/model.nlogo"
+model.path <- "C:/Users/Matthijs/Documents/GitHub/Zipfs-Law-and-city-development/netlogo/model.nlogo"
 model.runtime <- 80
 model.warmup <- 2
 variables <- NULL
 
 
-variables <- rbind(variables, c("rtm_TippingPointX", 5, 15))
+variables <- rbind(variables, c("job4_Modifier", 8, 12))
+variables <- rbind(variables, c("job5_Max", 0.5, 0.8))
+variables <- rbind(variables, c("MinDistCityAttractiveness", 0.05, 0.3))
+variables <- rbind(variables, c("Job6Attractiveness", 0.4, 0.6))
+variables <- rbind(variables, c("job7_Value", 0.4, 0.6))
+variables <- rbind(variables, c("job6_TippingPointX", 0.2, 0.4))
 variables <- rbind(variables, c("rtm_TippingPointY", 0.25, 0.75))
-variables <- rbind(variables, c("rtm_PlateauPointX", 15, 25))
-variables <- rbind(variables, c("rtm_PlateauPointY", 0.5, 1))
-variables <- rbind(variables, c("rtm_AgeModifier", 0.01, 0.3))
-variables <- rbind(variables, c("rtm_ResistancePerChild", 0, 0.1))
+variables <- rbind(variables, c("job2_TippingPointY", 0.4, 0.4))
+variables <- rbind(variables, c("Job3Attractiveness", 0.4, 0.6))
+variables <- rbind(variables, c("job5_TippingPointY", 0.4, 0.6))
 variables <- rbind(variables, c("minDistBetweenCities", 10, 250))
 variables <- rbind(variables, c("maxDistBetweenCities", 10, 500))
-variables <- rbind(variables, c("MinimalMovingDistance", 10, 200))
-variables <- rbind(variables, c("MaximumMovingDistance", 200, 400))
-variables <- rbind(variables, c("MinDistCityAttractiveness", 0.05, 0.3))
-variables <- rbind(variables, c("MaxDistCityAttractiveness", 0.05, 0.3))
-variables <- rbind(variables, c("Job1Attractiveness", 0.4, 0.6))
-variables <- rbind(variables, c("Job2Attractiveness", 0.4, 0.6))
-variables <- rbind(variables, c("Job3Attractiveness", 0.4, 0.6))
-variables <- rbind(variables, c("Job4Attractiveness", 0.4, 0.6))
-variables <- rbind(variables, c("Job5Attractiveness", 0.4, 0.6))
-variables <- rbind(variables, c("Job6Attractiveness", 0.4, 0.6))
-variables <- rbind(variables, c("Job7Attractiveness", 0.4, 0.6))
-variables <- rbind(variables, c("job1_TippingPointY", 0.4, 0.6))
-variables <- rbind(variables, c("job2_TippingPointY", 0.4, 0.4))
-variables <- rbind(variables, c("job3_TippingPointX", 0.2, 0.4))
-variables <- rbind(variables, c("job3_TippingPointY", 0.4, 0.6))
-variables <- rbind(variables, c("job4_TippingPointX", 0.02, 0.06))
-variables <- rbind(variables, c("job4_TippingPointY", 0.4, 0.6))
-variables <- rbind(variables, c("job4_Modifier", 8, 12))
-variables <- rbind(variables, c("job4_Max", 0.5, 0.8))
-variables <- rbind(variables, c("job5_TippingPointX", 0.02, 0.06))
-variables <- rbind(variables, c("job5_TippingPointY", 0.4, 0.6))
-variables <- rbind(variables, c("job5_Modifier", 8, 12))
-variables <- rbind(variables, c("job5_Max", 0.5, 0.8))
-variables <- rbind(variables, c("job6_TippingPointX", 0.2, 0.4))
-variables <- rbind(variables, c("job6_TippingPointY", 0.4, 0.6))
-variables <- rbind(variables, c("job7_Value", 0.4, 0.6))
+
+variables <- rbind(variables, c("rtm_TippingPointX", 10, 10))
+variables <- rbind(variables, c("rtm_PlateauPointX", 20, 20))
+variables <- rbind(variables, c("rtm_PlateauPointY", 0.75, 75))
+variables <- rbind(variables, c("rtm_AgeModifier", 0.16, 0.16))
+variables <- rbind(variables, c("rtm_ResistancePerChild", 0.05, 0.05))
+variables <- rbind(variables, c("MinimalMovingDistance", 100, 100))
+variables <- rbind(variables, c("MaximumMovingDistance", 250, 250))
+variables <- rbind(variables, c("MaxDistCityAttractiveness", 0.1, 0.1))
+variables <- rbind(variables, c("Job1Attractiveness", 0.5, 0.5))
+variables <- rbind(variables, c("Job2Attractiveness", 0.5, 0.5))
+variables <- rbind(variables, c("Job4Attractiveness", 0.5, 0.5))
+variables <- rbind(variables, c("Job5Attractiveness", 0.5, 0.5))
+variables <- rbind(variables, c("Job7Attractiveness", 0.5, 0.5))
+variables <- rbind(variables, c("job1_TippingPointY", 0.5, 0.5))
+variables <- rbind(variables, c("job3_TippingPointX", 0.3, 0.3))
+variables <- rbind(variables, c("job3_TippingPointY", 0.5, 0.5))
+variables <- rbind(variables, c("job4_TippingPointX", 0.04, 0.04))
+variables <- rbind(variables, c("job4_TippingPointY", 0.5, 0.5))
+variables <- rbind(variables, c("job4_Max", 0.6, 0.6))
+variables <- rbind(variables, c("job5_TippingPointX", 0.04, 0.04))
+variables <- rbind(variables, c("job5_Modifier", 10, 10))
+variables <- rbind(variables, c("job6_TippingPointY", 0.5, 0.5))
 
 
 variables <- rbind(variables, c("Seed", seed, seed))
@@ -60,15 +89,16 @@ if(!require(doParallel)) install.packages("doParallel")
 library(doParallel)
 if(!require(foreach)) install.packages("foreach")
 library(foreach)
+if(!require(rJava)) install.packages("rJava")
 library(rJava)
 
 
-set.seed(seed)
-cl<-makeCluster(2, outfile="clusterlog.txt") #change the 2 to your number of CPU cores
+cl<-makeCluster(3, outfile="clusterlog.txt") #change the 2 to your number of CPU cores
 registerDoParallel(cl)
 
+set.seed(seed)
 # Create a Latin Hypercube sample to populate model with
-lhs <- data.frame(randomLHS(noOfReplications, nrow(variables)))
+lhs <- data.frame(randomLHS(noOfReplications, nrow(variables), preserveDraw=T))
 names(lhs) <- variables[, 1]
 
 # Transform the LHS to the correct minimum and maximum values
@@ -88,7 +118,7 @@ results <- data.frame(results)
 
 start.time <- Sys.time()
 
-results <- foreach(i=1:noOfReplications, .errorhandling="remove", .combine='rbind', .packages=c("RNetLogo","rJava")) %dopar% {
+results <- foreach(i=runsToDo, .errorhandling="remove", .combine='rbind', .packages=c("RNetLogo","rJava")) %dopar% {
     tryCatch({
         options(java.parameters=c("-XX:MaxPermSize=512m","-Xmx4096m"))
         print(paste("starting job", i, sep=" "))
@@ -130,7 +160,7 @@ results <- foreach(i=1:noOfReplications, .errorhandling="remove", .combine='rbin
   
 }
 
-write.table(results, file=paste("results-",format(Sys.time(), "%b-%d-%H%M%S-%Y"),".csv", sep=""))
+write.table(results, file=paste(runName, "-results",".csv", sep=""), append=TRUE, sep=", ", col.names=FALSE, row.names=FALSE)
 NLQuit(all=TRUE)
 stopCluster(cl)
 end.time <- Sys.time()

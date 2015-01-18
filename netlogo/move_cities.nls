@@ -209,7 +209,7 @@ to move-to-city [$cityIdentifier]
   ]
   set noOfMovesCounter noOfMovesCounter + 1
   if noOfMovesCounter mod updateCityAttractivenessFreq  = 0 [
-    print "recomputing cityAttractiveness"
+    ;;print "recomputing cityAttractiveness"
     determine-city-attractiveness-from-jobs
   ]
 end
