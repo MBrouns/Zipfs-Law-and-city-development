@@ -23,7 +23,7 @@ globals [
 ]
 
 ;;extensions [profiler]
-__includes["model_setup.nls" "utils.nls" "progress_lifestage.nls" "move_cities.nls"]
+__includes["model_setup.nls" "utils.nls" "progress_lifestage.nls" "move_cities.nls" "model_test.nls"]
 
 
 to go
@@ -375,7 +375,7 @@ rtm_ResistancePerChild
 rtm_ResistancePerChild
 0
 0.1
-0.0282972635948099
+0.05
 0.01
 1
 NIL
@@ -390,7 +390,7 @@ rtm_TippingPointX
 rtm_TippingPointX
 5
 15
-5.99485124875791
+10
 1
 1
 NIL
@@ -405,7 +405,7 @@ rtm_TippingPointY
 rtm_TippingPointY
 0.25
 0.75
-0.505012557320297
+0.5
 0.05
 1
 NIL
@@ -420,7 +420,7 @@ rtm_PlateauPointX
 rtm_PlateauPointX
 15
 25
-20.7059025432449
+20
 1
 1
 NIL
@@ -435,7 +435,7 @@ rtm_PlateauPointY
 rtm_PlateauPointY
 0.5
 1.0
-0.825441396257374
+0.75
 0.05
 1
 NIL
@@ -450,7 +450,7 @@ rtm_AgeModifier
 rtm_AgeModifier
 0
 0.3
-0.129910910319583
+0.16
 0.01
 1
 NIL
@@ -967,6 +967,23 @@ job5_Max
 1
 NIL
 HORIZONTAL
+
+BUTTON
+673
+577
+908
+610
+NIL
+test-household-progression 100000
+NIL
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+1
 
 @#$#@#$#@
 ## WHAT IS IT?
