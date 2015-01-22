@@ -140,7 +140,7 @@ to-report merge-household
         let targetPerson ""
         let targetLocation pcolor
         ifelse item sexAcc (item 0 peopleList) = "male" [ set targetSex "female" ][ set targetSex "male"]
-        let target one-of turtles with [pcolor = targetLocation AND length peopleList = 1 AND item sexAcc (item 0 peopleList)  = targetSex AND item ageAcc (item 0 peopleList) < 50]
+        let target one-of turtles with [pcolor = targetLocation AND length peopleList = 1 AND item sexAcc (item 0 peopleList) = targetSex AND item ageAcc (item 0 peopleList) < 50 AND item ageAcc (item 0 peopleList) > 23]
         if target != nobody[          
           Ask target[
             set targetPerson item 0 peopleList

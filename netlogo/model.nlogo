@@ -23,7 +23,7 @@ globals [
 ]
 
 
-;;extensions [profiler]
+extensions [profiler]
 __includes["model_setup.nls" "utils.nls" "progress_lifestage.nls" "move_cities.nls" "model_test.nls"]
 
 
@@ -93,8 +93,8 @@ to go
   
   print noOfPeopleMoving  
   
-  set noOfHouseholds noOfHouseholds * PopulationGrowth
-  
+  set noOfHouseholds max (list (round (count turtles * PopulationGrowth)) noOfHouseholds )
+   
    
 end
 
@@ -136,9 +136,9 @@ years
 30.0
 
 BUTTON
-218
+222
 19
-299
+303
 52
 NIL
 setup
@@ -158,7 +158,7 @@ INPUTBOX
 107
 80
 noOfCities
-7
+10
 1
 0
 Number
@@ -169,7 +169,7 @@ INPUTBOX
 106
 146
 noOfHouseholds
-15000
+36355
 1
 0
 Number
@@ -310,7 +310,7 @@ maxDistBetweenCities
 maxDistBetweenCities
 0
 500
-270
+375
 10
 1
 NIL
@@ -325,7 +325,7 @@ minDistBetweenCities
 minDistBetweenCities
 0
 500
-40
+150
 10
 1
 NIL
@@ -338,7 +338,7 @@ SWITCH
 174
 enableProfiler
 enableProfiler
-1
+0
 1
 -1000
 
@@ -366,7 +366,7 @@ PercHouseholdsInitialInCity
 PercHouseholdsInitialInCity
 0
 1
-0.5
+0.6
 0.1
 1
 NIL
@@ -456,11 +456,7 @@ rtm_AgeModifier
 rtm_AgeModifier
 0
 0.3
-<<<<<<< HEAD
-0.08
-=======
 0.16
->>>>>>> 5c4502a986992100f28285b0db442bde4e4033e8
 0.01
 1
 NIL
@@ -760,7 +756,7 @@ job7_Value
 job7_Value
 0.4
 0.6
-0.5
+0.45
 0.05
 1
 NIL
@@ -897,7 +893,7 @@ job4_TippingPointX
 job4_TippingPointX
 0.02
 0.06
-0.04
+0.06
 0.01
 1
 NIL
@@ -957,7 +953,7 @@ job5_TippingPointY
 job5_TippingPointY
 0.4
 0.6
-0.45
+0.5
 0.05
 1
 NIL
@@ -978,33 +974,6 @@ job5_Max
 NIL
 HORIZONTAL
 
-<<<<<<< HEAD
-SLIDER
-6
-168
-204
-201
-PopulationGrowth
-PopulationGrowth
-1
-1.5
-1.01
-0.01
-1
-NIL
-HORIZONTAL
-
-MONITOR
-306
-238
-389
-283
-NIL
-count turtles
-17
-1
-11
-=======
 BUTTON
 673
 577
@@ -1021,7 +990,32 @@ NIL
 NIL
 NIL
 1
->>>>>>> 5c4502a986992100f28285b0db442bde4e4033e8
+
+SLIDER
+6
+167
+202
+200
+populationGrowth
+populationGrowth
+1
+1.01
+1.008
+0.001
+1
+NIL
+HORIZONTAL
+
+MONITOR
+264
+204
+347
+249
+NIL
+count turtles
+17
+1
+11
 
 @#$#@#$#@
 ## WHAT IS IT?

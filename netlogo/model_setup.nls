@@ -227,7 +227,7 @@ end
 to init-globals
   set ageAcc 0
   set sexAcc 1
-  set maxDistBetweenCities (max ( list maxDistBetweenCities (minDistBetweenCities + 10)))
+  set maxDistBetweenCities (max ( list maxDistBetweenCities (minDistBetweenCities + MAX( ( list 100 (minDistBetweenCities * 1.5))))))
   set jobAcc 2
   let cityIterator 0
   set jobAttractivenessList []

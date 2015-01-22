@@ -1,0 +1,79 @@
+;; Create a random household and test it's lifestage progression
+to test-household-progression[$noOfHouseholds]
+  clear-all
+  reset-ticks
+  create-turtles $noOfHouseholds [
+    initialise-household
+  ]
+  while [ticks <= 200] [ 
+    tick
+    
+    
+    ask turtles [
+      progress-lifestage
+      
+      if ticks > 100[
+        if length peopleList = 1 [
+          if NOT ((item ageAcc item 0 peopleList > 16 AND item ageAcc item 0 peopleList < 30 ) OR item ageAcc item 0 peopleList > 53) [
+            print ( word "turtle" who "is in valid: single member household outside of correct range" peopleList)
+          ]
+        ]
+        
+        
+        
+        if length peopleList = 2 [
+          if NOT (item ageAcc item 0 peopleList > 23 AND item ageAcc item 1 peopleList > 23 ) [
+            print ( word "turtle" who "is in valid: Two member household outside of correct range" peopleList)
+          ]
+        ]
+        
+        
+        if length peopleList = 3 [
+          if NOT (item ageAcc item 0 peopleList > 23 AND item ageAcc item 1 peopleList > 23 AND item ageAcc item 2 peopleList < 23 ) [
+            print ( word "turtle" who "is in valid: household with childrenoutside of correct range" peopleList)
+          ]
+        ]
+        
+        if length peopleList = 4 [
+          if NOT (item ageAcc item 0 peopleList > 23 AND item ageAcc item 1 peopleList > 23 AND item ageAcc item 2 peopleList < 23  AND item ageAcc item 3 peopleList < 23) [
+            print ( word "turtle" who "is in valid: household with childrenoutside of correct range" peopleList)
+          ]
+        ]
+        
+        if length peopleList = 5 [
+          if NOT (item ageAcc item 0 peopleList > 23 AND item ageAcc item 1 peopleList > 23 AND item ageAcc item 2 peopleList < 23 AND item ageAcc item 3 peopleList < 23 AND item ageAcc item 4 peopleList < 23 ) [
+            print ( word "turtle" who "is in valid: household with childrenoutside of correct range" peopleList)
+          ]
+        ]
+      ]
+      
+    ] 
+  ]
+  
+  
+  
+  
+end
+
+to test-resistance-to-move
+  clear-all
+  reset-ticks
+  create-turtles 1 [
+    let member1 generate-member 14 15 "male"
+    let member2 generate-member 14 15 "female"
+    set peopleList (list member1 member2)
+    set timeSinceMoving 0
+    
+    let i 0
+    while [i < 20][
+      
+      print peopleList
+      print word "resistance " determine-resistance-to-move
+      progress-lifestage
+      set i i + 1
+    ] 
+  ]
+  
+  
+  
+end
