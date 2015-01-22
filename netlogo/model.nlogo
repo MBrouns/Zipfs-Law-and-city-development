@@ -22,8 +22,10 @@ globals [
   seed
 ]
 
-extensions [table profiler]
-__includes["model_setup.nls" "utils.nls" "progress_lifestage.nls" "move_cities.nls"]
+
+;;extensions [profiler]
+__includes["model_setup.nls" "utils.nls" "progress_lifestage.nls" "move_cities.nls" "model_test.nls"]
+
 
 
 to go
@@ -454,7 +456,11 @@ rtm_AgeModifier
 rtm_AgeModifier
 0
 0.3
+<<<<<<< HEAD
 0.08
+=======
+0.16
+>>>>>>> 5c4502a986992100f28285b0db442bde4e4033e8
 0.01
 1
 NIL
@@ -972,6 +978,7 @@ job5_Max
 NIL
 HORIZONTAL
 
+<<<<<<< HEAD
 SLIDER
 6
 168
@@ -997,6 +1004,24 @@ count turtles
 17
 1
 11
+=======
+BUTTON
+673
+577
+908
+610
+NIL
+test-household-progression 100000
+NIL
+1
+T
+OBSERVER
+NIL
+NIL
+NIL
+NIL
+1
+>>>>>>> 5c4502a986992100f28285b0db442bde4e4033e8
 
 @#$#@#$#@
 ## WHAT IS IT?
