@@ -22,14 +22,14 @@ globals [
   seed
 ]
 
-;;extensions [profiler]
+extensions [table profiler]
 __includes["model_setup.nls" "utils.nls" "progress_lifestage.nls" "move_cities.nls"]
 
 
 to go
-  ;;if enableProfiler[
-   ;; profiler:start         ;; start profiling
-  ;;]
+  if enableProfiler[
+    profiler:start         ;; start profiling
+  ]
   
   tick
   if ticks >= NumberOfYears [ stop ] 
@@ -89,7 +89,11 @@ to go
     
   ]
   
-  ;;print noOfPeopleMoving   
+  print noOfPeopleMoving  
+  
+  set noOfHouseholds noOfHouseholds * PopulationGrowth
+  
+   
 end
 
 
@@ -97,9 +101,9 @@ end
 
 to print-profiler
   
-  ;;profiler:stop          ;; stop profiling
- ;; print profiler:report  ;; view the results
- ;; profiler:reset  
+  profiler:stop          ;; stop profiling
+  print profiler:report  ;; view the results
+  profiler:reset  
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
@@ -123,8 +127,8 @@ GRAPHICS-WINDOW
 500
 -500
 500
-1
-1
+0
+0
 1
 years
 30.0
@@ -152,7 +156,7 @@ INPUTBOX
 107
 80
 noOfCities
-5
+7
 1
 0
 Number
@@ -179,10 +183,10 @@ NIL
 0
 
 PLOT
-3
-636
-855
-1145
+8
+600
+908
+1109
 Households
 Time
 Households
@@ -202,7 +206,7 @@ BUTTON
 92
 NIL
 Go
-NIL
+T
 1
 T
 OBSERVER
@@ -230,10 +234,10 @@ NIL
 1
 
 MONITOR
-647
-732
-839
-777
+978
+704
+1170
+749
 NIL
 item 1 jobAttractivenessList
 17
@@ -241,10 +245,10 @@ item 1 jobAttractivenessList
 11
 
 MONITOR
-647
-790
-839
-835
+978
+762
+1170
+807
 NIL
 item 2 jobAttractivenessList
 17
@@ -252,10 +256,10 @@ item 2 jobAttractivenessList
 11
 
 MONITOR
-647
-848
-837
-893
+978
+820
+1168
+865
 NIL
 item 3 jobAttractivenessList
 17
@@ -263,10 +267,10 @@ item 3 jobAttractivenessList
 11
 
 MONITOR
-647
-905
-839
-950
+978
+877
+1170
+922
 NIL
 item 4 jobAttractivenessList
 17
@@ -274,10 +278,10 @@ item 4 jobAttractivenessList
 11
 
 MONITOR
-647
-958
-839
-1003
+978
+930
+1170
+975
 NIL
 item 5 jobAttractivenessList
 17
@@ -285,10 +289,10 @@ item 5 jobAttractivenessList
 11
 
 MONITOR
-645
-676
-839
-721
+976
+648
+1170
+693
 NIL
 item 0 jobAttractivenessList
 17
@@ -304,7 +308,7 @@ maxDistBetweenCities
 maxDistBetweenCities
 0
 500
-193.522934126109
+270
 10
 1
 NIL
@@ -319,7 +323,7 @@ minDistBetweenCities
 minDistBetweenCities
 0
 500
-183.522934126109
+40
 10
 1
 NIL
@@ -332,7 +336,7 @@ SWITCH
 174
 enableProfiler
 enableProfiler
-0
+1
 1
 -1000
 
@@ -360,7 +364,7 @@ PercHouseholdsInitialInCity
 PercHouseholdsInitialInCity
 0
 1
-0.4
+0.5
 0.1
 1
 NIL
@@ -375,7 +379,7 @@ rtm_ResistancePerChild
 rtm_ResistancePerChild
 0
 0.1
-0.0282972635948099
+0.05
 0.01
 1
 NIL
@@ -390,7 +394,7 @@ rtm_TippingPointX
 rtm_TippingPointX
 5
 15
-5.99485124875791
+10
 1
 1
 NIL
@@ -405,7 +409,7 @@ rtm_TippingPointY
 rtm_TippingPointY
 0.25
 0.75
-0.505012557320297
+0.5
 0.05
 1
 NIL
@@ -420,7 +424,7 @@ rtm_PlateauPointX
 rtm_PlateauPointX
 15
 25
-20.7059025432449
+20
 1
 1
 NIL
@@ -435,7 +439,7 @@ rtm_PlateauPointY
 rtm_PlateauPointY
 0.5
 1.0
-0.825441396257374
+0.75
 0.05
 1
 NIL
@@ -450,7 +454,7 @@ rtm_AgeModifier
 rtm_AgeModifier
 0
 0.3
-0.129910910319583
+0.08
 0.01
 1
 NIL
@@ -475,7 +479,7 @@ MinimalMovingDistance
 MinimalMovingDistance
 0
 200
-161.95279705096
+150
 10
 1
 NIL
@@ -490,7 +494,7 @@ MaximumMovingDistance
 MaximumMovingDistance
 200
 400
-264.153499947861
+250
 10
 1
 NIL
@@ -515,7 +519,7 @@ MinDistCityAttractiveness
 MinDistCityAttractiveness
 0
 0.3
-0.187179646352306
+0.1
 0.05
 1
 NIL
@@ -530,7 +534,7 @@ MaxDistCityAttractiveness
 MaxDistCityAttractiveness
 0
 0.3
-0.295482523657847
+0
 0.05
 1
 NIL
@@ -555,7 +559,7 @@ Job1Attractiveness
 Job1Attractiveness
 0.4
 0.6
-0.509911720601842
+0.55
 0.05
 1
 NIL
@@ -570,7 +574,7 @@ Job2Attractiveness
 Job2Attractiveness
 0.4
 0.6
-0.439276932257228
+0.6
 0.05
 1
 NIL
@@ -585,7 +589,7 @@ Job3Attractiveness
 Job3Attractiveness
 0.4
 0.6
-0.421771879107691
+0.5
 0.05
 1
 NIL
@@ -600,7 +604,7 @@ Job4Attractiveness
 Job4Attractiveness
 0.4
 0.6
-0.528802905481309
+0.45
 0.05
 1
 NIL
@@ -615,7 +619,7 @@ Job5Attractiveness
 Job5Attractiveness
 0.4
 0.6
-0.582251986434683
+0.45
 0.05
 1
 NIL
@@ -630,7 +634,7 @@ Job6Attractiveness
 Job6Attractiveness
 0.4
 0.6
-0.469115322229452
+0.5
 0.05
 1
 NIL
@@ -645,7 +649,7 @@ Job7Attractiveness
 Job7Attractiveness
 0.4
 0.6
-0.56744665890839
+0.5
 0.05
 1
 NIL
@@ -660,7 +664,7 @@ job1_TippingPointY
 job1_TippingPointY
 0.4
 0.6
-0.553890236800537
+0.6
 0.1
 1
 NIL
@@ -685,7 +689,7 @@ job2_TippingPointY
 job2_TippingPointY
 0.4
 0.6
-0.4
+0.6
 0.1
 1
 NIL
@@ -710,7 +714,7 @@ job3_TippingPointX
 job3_TippingPointX
 0.2
 0.4
-0.201556757852435
+0.3
 0.05
 1
 NIL
@@ -725,7 +729,7 @@ job3_TippingPointY
 job3_TippingPointY
 0.4
 0.6
-0.444698910865001
+0.55
 0.05
 1
 NIL
@@ -750,7 +754,7 @@ job7_Value
 job7_Value
 0.4
 0.6
-0.466481892382726
+0.5
 0.05
 1
 NIL
@@ -763,9 +767,9 @@ SLIDER
 431
 job4_Modifier
 job4_Modifier
-1
-5
-11.008656821344
+8
+12
+10
 0.5
 1
 NIL
@@ -778,9 +782,9 @@ SLIDER
 432
 job5_Modifier
 job5_Modifier
-1
-5
-9.06178155934438
+8
+12
+10
 0.5
 1
 NIL
@@ -795,7 +799,7 @@ job6_TippingPointX
 job6_TippingPointX
 0.2
 0.4
-0.282391881632619
+0.3
 0.05
 1
 NIL
@@ -810,7 +814,7 @@ job6_TippingPointY
 job6_TippingPointY
 0.4
 0.6
-0.448355220047757
+0.5
 0.05
 1
 NIL
@@ -887,7 +891,7 @@ job4_TippingPointX
 job4_TippingPointX
 0.02
 0.06
-0.0324578711660579
+0.04
 0.01
 1
 NIL
@@ -902,7 +906,7 @@ job4_TippingPointY
 job4_TippingPointY
 0.4
 0.6
-0.475481948671862
+0.5
 0.05
 1
 NIL
@@ -917,7 +921,7 @@ job4_Max
 job4_Max
 0.5
 0.8
-0.520908376111649
+0.6
 0.1
 1
 NIL
@@ -932,7 +936,7 @@ job5_TippingPointX
 job5_TippingPointX
 0.02
 0.06
-0.026308701428771
+0.04
 0.01
 1
 NIL
@@ -947,7 +951,7 @@ job5_TippingPointY
 job5_TippingPointY
 0.4
 0.6
-0.553616353688762
+0.45
 0.05
 1
 NIL
@@ -962,11 +966,37 @@ job5_Max
 job5_Max
 0.5
 0.8
-0.52686424764758
+0.5
 0.1
 1
 NIL
 HORIZONTAL
+
+SLIDER
+6
+168
+204
+201
+PopulationGrowth
+PopulationGrowth
+1
+1.5
+1.01
+0.01
+1
+NIL
+HORIZONTAL
+
+MONITOR
+306
+238
+389
+283
+NIL
+count turtles
+17
+1
+11
 
 @#$#@#$#@
 ## WHAT IS IT?
