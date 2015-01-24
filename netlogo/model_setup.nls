@@ -229,6 +229,8 @@ to init-globals
   set sexAcc 1
   set maxDistBetweenCities (max ( list maxDistBetweenCities (minDistBetweenCities + MAX( ( list 100 (minDistBetweenCities * 1.5))))))
   set jobAcc 2
+  set cacheCitySizes get-city-sizes
+  set cacheLargestCitySize max cacheCitySizes
   let cityIterator 0
   set jobAttractivenessList []
   while[cityIterator <= noOfCities] [

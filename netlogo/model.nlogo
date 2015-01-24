@@ -20,6 +20,8 @@ globals [
   cityDistanceList
   noOfMovesCounter ;; A counter to count how many people have moved per tick so we can update the city attractiveness every x moves
   seed
+  cacheLargestCitySize
+  cacheCitySizes
 ]
 
 
@@ -40,6 +42,8 @@ to go
   
   
   if ticks = WarmUpTime [
+    set cacheCitySizes get-city-sizes
+    set cacheLargestCitySize max cacheCitySizes
     ask turtles [
       ;; initialize households when moving starts after warmup period
       set timeSinceMoving random 5
@@ -50,21 +54,24 @@ to go
         set cityIterator cityIterator + 1
       ]
     ]
+    
   ]
   
   
   if ticks >= WarmUpTime[
     let cityIterator 1
-    set-current-plot-pen (word "Total households")
-    plot count turtles
-     set-current-plot-pen (word "Households in city")
-    plot count turtles with [ cityIdentifier > 0 ]
-    set-current-plot-pen (word "Households out city")
-    plot count turtles with [ cityIdentifier = 0 ]
-    while[cityIterator <= noOfCities] [
-      set-current-plot-pen (word "city" cityIterator)
-      plot count turtles with [pcolor = cityIterator * 10 + 5]
-      set cityIterator cityIterator + 1
+    if doPlot[
+      set-current-plot-pen (word "Total households")
+      plot count turtles
+      set-current-plot-pen (word "Households in city")
+      plot count turtles with [ cityIdentifier > 0 ]
+      set-current-plot-pen (word "Households out city")
+      plot count turtles with [ cityIdentifier = 0 ]
+      while[cityIterator <= noOfCities] [
+        set-current-plot-pen (word "city" cityIterator)
+        plot count turtles with [pcolor = cityIterator * 10 + 5]
+        set cityIterator cityIterator + 1
+      ]
     ]
     determine-city-attractiveness-from-jobs
   ]
@@ -94,8 +101,8 @@ to go
   print noOfPeopleMoving  
   
   set noOfHouseholds max (list (round (count turtles * PopulationGrowth)) noOfHouseholds )
-   
-   
+  
+  
 end
 
 
@@ -109,13 +116,13 @@ to print-profiler
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
-917
+961
 10
-1928
-1042
+1995
+1065
 500
 500
-0.4
+1.023
 1
 10
 1
@@ -169,7 +176,7 @@ INPUTBOX
 106
 146
 noOfHouseholds
-36355
+25117
 1
 0
 Number
@@ -221,7 +228,7 @@ NIL
 BUTTON
 218
 98
-319
+309
 135
 NIL
 print-profiler
@@ -236,10 +243,10 @@ NIL
 1
 
 MONITOR
-978
-704
-1170
-749
+21
+1180
+213
+1225
 NIL
 item 1 jobAttractivenessList
 17
@@ -247,10 +254,10 @@ item 1 jobAttractivenessList
 11
 
 MONITOR
-978
-762
-1170
-807
+21
+1238
+213
+1283
 NIL
 item 2 jobAttractivenessList
 17
@@ -258,10 +265,10 @@ item 2 jobAttractivenessList
 11
 
 MONITOR
-978
-820
-1168
-865
+21
+1296
+211
+1341
 NIL
 item 3 jobAttractivenessList
 17
@@ -269,10 +276,10 @@ item 3 jobAttractivenessList
 11
 
 MONITOR
-978
-877
-1170
-922
+21
+1353
+213
+1398
 NIL
 item 4 jobAttractivenessList
 17
@@ -280,10 +287,10 @@ item 4 jobAttractivenessList
 11
 
 MONITOR
-978
-930
-1170
-975
+21
+1406
+213
+1451
 NIL
 item 5 jobAttractivenessList
 17
@@ -291,10 +298,10 @@ item 5 jobAttractivenessList
 11
 
 MONITOR
-976
-648
-1170
-693
+19
+1124
+213
+1169
 NIL
 item 0 jobAttractivenessList
 17
@@ -302,30 +309,30 @@ item 0 jobAttractivenessList
 11
 
 SLIDER
-690
-89
-862
-122
+548
+93
+720
+126
 maxDistBetweenCities
 maxDistBetweenCities
 0
 500
-375
+470.433233284508
 10
 1
 NIL
 HORIZONTAL
 
 SLIDER
-690
-52
-864
-85
+548
+56
+722
+89
 minDistBetweenCities
 minDistBetweenCities
 0
 500
-150
+92.6419736068347
 10
 1
 NIL
@@ -334,7 +341,7 @@ HORIZONTAL
 SWITCH
 218
 141
-350
+308
 174
 enableProfiler
 enableProfiler
@@ -350,8 +357,8 @@ SLIDER
 updateCityAttractivenessFreq
 updateCityAttractivenessFreq
 0
-100
-100
+500
+500
 1
 1
 NIL
@@ -373,170 +380,170 @@ NIL
 HORIZONTAL
 
 SLIDER
-508
-244
-680
-277
+366
+248
+538
+281
 rtm_ResistancePerChild
 rtm_ResistancePerChild
 0
 0.1
-0.05
+0.0686885943236411
 0.01
 1
 NIL
 HORIZONTAL
 
 SLIDER
-507
-51
-679
-84
+365
+55
+537
+88
 rtm_TippingPointX
 rtm_TippingPointX
 5
 15
-10
+9.38387114462676
 1
 1
 NIL
 HORIZONTAL
 
 SLIDER
-507
-88
-679
-121
+365
+92
+537
+125
 rtm_TippingPointY
 rtm_TippingPointY
 0.25
 0.75
-0.5
+0.552959460723214
 0.05
 1
 NIL
 HORIZONTAL
 
 SLIDER
-507
-127
-679
-160
+365
+131
+537
+164
 rtm_PlateauPointX
 rtm_PlateauPointX
 15
 25
-20
+19.2614083826425
 1
 1
 NIL
 HORIZONTAL
 
 SLIDER
-507
-166
-679
-199
+365
+170
+537
+203
 rtm_PlateauPointY
 rtm_PlateauPointY
 0.5
 1.0
-0.75
+0.540397529376787
 0.05
 1
 NIL
 HORIZONTAL
 
 SLIDER
-507
-205
-679
-238
+365
+209
+537
+242
 rtm_AgeModifier
 rtm_AgeModifier
 0
 0.3
-0.16
+0.188762694803311
 0.01
 1
 NIL
 HORIZONTAL
 
 TEXTBOX
-508
-18
-679
-46
+366
+22
+537
+50
 Resistence to move graph based on time since moving
 11
 0.0
 1
 
 SLIDER
-690
-127
-865
-160
+548
+131
+723
+164
 MinimalMovingDistance
 MinimalMovingDistance
 0
 200
-150
+82.3436130171991
 10
 1
 NIL
 HORIZONTAL
 
 SLIDER
-690
-166
-865
-199
+548
+170
+723
+203
 MaximumMovingDistance
 MaximumMovingDistance
 200
 400
-250
+319.926543330541
 10
 1
 NIL
 HORIZONTAL
 
 TEXTBOX
-695
-17
-875
-45
+553
+21
+733
+49
 Moving Distance modifiers for City Attractiveness
 11
 0.0
 1
 
 SLIDER
-689
-205
-864
-238
+547
+209
+722
+242
 MinDistCityAttractiveness
 MinDistCityAttractiveness
 0
 0.3
-0.1
+0.0841453869786113
 0.05
 1
 NIL
 HORIZONTAL
 
 SLIDER
-689
-245
-863
-278
+547
+249
+721
+282
 MaxDistCityAttractiveness
 MaxDistCityAttractiveness
 0
 0.3
-0
+0.247854456214758
 0.05
 1
 NIL
@@ -561,7 +568,7 @@ Job1Attractiveness
 Job1Attractiveness
 0.4
 0.6
-0.55
+0.480278743920149
 0.05
 1
 NIL
@@ -576,7 +583,7 @@ Job2Attractiveness
 Job2Attractiveness
 0.4
 0.6
-0.6
+0.497223922626581
 0.05
 1
 NIL
@@ -591,7 +598,7 @@ Job3Attractiveness
 Job3Attractiveness
 0.4
 0.6
-0.5
+0.452635405582609
 0.05
 1
 NIL
@@ -606,7 +613,7 @@ Job4Attractiveness
 Job4Attractiveness
 0.4
 0.6
-0.45
+0.407835006115958
 0.05
 1
 NIL
@@ -621,7 +628,7 @@ Job5Attractiveness
 Job5Attractiveness
 0.4
 0.6
-0.45
+0.550397945300909
 0.05
 1
 NIL
@@ -636,7 +643,7 @@ Job6Attractiveness
 Job6Attractiveness
 0.4
 0.6
-0.5
+0.561570207277779
 0.05
 1
 NIL
@@ -651,7 +658,7 @@ Job7Attractiveness
 Job7Attractiveness
 0.4
 0.6
-0.5
+0.571517008700175
 0.05
 1
 NIL
@@ -666,7 +673,7 @@ job1_TippingPointY
 job1_TippingPointY
 0.4
 0.6
-0.6
+0.48127754925401
 0.1
 1
 NIL
@@ -691,7 +698,7 @@ job2_TippingPointY
 job2_TippingPointY
 0.4
 0.6
-0.6
+0.546615742271766
 0.1
 1
 NIL
@@ -716,7 +723,7 @@ job3_TippingPointX
 job3_TippingPointX
 0.2
 0.4
-0.3
+0.328366661125328
 0.05
 1
 NIL
@@ -731,7 +738,7 @@ job3_TippingPointY
 job3_TippingPointY
 0.4
 0.6
-0.55
+0.567650871662656
 0.05
 1
 NIL
@@ -748,115 +755,115 @@ Service Job attractiveness graph
 1
 
 SLIDER
-736
-439
-908
-472
+744
+515
+916
+548
 job7_Value
 job7_Value
 0.4
 0.6
-0.45
+0.536674499657936
 0.05
 1
 NIL
 HORIZONTAL
 
 SLIDER
-373
+381
+474
+553
+507
+job4_Modifier
+job4_Modifier
+8
+12
+0.235389931013342
+0.5
+1
+NIL
+HORIZONTAL
+
+SLIDER
+560
+475
+732
+508
+job5_Modifier
+job5_Modifier
+8
+12
+9.94379183651879
+0.5
+1
+NIL
+HORIZONTAL
+
+SLIDER
+743
 398
-545
+915
 431
-job4_Modifier
-job4_Modifier
-8
-12
-10
-0.5
-1
-NIL
-HORIZONTAL
-
-SLIDER
-552
-399
-724
-432
-job5_Modifier
-job5_Modifier
-8
-12
-10
-0.5
-1
-NIL
-HORIZONTAL
-
-SLIDER
-735
-322
-907
-355
 job6_TippingPointX
 job6_TippingPointX
 0.2
 0.4
-0.3
+0.393531752963085
 0.05
 1
 NIL
 HORIZONTAL
 
 SLIDER
-736
-362
-908
-395
+744
+438
+916
+471
 job6_TippingPointY
 job6_TippingPointY
 0.4
 0.6
-0.5
+0.408139292190317
 0.05
 1
 NIL
 HORIZONTAL
 
 TEXTBOX
-379
-300
-556
-328
+387
+376
+564
+404
 Finance Job attractiveness graph
 11
 0.0
 1
 
 TEXTBOX
-555
-301
-705
-319
+563
+377
+713
+395
 IT Job attractiveness graph
 11
 0.0
 1
 
 TEXTBOX
-737
-304
-914
-332
+745
+380
+922
+408
 Non-profit Job attractiveness graph
 11
 0.0
 1
 
 TEXTBOX
-738
-421
-888
-439
+746
+497
+896
+515
 Jobless attractiveness graph
 11
 0.0
@@ -885,100 +892,100 @@ WarmUpTime
 Number
 
 SLIDER
-373
-321
-545
-354
+381
+397
+553
+430
 job4_TippingPointX
 job4_TippingPointX
 0.02
 0.06
-0.06
+0.0682632444289979
 0.01
 1
 NIL
 HORIZONTAL
 
 SLIDER
-373
-359
-545
-392
+381
+435
+553
+468
 job4_TippingPointY
 job4_TippingPointY
 0.4
 0.6
-0.5
+0.462105801209575
 0.05
 1
 NIL
 HORIZONTAL
 
 SLIDER
-373
-439
-545
-472
+381
+515
+553
+548
 job4_Max
 job4_Max
 0.5
 0.8
-0.6
+0.526435892973328
 0.1
 1
 NIL
 HORIZONTAL
 
 SLIDER
-553
-321
-725
-354
+561
+397
+733
+430
 job5_TippingPointX
 job5_TippingPointX
 0.02
 0.06
-0.04
+0.0683097509952495
 0.01
 1
 NIL
 HORIZONTAL
 
 SLIDER
-552
-360
-724
-393
+560
+436
+732
+469
 job5_TippingPointY
 job5_TippingPointY
 0.4
 0.6
-0.5
+0.420691734967288
 0.05
 1
 NIL
 HORIZONTAL
 
 SLIDER
-552
-439
-724
-472
+560
+515
+732
+548
 job5_Max
 job5_Max
 0.5
 0.8
-0.5
+0.553196545101237
 0.1
 1
 NIL
 HORIZONTAL
 
 BUTTON
-673
-577
-908
-610
+222
+1130
+457
+1163
 NIL
 test-household-progression 100000
 NIL
@@ -1000,22 +1007,158 @@ populationGrowth
 populationGrowth
 1
 1.01
-1.008
+1.00449648262823
 0.001
 1
 NIL
 HORIZONTAL
 
 MONITOR
-264
-204
-347
-249
+395
+297
+478
+342
 NIL
 count turtles
 17
 1
 11
+
+SLIDER
+735
+60
+960
+93
+cityAttractivenessBySize_Weight
+cityAttractivenessBySize_Weight
+0
+1
+0.886312890904956
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+734
+134
+960
+167
+cityAttractivenessBySize_TippingPointX
+cityAttractivenessBySize_TippingPointX
+0.2
+0.8
+0.315655880871229
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+733
+172
+959
+205
+cityAttractivenessBySize_TippingPointY
+cityAttractivenessBySize_TippingPointY
+0.6
+0.8
+0.697428216199856
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+734
+97
+959
+130
+cityAttractivenessBySize_StartY
+cityAttractivenessBySize_StartY
+0.4
+0.6
+0.472824840437621
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+733
+215
+960
+248
+cityAttractivenessBySize_EndY
+cityAttractivenessBySize_EndY
+0.8
+1
+0.935680383917876
+0.1
+1
+NIL
+HORIZONTAL
+
+SLIDER
+734
+292
+957
+325
+borrowedUtilityMaxDistance
+borrowedUtilityMaxDistance
+0
+500
+203.675026863348
+10
+1
+NIL
+HORIZONTAL
+
+SLIDER
+734
+330
+955
+363
+borrowedUtilityWeight
+borrowedUtilityWeight
+0
+0.25
+0.214949447636318
+0.05
+1
+NIL
+HORIZONTAL
+
+TEXTBOX
+734
+23
+884
+51
+city attractiveness modifiers by city size
+11
+0.0
+1
+
+TEXTBOX
+742
+259
+951
+301
+borrowed city attractiveness modifier by city size from nearby cities
+11
+0.0
+1
+
+SWITCH
+220
+183
+323
+216
+doPlot
+doPlot
+1
+1
+-1000
 
 @#$#@#$#@
 ## WHAT IS IT?

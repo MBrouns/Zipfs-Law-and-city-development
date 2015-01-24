@@ -462,3 +462,1078 @@ Loading required package: igraph
 [1] "starting job 30"
 [1] "starting job 31"
 [1] "starting job 32"
+[1] "starting job 33"
+[1] "starting job 34"
+[1] "starting job 35"
+[1] "starting job 36"
+[1] "Java-Object{org.nlogo.nvm.EngineException: List is empty.}"
+starting worker pid=15916 on localhost:11388 at 14:51:06.219
+starting worker pid=16672 on localhost:11388 at 14:51:06.413
+starting worker pid=17100 on localhost:11388 at 14:51:06.607
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 37"
+[1] "starting job 38"
+[1] "starting job 39"
+[1] "starting job 40"
+[1] "Java-Object{There is already a procedure with that name at position 104 in C:\\Users\\Matthijs\\Documents\\GitHub\\Zipfs-Law-and-city-development\\netlogo\\model_test.nls}"
+[1] "starting job 41"
+[1] "Java-Object{There is already a procedure with that name at position 104 in C:\\Users\\Matthijs\\Documents\\GitHub\\Zipfs-Law-and-city-development\\netlogo\\model_test.nls}"
+[1] "starting job 42"
+[1] "Java-Object{There is already a procedure with that name at position 104 in C:\\Users\\Matthijs\\Documents\\GitHub\\Zipfs-Law-and-city-development\\netlogo\\model_test.nls}"
+[1] "starting job 43"
+[1] "Java-Object{There is already a procedure with that name at position 104 in C:\\Users\\Matthijs\\Documents\\GitHub\\Zipfs-Law-and-city-development\\netlogo\\model_test.nls}"
+[1] "starting job 44"
+[1] "Java-Object{There is already a procedure with that name at position 104 in C:\\Users\\Matthijs\\Documents\\GitHub\\Zipfs-Law-and-city-development\\netlogo\\model_test.nls}"
+[1] "starting job 45"
+[1] "Java-Object{There is already a procedure with that name at position 104 in C:\\Users\\Matthijs\\Documents\\GitHub\\Zipfs-Law-and-city-development\\netlogo\\model_test.nls}"
+starting worker pid=18296 on localhost:11824 at 15:48:17.044
+starting worker pid=15644 on localhost:11824 at 15:48:17.240
+starting worker pid=19432 on localhost:11824 at 15:48:17.434
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1][1]tarting job 37"
+ "starting job 38"
+[1] "starting job 39"
+[1] "starting job 40"
+[1] "starting job 41"
+[1] "starting job 42"
+[1] "starting job 43"
+[1] "starting job 44"
+[1] "starting job 45"
+starting worker pid=19376 on localhost:11174 at 17:30:01.910
+starting worker pid=18612 on localhost:11174 at 17:30:02.103
+starting worker pid=17908 on localhost:11174 at 17:30:02.295
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 46"
+[1] "starting job 47"
+[1] "starting job 48"
+[1] "starting job 49"
+[1] "starting job 50"
+[1] "starting job 51"
+[1] "starting job 52"
+[1] "starting job 53"
+[1] "starting job 54"
+starting worker pid=5516 on localhost:11197 at 18:35:08.688
+starting worker pid=18872 on localhost:11197 at 18:35:08.877
+starting worker pid=18156 on localhost:11197 at 18:35:09.072
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 55"
+[1] "starting job 56"
+[1] "starting job 57"
+[1] "starting job 58"
+[1] "starting job 59"
+[1] "starting job 60"
+[1] "starting job 61"
+[1] "starting job 62"
+[1] "starting job 63"
+starting worker pid=16724 on localhost:11263 at 20:40:28.725
+starting worker pid=17552 on localhost:11263 at 20:40:28.917
+starting worker pid=3652 on localhost:11263 at 20:40:29.108
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 64"
+[1] "starting job 65"
+[1] "starting job 66"
+[1] "starting job 67"
+[1] "Java-Object{org.nlogo.nvm.EngineException: List is empty.}"
+[1] "starting job 68"
+[1] "starting job 69"
+[1] "starting job 70"
+[1] "starting job 71"
+[1] "starting job 72"
+[1] "Java-Object{org.nlogo.nvm.EngineException: List is empty.}"
+starting worker pid=18608 on localhost:11271 at 21:10:31.103
+starting worker pid=15216 on localhost:11271 at 21:10:31.300
+starting worker pid=18264 on localhost:11271 at 21:10:31.504
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 73"
+[1] "starting job 74"[1] "starting job 75"
+[1] "starting job 76"
+[1] "starting job 77"
+[1] "starting job 78"
+[1] "starting job 79"
+[1] "starting job 80"
+[1] "starting job 81"
+starting worker pid=13976 on localhost:11250 at 22:50:24.735
+starting worker pid=19960 on localhost:11250 at 22:50:24.928
+starting worker pid=19756 on localhost:11250 at 22:50:25.123
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 82"
+[1] "starting job 84"
+[1] "starting job 85"
+[1] "starting job 86"
+[1] "starting job 87"
+[1] "starting job 88"
+[1] "starting job 89"
+[1] "starting job 90"
+starting worker pid=19164 on localhost:11359 at 00:00:57.557
+starting worker pid=20280 on localhost:11359 at 00:00:57.748
+starting worker pid=16208 on localhost:11359 at 00:00:57.940
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 91"
+[1] "starting job 92"
+[1] "starting job 93"
+[1] "starting job 94"
+[1] "starting job 95"
+[1] "starting job 96"
+[1] "starting job 97"
+[1] "starting job 98"
+[1] "starting job 99"
+starting worker pid=21140 on localhost:11514 at 10:07:20.529
+starting worker pid=20756 on localhost:11514 at 10:07:20.724
+starting worker pid=16028 on localhost:11514 at 10:07:20.913
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 100"
+[1] "starting job 101"
+[1] "starting job 102"
+[1] "starting job 103"
+[1] "starting job 104"
+[1] "starting job 105"
+[1] "starting job 106"
+[1] "starting job 107"
+[1] "starting job 108"
+starting worker pid=20752 on localhost:11210 at 10:43:07.927
+starting worker pid=21184 on localhost:11210 at 10:43:08.136
+starting worker pid=15660 on localhost:11210 at 10:43:08.332
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 109"
+[1] "starting job 110"
+[1] "starting job 111"
+[1] "starting job 112"
+[1] "starting job 113"
+[1] "starting job 114"
+[1] "starting job 115"
+[1] "starting job 116"
+[1] "starting job 117"
+starting worker pid=5836 on localhost:11289 at 11:43:31.751
+starting worker pid=22132 on localhost:11289 at 11:43:31.944
+starting worker pid=22620 on localhost:11289 at 11:43:32.138
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 118"
+[1] "starting job 119"
+[1] "starting job 120"
+[1] "starting job 121"
+[1] "starting job 122"
+[1] "starting job 123"
+[1] "starting job 124"
+[1] "starting job 125"
+[1] "starting job 126"
+starting worker pid=22364 on localhost:11295 at 14:03:33.416
+starting worker pid=23328 on localhost:11295 at 14:03:33.608
+starting worker pid=22436 on localhost:11295 at 14:03:33.794
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 127"
+[1] "starting job 128"
+[1] "starting job 129"
+[1] "starting job 130"
+[1] "starting job 131"
+[1] "Java-Object{org.nlogo.nvm.EngineException: List is empty.}"
+[1] "starting job 132"
+[1] "starting job 133"
+[1] "starting job 134"
+[1] "starting job 135"
+starting worker pid=22764 on localhost:11963 at 15:11:53.798
+starting worker pid=23080 on localhost:11963 at 15:11:53.989
+starting worker pid=22788 on localhost:11963 at 15:11:54.181
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 136"
+[1] "starting job 137"
+[1] "starting job 138"
+[1] "starting job 139"
+[1] "starting job 140"
+[1] "starting job 141"
+[1] "starting job 142"
+[1] "starting job 143"
+[1] "starting job 144"
+starting worker pid=23168 on localhost:11066 at 15:57:24.804
+starting worker pid=22044 on localhost:11066 at 15:57:25.000
+starting worker pid=21692 on localhost:11066 at 15:57:25.191
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 145"
+[1] "starting job 146"
+[1] "starting job 147"
+[1] "starting job 148"
+[1] "starting job 149"
+[1] "starting job 150"
+[1] "starting job 151"
+[1] "starting job 152"
+[1] "starting job 153"
+starting worker pid=22420 on localhost:11367 at 16:53:55.114
+starting worker pid=22896 on localhost:11367 at 16:53:55.309
+starting worker pid=3240 on localhost:11367 at 16:53:55.504
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 154"
+[1] "starting job 155"
+[1] "starting job 156"
+[1] "Java-Object{org.nlogo.nvm.EngineException: List is empty.}"
+[1] "starting job 157"
+[1] "starting job 158"
+[1] "starting job 159"
+[1] "starting job 160"
+[1] "starting job 161"
+[1] "starting job 162"
+starting worker pid=24172 on localhost:11462 at 17:49:23.460
+starting worker pid=6528 on localhost:11462 at 17:49:23.663
+starting worker pid=22648 on localhost:11462 at 17:49:23.857
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 163"
+[1] "starting job 164"
+[1] "starting job 165"
+[1] "starting job 166"
+[1] "starting job 167"
+[1] "starting job 168"
+[1] "starting job 169"
+[1] "starting job 170"
+[1] "starting job 171"
+starting worker pid=21284 on localhost:11345 at 18:43:48.420
+starting worker pid=25484 on localhost:11345 at 18:43:48.641
+starting worker pid=25224 on localhost:11345 at 18:43:48.850
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 172"
+[1] "starting job 173"
+[1] "starting job 174"
+[1] "starting job 175"
+[1] "starting job 176"
+[1] "starting job 177"
+[1] "starting job 178"
+[1] "starting job 179"
+[1] "Java-Object{org.nlogo.nvm.EngineException: List is empty.}"
+[1] "starting job 180"
+starting worker pid=22860 on localhost:11800 at 19:11:04.947
+starting worker pid=25152 on localhost:11800 at 19:11:05.142
+starting worker pid=22976 on localhost:11800 at 19:11:05.334
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 181"
+[1] "starting job 182"
+[1] "starting job 183"
+[1] "starting job 184"
+[1] "starting job 185"
+[1] "starting job 186"
+[1] "starting job 187"
+[1] "starting job 188"
+[1] "starting job 189"
+[1] "starting job 190"
+[1] "starting job 191"
+[1] "starting job 192"
+[1] "starting job 193"
+[1] "starting job 194"
+[1] "starting job 195"
+[1] "starting job 196"
+[1] "starting job 197"
+[1] "starting job 198"
+[1] "starting job 199"
+starting worker pid=24144 on localhost:11206 at 21:05:54.112
+starting worker pid=23504 on localhost:11206 at 21:05:54.302
+starting worker pid=21888 on localhost:11206 at 21:05:54.494
+starting worker pid=24932 on localhost:11206 at 21:06:50.631
+starting worker pid=23032 on localhost:11206 at 21:06:50.826
+starting worker pid=26448 on localhost:11206 at 21:06:51.014
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 1"
+[1] "starting job 2"
+[1] "starting job 3"
+starting worker pid=16868 on localhost:11206 at 21:09:02.081
+starting worker pid=26196 on localhost:11206 at 21:09:02.277
+starting worker pid=23400 on localhost:11206 at 21:09:02.470
+starting worker pid=22868 on localhost:11207 at 21:12:26.726
+starting worker pid=24648 on localhost:11207 at 21:12:26.924
+starting worker pid=25556 on localhost:11207 at 21:12:27.122
+starting worker pid=15188 on localhost:11773 at 21:28:13.331
+starting worker pid=24000 on localhost:11773 at 21:28:13.529
+starting worker pid=26192 on localhost:11773 at 21:28:13.727
+starting worker pid=23724 on localhost:11018 at 21:29:06.812
+starting worker pid=24500 on localhost:11018 at 21:29:07.008
+starting worker pid=26212 on localhost:11018 at 21:29:07.200
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 1"
+[1] "starting job 2"
+[1] "starting job 3"
+[1] "starting job 4"
+[1] "starting job 5"
+[1] "starting job 6"
+[1] "starting job 7"
+[1] "starting job 8"
+[1] "starting job 9"
+[1] "starting job 10"
+starting worker pid=17240 on localhost:11018 at 23:35:25.836
+starting worker pid=27600 on localhost:11018 at 23:35:26.038
+starting worker pid=16780 on localhost:11018 at 23:35:26.232
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 2"
+starting job 1"
+[1] "starting job 3"
+[1] "starting job 4"
+[1] "starting job 5"
+[1] "starting job 6"
+[1] "starting job 7"
+[1] "starting job 8"
+[1] "starting job 9"
+[1] "starting job 10"
+starting worker pid=28760 on localhost:11984 at 11:43:20.044
+starting worker pid=28508 on localhost:11984 at 11:43:20.235
+starting worker pid=28380 on localhost:11984 at 11:43:20.424
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 1"
+[1] "starting job 2"
+[1] "starting job 3"
+[1] "starting job 4"
+starting worker pid=23392 on localhost:11736 at 12:22:42.127
+starting worker pid=2612 on localhost:11736 at 12:22:42.318
+starting worker pid=28804 on localhost:11736 at 12:22:42.507
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 1"
+[1] "starting job 2"
+[1] "starting job 3"
+[1] "Java-Object{org.nlogo.nvm.EngineException: List is empty.}"
+[1] "starting job 4"
+[1] "starting job 5"
+[1] "starting job 6"
+[1] "starting job 7"
+[1] "starting job 8"
+[1] "starting job 9"
+[1] "starting job 10"
+starting worker pid=22160 on localhost:11736 at 13:54:02.536
+starting worker pid=29780 on localhost:11736 at 13:54:02.733
+starting worker pid=20304 on localhost:11736 at 13:54:02.922
+Error in unserialize(node$con) : error reading from connection
+Calls: <Anonymous> ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
+Execution halted
+Error in unserialize(node$con) : error reading from connection
+Calls: <Anonymous> ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
+Execution halted
+Error in unserialize(node$con) : error reading from connection
+Calls: <Anonymous> ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
+Execution halted
+starting worker pid=29504 on localhost:11936 at 14:07:34.276
+starting worker pid=29120 on localhost:11936 at 14:07:34.467
+starting worker pid=26800 on localhost:11936 at 14:07:34.656
+Error in unserialize(node$con) : error reading from connection
+Calls: <Anonymous> ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
+Execution halted
+Error in unserialize(node$con) : error reading from connection
+Calls: <Anonymous> ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
+Execution halted
+Error in unserialize(node$con) : error reading from connection
+Calls: <Anonymous> ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
+Execution halted
+starting worker pid=29404 on localhost:11971 at 14:32:44.891
+starting worker pid=29496 on localhost:11971 at 14:32:45.086
+starting worker pid=30236 on localhost:11971 at 14:32:45.284
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 1"
+[1] "starting job 2"
+[1] "starting job 3"
+[1] "starting job 4"
+[1] "starting job 5"
+[1] "starting job 6"
+[1] "starting job 7"
+[1] "starting job 8"
+[1] "starting job 9"
+[1] "starting job 10"
+[1] "starting job 11"
+[1] "starting job 12"
+[1] "starting job 13"
+starting worker pid=30784 on localhost:11461 at 17:30:11.767
+starting worker pid=28140 on localhost:11461 at 17:30:11.960
+starting worker pid=32044 on localhost:11461 at 17:30:12.150
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 1"
+[1] "starting job 2"
+[1] "starting job 3"
+[1] "starting job 4"
+[1] "starting job 5"
+[1] "starting job 6"
+[1] "starting job 7"
+[1] "starting job 8"
+[1] "starting job 9"
+[1] "starting job 10"
+[1] "starting job 11"
+[1] "starting job 12"
+[1] "starting job 13"
+starting worker pid=30776 on localhost:11461 at 19:06:42.167
+starting worker pid=31364 on localhost:11461 at 19:06:42.365
+starting worker pid=30032 on localhost:11461 at 19:06:42.557
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 14"
+[1] "starting job 15"
+[1] "starting job 16"
+[1] "Java-Object{org.nlogo.nvm.EngineException: List is empty.}"
+[1] "starting job 17"
+[1] "starting job 18"
+[1] "starting job 19"
+[1] "starting job 20"
+[1] "starting job 21"
+[1] "starting job 22"
+[1] "starting job 23"
+[1] "starting job 24"
+[1] "starting job 25"
+starting worker pid=35332 on localhost:11722 at 20:50:04.833
+starting worker pid=34264 on localhost:11722 at 20:50:05.028
+starting worker pid=26332 on localhost:11722 at 20:50:05.220
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 2"
+ "starting job 1"
+[1] "starting job 3"
+[1] "starting job 4"
+[1] "starting job 5"
+[1] "starting job 6"
+[1] "starting job 7"
+[1] "starting job 8"
+[1] "starting job 9"
+[1] "Java-Object{org.nlogo.nvm.EngineException: List is empty.}"
+[1] "starting job 10"
+starting worker pid=35156 on localhost:11722 at 23:21:07.927
+starting worker pid=35280 on localhost:11722 at 23:21:08.129
+starting worker pid=32544 on localhost:11722 at 23:21:08.327
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 1"
+[1] "starting job 2"
+[1] "starting job 3"
+[1] "starting job 4"
+[1] "starting job 5"
+[1] "starting job 6"
+starting worker pid=36484 on localhost:11952 at 23:48:46.995
+starting worker pid=32504 on localhost:11952 at 23:48:47.189
+starting worker pid=35396 on localhost:11952 at 23:48:47.378
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 1"
+[1] "starting job 2"
+[1] "starting job 3"
+[1] "starting job 4"
+[1] "starting job 5"
+[1] "starting job 6"
+[1] "starting job 7"
+[1] "starting job 8"
+[1] "starting job 9"
+[1] "starting job 10"
+starting worker pid=37532 on localhost:11016 at 11:01:28.279
+starting worker pid=38176 on localhost:11016 at 11:01:28.483
+starting worker pid=38296 on localhost:11016 at 11:01:28.682
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1][1]tarting job 1"
+ "starting job 2"
+[1] "starting job 3"
+starting worker pid=38728 on localhost:11530 at 11:02:13.355
+starting worker pid=32340 on localhost:11530 at 11:02:13.567
+starting worker pid=38620 on localhost:11530 at 11:02:13.770
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 1"
+[1] "starting job 2"
+[1] "starting job 3"
+starting worker pid=38500 on localhost:11581 at 11:02:28.684
+starting worker pid=38124 on localhost:11581 at 11:02:28.887
+starting worker pid=38476 on localhost:11581 at 11:02:29.086
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 1"
+[1] "starting job 2"
+[1] "starting job 3"
+starting worker pid=39084 on localhost:11714 at 12:08:08.661
+starting worker pid=40080 on localhost:11714 at 12:08:08.871
+starting worker pid=39804 on localhost:11714 at 12:08:09.088
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 1"
+[1] "starting job 2"
+[1] "starting job 3"
+[1] "Java-Object{org.nlogo.nvm.ArgumentTypeException: ASK expected input to be an agent or agentset but got NOBODY instead.}"
+Error in unserialize(node$con) : error reading from connection
+Calls: <Anonymous> ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
+Execution halted
+starting worker pid=38852 on localhost:11985 at 12:20:18.844
+starting worker pid=40412 on localhost:11985 at 12:20:19.042
+starting worker pid=39712 on localhost:11985 at 12:20:19.237
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 1"
+[1] "starting job 2"
+[1] "starting job 3"
+[1] "Java-Object{org.nlogo.nvm.ArgumentTypeException: ASK expected input to be an agent or agentset but got NOBODY instead.}"
+[1] "starting job 4"
+starting worker pid=40728 on localhost:11755 at 12:39:09.721
+starting worker pid=40476 on localhost:11755 at 12:39:09.933
+starting worker pid=40188 on localhost:11755 at 12:39:10.133
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 1"
+[1] "starting job 2"
+[1] "starting job 3"
+[1] "starting job 4"
+starting worker pid=31596 on localhost:11213 at 14:01:27.314
+starting worker pid=38948 on localhost:11213 at 14:01:27.570
+starting worker pid=33172 on localhost:11213 at 14:01:27.811
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 1"
+[1] "starting job 3"
+[1] "starting job 2"
+starting worker pid=40456 on localhost:11270 at 14:01:44.481
+starting worker pid=40936 on localhost:11270 at 14:01:44.751
+starting worker pid=20148 on localhost:11270 at 14:01:45.008
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 2"
+ "starting job 1"
+[1] "starting job 3"
+[1] "starting job 4"
+[1] "starting job 5"
+[1] "Java-Object{org.nlogo.nvm.ArgumentTypeException: ASK expected input to be an agent or agentset but got NOBODY instead.}"
+[1] "starting job 6"
+starting worker pid=41776 on localhost:11270 at 15:41:49.837
+starting worker pid=40512 on localhost:11270 at 15:41:50.063
+starting worker pid=40356 on localhost:11270 at 15:41:50.287
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 7"
+[1] "starting job 8"
+[1] "starting job 9"
+[1] "starting job 10"
+[1] "starting job 11"
+[1] "starting job 12"
+starting worker pid=31992 on localhost:11166 at 20:22:52.248
+starting worker pid=42572 on localhost:11166 at 20:22:52.443
+starting worker pid=7296 on localhost:11166 at 20:22:52.637
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 1"
+[1] "starting job 2"
+[1] "starting job 3"
+[1] "Java-Object{org.nlogo.nvm.EngineException: Can't find the maximum of a list with no numbers: []}"
+[1] "starting job 4"
+[1] "Java-Object{org.nlogo.nvm.ArgumentTypeException: ASK expected input to be an agent or agentset but got NOBODY instead.}"
+[1] "starting job 5"
+starting worker pid=36644 on localhost:11587 at 20:44:00.249
+starting worker pid=6748 on localhost:11587 at 20:44:00.445
+starting worker pid=4600 on localhost:11587 at 20:44:00.639
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 1"
+[1] "starting job 2"
+[1] "starting job 3"
+starting worker pid=42164 on localhost:11666 at 20:44:24.102
+starting worker pid=8296 on localhost:11666 at 20:44:24.295
+starting worker pid=5960 on localhost:11666 at 20:44:24.490
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 1"
+[1] "starting job 2"
+[1] "starting job 3"
+[1] "starting job 4"
+[1] "starting job 5"
+[1] "starting job 6"
+Error in unserialize(node$con) : error reading from connection
+Calls: <Anonymous> ... doTryCatch -> recvData -> recvData.SOCKnode -> unserialize
+Execution halted
+starting worker pid=39032 on localhost:11340 at 20:47:46.057
+starting worker pid=42328 on localhost:11340 at 20:47:46.254
+starting worker pid=13640 on localhost:11340 at 20:47:46.446
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 1"
+[1] "starting job 2"
+[1] "starting job 3"
+starting worker pid=40596 on localhost:11510 at 20:48:37.276
+starting worker pid=42808 on localhost:11510 at 20:48:37.469
+starting worker pid=41376 on localhost:11510 at 20:48:37.659
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 1"
+[1] "starting job 2"
+[1] "starting job 3"
+starting worker pid=35312 on localhost:11476 at 21:29:25.198
+starting worker pid=41400 on localhost:11476 at 21:29:25.394
+starting worker pid=36136 on localhost:11476 at 21:29:25.590
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 1"
+[1] "starting job 2"
+[1] "starting job 3"
+[1] "starting job 4"
+[1] "starting job 5"
+[1] "starting job 6"
+starting worker pid=15856 on localhost:11476 at 00:06:16.560
+starting worker pid=41856 on localhost:11476 at 00:06:16.777
+starting worker pid=30880 on localhost:11476 at 00:06:16.996
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 7"
+[1] "starting job 8"
+[1] "starting job 9"
+[1] "Java-Object{org.nlogo.nvm.EngineException: List is empty.}"
+[1] "starting job 10"
+[1] "starting job 11"
+[1] "starting job 12"
+[1] "Java-Object{Can't find extension: file:/C:/Users/Matthijs/Documents/GitHub/Zipfs-Law-and-city-development/analysis/extensions/profiler/profiler.jar at position 920 in }"
+starting worker pid=41600 on localhost:11476 at 01:28:04.665
+starting worker pid=41112 on localhost:11476 at 01:28:04.879
+starting worker pid=30908 on localhost:11476 at 01:28:05.094
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 13"
+[1] "starting job 14"
+[1] "starting job 15"
+[1] "starting job 16"
+[1] "starting job 17"
+[1] "starting job 18"
+starting worker pid=37732 on localhost:11476 at 03:51:38.734
+starting worker pid=15876 on localhost:11476 at 03:51:38.956
+starting worker pid=45152 on localhost:11476 at 03:51:39.176
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 19"
+[1] "starting job 20"
+[1] "starting job 21"
+[1] "starting job 22"
+[1] "starting job 23"
+[1] "starting job 24"
+starting worker pid=42992 on localhost:11476 at 05:33:41.249
+starting worker pid=46544 on localhost:11476 at 05:33:41.463
+starting worker pid=46108 on localhost:11476 at 05:33:41.680
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 25"
+[1] "starting job 26"
+[1] "starting job 27"
+[1] "starting job 28"
+[1] "starting job 29"
+[1] "starting job 30"
+[1] "Java-Object{org.nlogo.nvm.EngineException: List is empty.}"
+starting worker pid=45668 on localhost:11476 at 07:41:31.372
+starting worker pid=41196 on localhost:11476 at 07:41:31.600
+starting worker pid=46776 on localhost:11476 at 07:41:31.837
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 31"
+[1] "starting job 32"
+[1] "starting job 33"
+[1] "starting job 34"
+[1] "starting job 35"
+[1] "Java-Object{org.nlogo.nvm.EngineException: List is empty.}"
+[1] "starting job 36"
+starting worker pid=41108 on localhost:11476 at 09:17:58.862
+starting worker pid=27140 on localhost:11476 at 09:17:59.081
+starting worker pid=46672 on localhost:11476 at 09:17:59.296
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 37"
+[1] "starting job 38"
+[1] "starting job 39"
+[1] "starting job 40"
+[1] "starting job 41"
+[1] "starting job 42"
+starting worker pid=46828 on localhost:11476 at 10:51:15.333
+starting worker pid=46280 on localhost:11476 at 10:51:15.557
+starting worker pid=41416 on localhost:11476 at 10:51:15.778
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 43"
+[1] "starting job 44"
+[1] "starting job 45"
+[1] "Java-Object{org.nlogo.nvm.EngineException: List is empty.}"
+[1] "starting job 46"
+[1] "starting job 47"
+[1] "starting job 48"
+[1] "Java-Object{Can't find extension: file:/C:/Users/Matthijs/Documents/GitHub/Zipfs-Law-and-city-development/analysis/extensions/profiler/profiler.jar at position 920 in }"
+starting worker pid=8152 on localhost:11476 at 12:39:55.009
+starting worker pid=46720 on localhost:11476 at 12:39:55.228
+starting worker pid=47700 on localhost:11476 at 12:39:55.447
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 49"
+[1] "starting job 50"
+[1] "starting job 51"
+[1] "starting job 52"
+[1] "starting job 53"
+[1] "Java-Object{org.nlogo.nvm.EngineException: List is empty.}"
+[1] "starting job 54"
+starting worker pid=47672 on localhost:11476 at 14:35:38.214
+starting worker pid=46916 on localhost:11476 at 14:35:38.427
+starting worker pid=73584 on localhost:11476 at 14:35:38.644
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 55"
+[1] "starting job 56"
+[1] "starting job 57"
+[1] "starting job 58"
+[1] "starting job 59"
+[1] "starting job 60"
+starting worker pid=95852 on localhost:11476 at 16:13:39.862
+starting worker pid=72820 on localhost:11476 at 16:13:40.084
+starting worker pid=95968 on localhost:11476 at 16:13:40.303
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 61"
+[1] "starting job 62"
+[1] "starting job 63"
+[1] "starting job 64"
+[1] "starting job 65"
+[1] "starting job 66"
+starting worker pid=96544 on localhost:11476 at 18:03:26.895
+starting worker pid=97020 on localhost:11476 at 18:03:27.118
+starting worker pid=96316 on localhost:11476 at 18:03:27.334
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 67"
+[1] "starting job 68"
+[1] "starting job 69"
+[1] "starting job 70"
+[1] "starting job 71"
+[1] "starting job 72"
+starting worker pid=97108 on localhost:11476 at 20:08:46.489
+starting worker pid=97248 on localhost:11476 at 20:08:46.721
+starting worker pid=96456 on localhost:11476 at 20:08:46.946
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 73"
+[1] "starting job 74"
+[1] "starting job 75"
+[1] "starting job 76"
+[1] "starting job 77"
+[1] "starting job 78"
+starting worker pid=47568 on localhost:11476 at 21:41:56.439
+starting worker pid=96852 on localhost:11476 at 21:41:56.658
+starting worker pid=96904 on localhost:11476 at 21:41:56.873
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 79"
+[1] "starting job 80"
+[1] "starting job 81"
+[1] "starting job 82"
+[1] "starting job 83"
+[1] "starting job 84"
+starting worker pid=58092 on localhost:11476 at 23:46:35.990
+starting worker pid=98460 on localhost:11476 at 23:46:36.213
+starting worker pid=97412 on localhost:11476 at 23:46:36.438
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 85"
+[1] "starting job 86"
+[1] "starting job 87"
+[1] "starting job 88"
+[1] "starting job 89"
+[1] "starting job 90"
+starting worker pid=96168 on localhost:11476 at 01:57:29.851
+starting worker pid=98584 on localhost:11476 at 01:57:30.084
+starting worker pid=96732 on localhost:11476 at 01:57:30.323
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 91"[1] "starting job 92"
+[1] "starting job 93"
+[1] "starting job 94"
+[1] "starting job 95"
+[1] "starting job 96"
+starting worker pid=95904 on localhost:11476 at 04:23:52.714
+starting worker pid=100080 on localhost:11476 at 04:23:52.959
+starting worker pid=97500 on localhost:11476 at 04:23:53.193
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 97"
+[1] "starting job 98"
+[1] "starting job 99"
+[1] "starting job 100"
+[1] "starting job 101"
+[1] "starting job 102"
+starting worker pid=98760 on localhost:11476 at 06:27:38.030
+starting worker pid=99320 on localhost:11476 at 06:27:38.266
+starting worker pid=100136 on localhost:11476 at 06:27:38.499
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 104" "starting job 103"
+
+[1] "starting job 105"
+[1] "starting job 106"
+[1] "starting job 107"
+[1] "starting job 108"
+starting worker pid=100276 on localhost:11476 at 08:01:29.362
+starting worker pid=102028 on localhost:11476 at 08:01:29.598
+starting worker pid=102140 on localhost:11476 at 08:01:29.827
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 109"
+[1] "starting job 110"
+[1] "starting job 111"
+[1] "starting job 112"
+[1] "Java-Object{org.nlogo.nvm.EngineException: List is empty.}"
+[1] "starting job 113"
+[1] "starting job 114"
+starting worker pid=99324 on localhost:11476 at 10:40:13.605
+starting worker pid=122548 on localhost:11476 at 10:40:13.836
+starting worker pid=122060 on localhost:11476 at 10:40:14.062
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: rJava
+Loading required package: igraph
+Loading required package: igraph
+Loading required package: igraph
+[1] "starting job 115"
+[1] "starting job 116"
+[1] "starting job 117"
+[1] "starting job 118"
+[1] "starting job 119"
+[1] "starting job 120"

@@ -10,12 +10,54 @@ end
 
 ;; Get the index of the item with the highest value from a list
 to-report index-max-item-list [ $list ] 
-   report position (max $list) $list 
+  report position (max $list) $list 
 end 
 
 
 ;; Get the distance between two cities with cityIdentifier 1 and 2
 to-report distance-between-cities [ $city1 $city2 ]
   report (item ($city2 - 1) (item ($city1 - 1) cityDistanceList))
+  
+end
+
+;; Report the cached city size for a city
+to-report cached-city-size [$city]
+  report item ($city - 1) cacheCitySizes
+  
+end
+
+
+;; Filters a list based on a criteria and returns the indexes of the items which meet the criteria
+to-report cities-within-distance [ $distance $city ]
+  let distances item ($city - 1) cityDistanceList
+  let filtered filter [? < $distance] distances
+  
+  report map [? + 1]  filter [member? item ? distances filtered AND ? !=( $city - 1)] n-values (length distances) [?] 
+  
+end
+
+;; Returns the index/indices of the highest number(s) in a list
+to-report max-positions [numbers] 
+  let biggest max numbers 
+  report filter [item ? numbers = biggest] n-values (length numbers) [?] 
+end 
+
+to-report get-city-sizes
+  let cityIterator 1
+  let citySizeList []
+  while [cityIterator <= noOfCities][
+    set citySizeList lput count turtles-on patches with [cityIdentifier = cityIterator] citySizeList
+    set cityIterator cityIterator + 1
+  ]  
+  report citySizeList
+  
+end
+
+
+to update-cache
+  ;;print "recomputing cityAttractiveness"
+    determine-city-attractiveness-from-jobs
+    set cacheCitySizes get-city-sizes
+    set cacheLargestCitySize max get-city-sizes
   
 end

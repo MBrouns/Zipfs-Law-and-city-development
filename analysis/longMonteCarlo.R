@@ -4,9 +4,9 @@
 
 # Analysis setup
 storeAllValues <- F
-noOfReplications <- 200
-runsToDo <- c(1:9)
-runsPerRep <- 9
+noOfReplications <- 300
+runsToDo <- c(1:6)
+runsPerRep <- 6
 runName <- "long-MC"
 seed <- 1338
 nl.path <- "C:/Program Files (x86)/NetLogo 5.1.0"
@@ -16,7 +16,17 @@ model.warmup <- 2
 variables <- NULL
 
 variables <- rbind(variables, c("noOfCities", 10, 10))
-variables <- rbind(variables, c("noOfHouseholds", 25000, 25000))
+variables <- rbind(variables, c("noOfHouseholds", 20000, 20000))
+
+variables <- rbind(variables, c("cityAttractivenessBySize_Weight", 0, 1))
+variables <- rbind(variables, c("cityAttractivenessBySize_StartY", 0.4, 0.6))
+variables <- rbind(variables, c("cityAttractivenessBySize_TippingPointX", 0.2, 0.8))
+variables <- rbind(variables, c("cityAttractivenessBySize_TippingPointY", 0.6, 0.8))
+variables <- rbind(variables, c("cityAttractivenessBySize_EndY", 0.8, 1))
+
+variables <- rbind(variables, c("borrowedUtilityMaxDistance", 50, 250))
+variables <- rbind(variables, c("borrowedUtilityWeight", 0, 0.25))
+
 variables <- rbind(variables, c("populationGrowth", 1, 1.01))
 variables <- rbind(variables, c("job4_Modifier", 8, 12))
 variables <- rbind(variables, c("job4_Modifier", 8, 12))
@@ -29,7 +39,7 @@ variables <- rbind(variables, c("rtm_TippingPointY", 0.25, 0.75))
 variables <- rbind(variables, c("job2_TippingPointY", 0.4, 0.6))
 variables <- rbind(variables, c("Job3Attractiveness", 0.4, 0.6))
 variables <- rbind(variables, c("job5_TippingPointY", 0.4, 0.6))
-variables <- rbind(variables, c("minDistBetweenCities", 30, 200))
+variables <- rbind(variables, c("minDistBetweenCities", 30, 150))
 variables <- rbind(variables, c("maxDistBetweenCities", 200, 500))
 variables <- rbind(variables, c("rtm_TippingPointX", 5, 15))
 variables <- rbind(variables, c("rtm_PlateauPointX", 15, 25))
@@ -184,8 +194,9 @@ for (repetitionIterator in 1:ceiling(noOfReplications/runsPerRep)){
                     
                 }
                 
-                
-                result <- data.frame(c(i, lhs[i, ], city0Size))
+                for (k in 1:model.runtime){
+                    NLCommand("go", nl.obj=nlheadless1)
+                }
                 names(result) <- c("runNo", names(lhs), c(1:model.runtime))
                 result <- rbind(result, setNames(c(i, lhs[i, ], city1Size), names(result)))
                 result <- rbind(result, setNames(c(i, lhs[i, ], city2Size), names(result)))
@@ -248,7 +259,7 @@ for (repetitionIterator in 1:ceiling(noOfReplications/runsPerRep)){
     }
     #results <- cbind(rep(0:25, 9), results)
     #names(results)[names(results) == 'rep(0:25, 9)'] <- 'City'
-    write.table(results, file=paste(runName, "-results",".csv", sep=""), append=TRUE, sep=", ", col.names=F, row.names=FALSE)
+    write.table(results, file=paste(runName, "-results",".csv", sep=""), append=TRUE, sep=", ", col.names=T, row.names=FALSE)
     NLQuit(all=TRUE)
     stopCluster(cl)
     
