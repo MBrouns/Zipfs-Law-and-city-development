@@ -80,12 +80,9 @@ A similar test was performed by varying the the total number of households in th
 
 ![](NoOfHouseholdstesting.png)
 
+Apart from extensively testing these two model input parameters a full parameter sweep with 300 model runs on all  other possible input parameters has been performed. In none of these model runs did the model give any errors and the results are all within the expected bounds (see figure x).
 
-
-sensitivity analysis
-sensitivity analysis performed. Created latin hypercube of input space in 100 experiments. input space consists of all pivot points in city attractiveness and resistance to move calculations (about 60 variables) full input space described in appendix. 
-
-critique: 100 runs is too few. LHS counteracts this a bit but still. unfortunately not feasible to perform more runs due to weaknesses of netlogo control library in R which leaves too much manual work. 
+![](parameterSweep.png)
 
 
 # Conclusion

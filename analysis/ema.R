@@ -17,10 +17,10 @@ cl <- makeCluster(3)
 registerDoParallel(cl)
 input <- read.csv("ema-narrow-results.csv")
 
+
+# Calculate RMSE of model results in comparison with a true zipf's law
 calculateZipfFit <- function(row) {
-    
     city.sizes <- sort(c(row$City.5, row$City.4, row$City.3, row$City.2, row$City.1), decreasing=T)
-    
     # A = R / P^-a
     expected.city.sizes <- vector()
     for (i in 1:5) { 
@@ -28,15 +28,10 @@ calculateZipfFit <- function(row) {
         
     }
     rmse <- sqrt(mean((city.sizes-expected.city.sizes)^2))
-    
     rmse
 }
 
-plotCitySize <- function(row){
-    city.sizes <- sort(c(row$City.5, row$City.4, row$City.3, row$City.2, row$City.1), decreasing=T)
-    plot(city.sizes)
-    
-}
+
 for(row in 1:nrow(input)) { 
     input$sse[row] <- calculateZipfFit(input[row, ])
 }
@@ -46,6 +41,8 @@ input$bin <- cut(input$sse,
                 include.lowest=TRUE
 )
 
+
+# Calculate variable importance using random forest
 myControl = trainControl(method='cv',number=5000,repeats=10,returnResamp='none')
 model2 = train(sse ~ rtm_TippingPointX +
                    rtm_TippingPointY + 
@@ -87,6 +84,8 @@ varImp(model2)
 
 stopCluster(cl)
 
+
+# Build decision tree on results to do multivariate analysis
 fit <- rpart(bin ~ rtm_TippingPointX +
                  rtm_TippingPointY + 
                  rtm_PlateauPointX +

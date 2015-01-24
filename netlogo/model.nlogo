@@ -176,7 +176,7 @@ INPUTBOX
 106
 146
 noOfHouseholds
-25117
+25290
 1
 0
 Number
@@ -357,7 +357,7 @@ SLIDER
 updateCityAttractivenessFreq
 updateCityAttractivenessFreq
 0
-500
+750
 500
 1
 1
@@ -1033,7 +1033,7 @@ cityAttractivenessBySize_Weight
 cityAttractivenessBySize_Weight
 0
 1
-0.886312890904956
+0.3
 0.1
 1
 NIL
@@ -1156,7 +1156,7 @@ SWITCH
 216
 doPlot
 doPlot
-1
+0
 1
 -1000
 
