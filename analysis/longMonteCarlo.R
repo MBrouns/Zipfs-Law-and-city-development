@@ -4,10 +4,10 @@
 
 # Analysis setup
 storeAllValues <- F
-noOfReplications <- 300
-runsToDo <- c(1:6)
-runsPerRep <- 6
-runName <- "long-MC"
+noOfReplications <- 18
+runsToDo <- c(1:9)
+runsPerRep <- 9
+runName <- "dectree-validation"
 seed <- 1338
 nl.path <- "C:/Program Files (x86)/NetLogo 5.1.0"
 model.path <- "C:/Users/Matthijs/Documents/GitHub/Zipfs-Law-and-city-development/netlogo/model.nlogo"
@@ -18,9 +18,9 @@ variables <- NULL
 variables <- rbind(variables, c("noOfCities", 10, 10))
 variables <- rbind(variables, c("noOfHouseholds", 20000, 20000))
 
-variables <- rbind(variables, c("cityAttractivenessBySize_Weight", 0, 1))
+variables <- rbind(variables, c("cityAttractivenessBySize_Weight", 0.5, 0.6))
 variables <- rbind(variables, c("cityAttractivenessBySize_StartY", 0.4, 0.6))
-variables <- rbind(variables, c("cityAttractivenessBySize_TippingPointX", 0.2, 0.8))
+variables <- rbind(variables, c("cityAttractivenessBySize_TippingPointX", 0.57, 0.8))
 variables <- rbind(variables, c("cityAttractivenessBySize_TippingPointY", 0.6, 0.8))
 variables <- rbind(variables, c("cityAttractivenessBySize_EndY", 0.8, 1))
 
@@ -46,7 +46,7 @@ variables <- rbind(variables, c("rtm_PlateauPointX", 15, 25))
 variables <- rbind(variables, c("rtm_PlateauPointY", 0.5, 1))
 variables <- rbind(variables, c("rtm_AgeModifier", 0.01, 0.3))
 variables <- rbind(variables, c("rtm_ResistancePerChild", 0.01, 0.3))
-variables <- rbind(variables, c("MinimalMovingDistance", 1, 200))
+variables <- rbind(variables, c("MinimalMovingDistance", 75, 200))
 variables <- rbind(variables, c("MaximumMovingDistance", 200, 400))
 variables <- rbind(variables, c("MaxDistCityAttractiveness", 0.01, 0.5))
 variables <- rbind(variables, c("Job1Attractiveness", 0.4, 0.6))

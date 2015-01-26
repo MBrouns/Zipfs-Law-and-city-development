@@ -1,6 +1,5 @@
 # Model verification
-Model verification is used to determine whether the built model performs in a manner in which it was intended to perform. The model was verified on three distinct levels: Single-agent level, in which the behaviour of a single household is analysed; minimal interaction level, in which the interaction between a small set of agents is observerd; and multi-agent verification which analyses the emergent behaviour of multiple agents.
-
+Before employing the model to examine the effect of household decision making on the emergence of a Zipf's law, it is necessary to ensure the model is verified and valid. Model verification is used to determine whether the built model performs in a manner in which it was intended to perform. The model was verified on three distinct levels: Single-agent level, in which the behaviour of a single household is analysed; minimal interaction level, in which the interaction between a small set of agents is observerd; and multi-agent verification which analyses the emergent behaviour of multiple agents.
 
 ## Single-agent verification
 There is only a single type of agent in this urban migration model, namely households. Households live in a certain location and consist of household members. 
@@ -21,7 +20,7 @@ The second main behaviour of the households is determining the attractiveness of
 
 Aspects which can be verified on a single-agent level are the calculation of the resistance to move, of which a plot is shown in figure x and the actual choice of moving to a different city with preset city attractiveness. Both were found to show no errors. 
 
-![](rtm_verification_graph.png)
+![](images/rtm_verification_graph.png)
 
 ### Agent robustness
 The implementation of agents in this model can be considered to be quite robust as no normal model runs can cause the agent to break. However, some notions need to be considered when generating custom household agents or when expanding on the model. First, the model assumes that the list of household members is always sorted descending by age. This assumption is made since it drastically improves the performance of several checks in the model. Furthermore, households with children that have fewer than two parents can cause the model to behave unexpected in several fields such as the calculation of city attractiveness and the overall lifestage progression.
@@ -72,17 +71,20 @@ On the multi-agent level the overall emergent behaviour of the model is tested u
 
 Varying the the total cities in the model from 1 to 25 gives results as shown in figure x. As can be expected, the model does not behave with a very low number of cities. This is mostly because the option space of agents is then too small for interesting behaviour to emerge. From 10 cities and up the model shows expected behaviour. When further increasing the number of cities (>25) some care should be taken that the total number of households will also be increased. If this is not done, the average households per city will be too low which causes unexpected behaviour as described in the following section.
 
-![](NoOfCitiesTesting.png)
+![](images/NoOfCitiesTesting.png)
 
 
-A similar test was performed by varying the the total number of households in the model from 1,000 to 100,000 (figure x). This analysis shows that the model is less suitable for use with a very low number of households (< 10,000). This has several causes: First of all, with such a low number of households it is more difficult for agents in the model to find partners, leading to a decline in total households over time. Furthermore, the city attractiveness effects are smaller which leads to a lower than intended rate of migration. When running the model with a very large number of agents, it can happen that there are large oscillations of city size in the start of the run. This is because normally the city attractiveness only gets calculated on a yearly basis to improve performance. In order to increase the fidelity of large-scale models the "updateCityAttractivenessFreq" slider can be used to set the model to update this attractiveness on a more frequent basis. When this slider is set to a suitably small value, the model results will be as expected.
+A similar test was performed by varying the the total number of households in the model from 1,000 to 100,000 (figure x). This analysis shows that the model is less suitable for use with a very low number of households (< 10,000). This has several causes: First of all, with such a low number of households it is more difficult for agents in the model to find partners, leading to a decline in total households over time. Furthermore, the city attractiveness effects are smaller which leads to a lower than intended rate of migration. When running the model with a very large number of agents, it can happen that there are large oscillations of city size in the start of the run. This behaviour is caused by two aspects. Firstly, there are several large oscillations in the population system underlying the model in the transitory state (see figure x). Another reason is that normally the city attractiveness only gets calculated on a yearly basis to improve performance. In order to increase the fidelity of large-scale models the "updateCityAttractivenessFreq" slider can be used to set the model to update this attractiveness on a more frequent basis. When this slider is set to a suitably small value, the model results will closer reflect the behaviour as it is with lower amounts of households.
 
 
-![](NoOfHouseholdstesting.png)
+![](images/NoOfHouseholdstesting.png)
+
+![](images/popmodel.png)
+
 
 Apart from extensively testing these two model input parameters a full parameter sweep with 300 model runs on all  other possible input parameters has been performed. In none of these model runs did the model give any errors and the results are all within the expected bounds (see figure x).
 
-![](parameterSweep.png)
+![](images/parameterSweep.png)
 
 
 # Conclusion

@@ -3,6 +3,20 @@ require(reshape2)
 if(!require(ggplot2)) install.packages("ggplot2")
 require(ggplot2)
 
+
+# Build plot for population model
+results <- read.csv("popmodel-results.csv")
+
+results$ageGroup <- as.factor(results$ageGroup)
+dfm <- melt(results[, c(1, 42:542)], id.vars=c("ageGroup"))
+dfm$ageGroup <- as.factor(dfm$ageGroup)
+
+ggplot(dfm, aes(x=as.numeric(variable), y=value, colour=ageGroup)) + 
+    geom_line() + 
+    xlab("Years") + 
+    ylab("# Households") + 
+    ggtitle("Behaviour of population model over time")
+
 # Build plot for job 1 and 2 attractiveness
 fractionHouseholdsInCity <- c(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5)
 jobAttractiveness <- c(1, 0.6875, 0.45, 0.425, 0.4, 0.375, 0.35, 0.325, 0.3, 0.275, 0.25)
