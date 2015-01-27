@@ -17,5 +17,4 @@ Analyzing the effects of the change in input parameters on the model behaviour w
 ![](images/finaldectree.png)
 
 This decision tree shows that a zipf's law is most likely to emerge when the weight of the city attractiveness by size modifier is between 0.5 and 0.63, and when the people are less inclined to move to cities within 75 patches from them. 
-This result has been verified by running 20 new independent replications with these settings. From these runs around x% is once again very close to a zipfian distribution and therefore we consider this to be correct.
-
+This result has been verified by running 20 new independent replications with these settings. From these runs we get an average RMSE of 435 while the original runs had an average RMSE of 1412. This result shows a massive improvement in the emergence of a Zipf's law which leads us to conclude that this moving distance is indeed a large factor in the emergence of a Zipf's law in the model.
