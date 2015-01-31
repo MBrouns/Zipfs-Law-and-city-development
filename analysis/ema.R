@@ -69,6 +69,7 @@ for(row in 1:nrow(input)) {
     input$rsquared[row] <- calculateRSquared(input[row, ])
 }
 
+input <- input[order(input$rsquared, decreasing=T),] 
 
 input$bin <- cut(input$sse, 
                 breaks= c(0, 100, 250, 500, 750, 10000),
@@ -76,7 +77,6 @@ input$bin <- cut(input$sse,
                 include.lowest=TRUE
 )
 
-input <- input[order(input$sse),] 
 
 
 # Calculate variable importance using random forest

@@ -1,3 +1,5 @@
+;; Main model setup function.
+;; If a seed is set, use that seed. 
 to setup
   if seed != 0[
     random-seed seed
@@ -12,6 +14,8 @@ to setup
   set cityDistanceList determine-city-distances
 end
 
+
+;; Add default pens to plot
 to setup-plot
   set-current-plot "Households"
     create-temporary-plot-pen "Total households"
@@ -34,6 +38,7 @@ to setup-patches
   
   
   ;; Then randomly create a number of cities with a unique identifier
+  ;; City colors are equal to cityIdentifier * 10 + 5
   let cityIterator 1
   Ask patches with [pxcor = 31 AND pycor = 22 AND pcolor = 98.1][
     
@@ -49,13 +54,7 @@ to setup-patches
       ] 
     set cityIterator cityIterator + 1 
     
-    
-    ;;let patchesInMaxRange (patches in-radius maxDistBetweenCities with [pcolor = 98.1])
-    ;;let patchesInMinRange (patches in-radius minDistBetweenCities with [pcolor = 98.1])
-    ;subtract even-ones from red-ones
-    ;; let patchesBetweenRange patchesInMaxRange with [not member? self patchesInMinRange]
-    
-    
+       
     ;; We want to draw new cities in a donut around this first city. Since the regular method to do this
     ;; in Netlogo (with  let patchesBetweenRange patchesInMaxRange with [not member? self patchesInMinRange])
     ;; is stupidly slow, we first draw a large red circle around first city, then change the color in the inner
@@ -201,6 +200,8 @@ to-report generate-member [$ageMin $ageMax $sex]
   report member
 end
 
+
+;; Calculate distance matrix for distances between cities
 to-report determine-city-distances
   set cityDistanceList []
   let outerCityIterator 1
@@ -224,6 +225,7 @@ to-report determine-city-distances
 end
 
 
+;; Set the globals as described in the "code" section
 to init-globals
   set ageAcc 0
   set sexAcc 1

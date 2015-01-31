@@ -1,3 +1,6 @@
+
+;; Returns the resistance to move for the household calling this function. 
+;; Resistance is a number between 0 and 1 and depends on the number of children in the household, the age of the household parents and how long since the household last moved.
 to-report determine-resistance-to-move
   
   let childrenresistance (length peopleList - 2) * rtm_resistancePerChild
@@ -14,6 +17,8 @@ to-report determine-resistance-to-move
   
 end
 
+
+;; Returns the attractiveness for each city in a list for the household calling this function.
 to-report determine-city-attractiveness
   let cityAttractivenessListHouseholdPerPerson []
   let finalCityAttractivenessListHousehold [] 
@@ -55,22 +60,18 @@ to-report determine-city-attractiveness
     if distToCity > maxMovingDistance[
       set cityAverage cityAverage - MaxDistCityAttractiveness
     ]
-   ;; print word "City " cityIterator
+ 
     let cityAttractivenessBySize determine-city-attractiveness-by-size (cityIterator + 1)
-    ;;print word "cityAttractivenessBySize " cityAttractivenessBySize
     set cityAverage (((1 - cityAttractivenessBySize_Weight) * cityAverage) + (cityAttractivenessBySize_Weight * cityAttractivenessBySize))
-  ;;  print word "cityAverage " cityAverage
-    
+
     ;; Find cities closeby from cityDistanceList to calculate borrowed utility  
     let borrowedUtilityList [0]
     foreach (cities-within-distance borrowedUtilityMaxDistance (cityIterator + 1)) [
       set borrowedUtilityList lput determine-city-attractiveness-by-size ? borrowedUtilityList
       
     ]
-  ;;  print word "borrowedUtilityList " borrowedUtilityList
-     set cityAverage (((1 - borrowedUtilityWeight) * cityAverage) + (borrowedUtilityWeight * max borrowedUtilityList))
-   ;;     print word "cityAverage " cityAverage
-  ;;      print " "
+
+    set cityAverage (((1 - borrowedUtilityWeight) * cityAverage) + (borrowedUtilityWeight * max borrowedUtilityList))
     set finalCityAttractivenessListHousehold lput cityAverage finalCityAttractivenessListHousehold
     set cityIterator cityIterator + 1 
   ]
@@ -79,7 +80,7 @@ to-report determine-city-attractiveness
 end
 
 
-
+;; Determine the attractiveness per city for a single household based on city size
 to-report determine-city-attractiveness-by-size[$city]
       ;; Determine city attractiveness based on size
     let cityAttractivenessBySize 0
@@ -94,6 +95,7 @@ to-report determine-city-attractiveness-by-size[$city]
 end
 
 
+;; Determine the attractiveness per city for a single household based on job preferences
 to determine-city-attractiveness-from-jobs
   set jobAttractivenessList []
   
@@ -236,6 +238,8 @@ to-report determine-city-attractiveness-per-job [$cityIdentifier $jobIdentifier]
 end
 
 
+
+;; Lets the household move to a single city
 to move-to-city [$cityIdentifier]
   move-to one-of patches with [cityIdentifier = $cityIdentifier]  
   let cityIterator 1

@@ -18,7 +18,7 @@ to progress-lifestage
 end
 
 
-
+;; If the household changed, some cached attributes should be updated. 
 to updateHouseholdAttributes
   let peopleIterator 0
   set NoOfpeopleInService 0
@@ -45,6 +45,7 @@ to updateHouseholdAttributes
   
 end
 
+;; Checks if the household should retire. Returns true if something changed in the household
 to-report retire
   let changeFlag FALSE
   foreach peopleList [
@@ -60,6 +61,8 @@ to-report retire
   report changeflag
 end
 
+
+;; Checks if the household members should die. Returns true if something changed in the household
 to-report check-death
   let changeFlag FALSE
   foreach peopleList [
@@ -76,6 +79,9 @@ to-report check-death
   report changeFlag
 end
 
+
+
+;; Checks if the household should reproduce. Returns true if something changed in the household
 to-report reproduce
   let changeFlag FALSE
   ;; Make babies
@@ -99,6 +105,7 @@ to-report reproduce
 end
 
 
+;; Checks if the there are children which should move out. Returns true if something changed in the household
 to-report move-out-children
   let changeFlag FALSE
   ;; Let children move out of house when they are aged
@@ -125,6 +132,7 @@ end
 
 
 
+;; Checks if the household should merge. Returns true if something changed in the household
 to-report merge-household
   let changeFlag FALSE
   ;; Let households merge 

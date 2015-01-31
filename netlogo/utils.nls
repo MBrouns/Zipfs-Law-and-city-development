@@ -53,9 +53,8 @@ to-report get-city-sizes
   
 end
 
-
+;; updates cached values
 to update-cache
-  ;;print "recomputing cityAttractiveness"
     determine-city-attractiveness-from-jobs
     set cacheCitySizes get-city-sizes
     set cacheLargestCitySize max get-city-sizes

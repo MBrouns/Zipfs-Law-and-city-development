@@ -2,26 +2,26 @@ patches-own [
   cityIdentifier            ;; A number identifying the city  - 0 for non-city patches, -1 for patches outside of The Netherlands
 ]
 turtles-own [
-  peopleList
-  NoOfpeopleInService
-  NoOfpeopleInIT
-  NoOfpeopleInFinance
-  NoOfpeopleInNonProfit
-  timeSinceMoving
-  distanceToCities ;; a list containing the distance of their current location to each city. This is used as a cache so that when the turtles live outside of the city 
-                   ;; we don't have to call the distance function each tick since it is super slow
+  peopleList            ;; A list containing household members with their attributes
+  NoOfpeopleInService   ;; the amount of people in this household which are active in Service jobs
+  NoOfpeopleInIT        ;; the amount of people in this household which are active in IT
+  NoOfpeopleInFinance   ;; the amount of people in this household which are active in finance
+  NoOfpeopleInNonProfit ;; the amount of people in this household which are active in the non profit sector
+  timeSinceMoving       ;; the time in years since this household last moved
+  distanceToCities      ;; a list containing the distance of their current location to each city. This is used as a cache so that when the turtles live outside of the city 
+                        ;; we don't have to call the distance function each tick since it is super slow
 ]
 
 globals [ 
-  ageAcc
-  sexAcc
-  jobAcc
+  ageAcc                ;; A global identifier for defining which item in the peopleList refers to the age of the member (so that we can use item ageAcc person instead of item 1 person which is less clear to read)
+  sexAcc                ;; A global identifier for defining which item in the peopleList refers to the sex of the member
+  jobAcc                ;; A global identifier for defining which item in the peopleList refers to the job preference of the member
   jobAttractivenessList ;; a list of list containing for each city a list with attractiveness rates for each job category
-  cityDistanceList
-  noOfMovesCounter ;; A counter to count how many people have moved per tick so we can update the city attractiveness every x moves
-  seed
-  cacheLargestCitySize
-  cacheCitySizes
+  cityDistanceList      ;; A 2d list containing the distances between cities
+  noOfMovesCounter      ;; A counter to count how many people have moved per tick so we can update the city attractiveness every x moves
+  seed                  ;; The seed of the moel
+  cacheLargestCitySize  ;; A cached variable containing the highest number of people in a city
+  cacheCitySizes        ;; A cached list containing the city sizes
 ]
 
 
@@ -35,12 +35,16 @@ to go
     profiler:start         ;; start profiling
   ]
   
+  
+  
   tick
-  if ticks >= NumberOfYears [ stop ] 
+  if ticks >= NumberOfYears [ stop ] ;; Stop model at end of runtime
+  
+  ;; The model contains a warm-up period. In this warmup period households will not move. They will only reproduce
+  ;; This warmup time was added to determine whether the oscillations that the population model show in the initial phase of the model have a large effect on the model outcome.
+  
+  
   ;; Update the household plot with new values for each city pen
-  
-  
-  
   if ticks = WarmUpTime [
     set cacheCitySizes get-city-sizes
     set cacheLargestCitySize max cacheCitySizes
@@ -57,7 +61,7 @@ to go
     
   ]
   
-  
+  ;; Start plotting only after warm-up period of model is complete
   if ticks >= WarmUpTime[
     let cityIterator 1
     if doPlot[
@@ -73,7 +77,9 @@ to go
         set cityIterator cityIterator + 1
       ]
     ]
-    determine-city-attractiveness-from-jobs
+    
+    
+    determine-city-attractiveness-from-jobs  ;; Only determine city attractiveness after warmup time is done since people don't move in warmup anyway
   ]
   
   
@@ -83,7 +89,10 @@ to go
     progress-lifestage
     if ticks >= WarmUpTime + 1[
       let resistanceToMove determine-resistance-to-move
-      let cityAttractivenessList determine-city-attractiveness      
+      
+      let cityAttractivenessList determine-city-attractiveness    
+        
+      ;; If a household doesn't live in the most attractive city and there are cities for which attractiveness > resistance, move to one of those cities.
       if max cityAttractivenessList > resistanceToMove AND index-max-item-list cityAttractivenessList != cityIdentifier[
         let targetCities []
         foreach filter [ ? > resistanceToMove ] cityAttractivenessList [
@@ -92,7 +101,7 @@ to go
         
         move-to-city (item random length targetCities targetCities)
         set timeSinceMoving 0
-        set noOfPeopleMoving noOfPeopleMoving + 1
+        set noOfPeopleMoving noOfPeopleMoving + 1  ;; Increse counter so we know when to update cached variables again
       ]
     ]
     
@@ -100,8 +109,7 @@ to go
   
   print noOfPeopleMoving  
   
-  set noOfHouseholds max (list (round (count turtles * PopulationGrowth)) noOfHouseholds )
-  
+  set noOfHouseholds max (list (round (count turtles * PopulationGrowth)) noOfHouseholds )  ;; Add small population growth
   
 end
 
@@ -1161,41 +1169,54 @@ doPlot
 -1000
 
 @#$#@#$#@
-## WHAT IS IT?
+## Introduction
 
-(a general understanding of what the model is trying to show or explain)
+Economic activity is geographically extremely concentrated in cities, and even more in large cities. At present, competition between countries to a large part amounts to competition between their cities. This notion is starting to be embedded in, for instance, Dutch economic policy thinking.
+Most countries have a city that is by far the biggest and most dominant city. For instance, London accounts for about 20% of the UK’s GDP and the next biggest city is much smaller. Indeed, it appears that the distribution of city sizes within a country often follows the Zipfian distribution, that is, the size of any city is inversely proportional to its ranking in the list of city ranked by size (Gaujal et al.; 2014). So, competition between countries often boils down to competition between their biggest cities.
+
+How this Zipfian distribution emerges however has not yet been agreed on. There are many ideas on how cities form such a distribution, many of which rely on economic theories. There are of course other ways to approach this phenomenon. The Netherlands Bureau for Economic Policy Analysis (CPB) for example is interested to find out if decisions made at household level can explain the emergence of the Zipf’s law. They wish to understand more on the emergence of the Zipf’s law and how it may be influenced by future policy making or how it will influence future policies. This model has been built in order to bring light to these matters. Another interesting phenomenon concerning the Zipf’s law is that for some countries the Zipfian distribution does not hold strictly, i.e. with a power coefficient of one. The Netherlands is one of those countries, with many cities of more equal size than the Zipfian distribution would predict. The CPB wonders if that is a problem or an asset? What can be the reason for this? Their first approach is focused on decisions at household levels, which leads to the following research question posed at the base of this model:
+
+How do individual decisions at household level influence moving behaviour in cities to cause the emergence of the Zipf's law?
+
+In order to answer this question the method of Agent-Based Simulation has been proposed since it is especially made to study emergent behaviour over time and allows for decisions rules to be made at an agent’s level. The CPB is also interested to see what this method of research offers and how it might be of help to them in future research. 
+
 
 ## HOW IT WORKS
 
-(what rules the agents use to create the overall behavior of the model)
+The base agent in the model is a household. A household consists of a number of members which have the following attributes: 
+
+ - Age,
+ - Job preference,
+ - Sex
+
+Households progress through life as shown in the following image.
+
+![alt text](file:../docs/images/lifecycle.png)
+
+Every year, a household decides whether to move to a more attractive city if the attractiveness of a city is higher than the households resistance to move. The factors influencing these attributes are shown in the following image
+
+![alt text](file:../docs/images/moving.png)
+
 
 ## HOW TO USE IT
 
-(how to use the model, including a description of each of the items in the Interface tab)
+The main attributes to set in the model are the number of households and the number of cities in the system. Furthermore there are a number of sliders which set the various parameters regarding resistence and attractiveness for households. Please refer to the attached documentation for a full explanation of these variables.
 
-## THINGS TO NOTICE
-
-(suggested things for the user to notice while running the model)
-
-## THINGS TO TRY
-
-(suggested things for the user to try to do (move sliders, switches, etc.) with the model)
 
 ## EXTENDING THE MODEL
 
-(suggested things to add or change in the Code tab to make the model more complicated, detailed, accurate, etc.)
+A number of extensions can be made to the model. A large first improvement could be the changing of the main decision rule by which households move. Currently, a household moves to a random city which attractiveness is higher than the households resistance. However, it would make more sense if the added attractiveness of a city compared to the current city a household is in is taken into account. 
 
 ## NETLOGO FEATURES
 
-(interesting or unusual features of NetLogo that the model uses, particularly in the Code tab; or where workarounds were needed for missing features)
+A large portion of the development time on the model was spent on improving the speed of the model. This has led to a number of oddities which should be taken into account when further developing the model.
 
-## RELATED MODELS
+First of all, a large part of the used variables are cached instead of calculated on the fly. A slider in the interface tab can be used to set at how many migrations this cache should update. 
 
-(models in the NetLogo Models Library and elsewhere which are of related interest)
 
 ## CREDITS AND REFERENCES
 
-(a reference to the model's URL on the web if it has one, as well as any other necessary credits, citations, and links)
+This model was built by Matthijs Brouns and Helene van Heijningen. A repository containing all required files as well as additional documentation and analysis files can be found at: https://github.com/MBrouns/Zipfs-Law-and-city-development
 @#$#@#$#@
 default
 true
